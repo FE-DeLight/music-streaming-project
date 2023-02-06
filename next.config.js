@@ -2,7 +2,8 @@
 const nextConfig = {
   experimental: {
     appDir: true,
+    fontLoaders: [{ loader: "@next/font/google" }],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
