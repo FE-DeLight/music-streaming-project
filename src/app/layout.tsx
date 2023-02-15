@@ -1,6 +1,4 @@
 import "./globals.css";
-import { Inter } from "@next/font/google";
-import Nav from "./analytics/Nav/page";
 
 export default function RootLayout({
   children,
@@ -10,10 +8,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head />
-      <body>
-        <Nav />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
