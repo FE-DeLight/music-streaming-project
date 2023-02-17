@@ -3,3 +3,8 @@
   background-color: green;
   color: #fff;
 }
+
+.list-item {
+  display: flex;
+  gap: 20px;
+}
