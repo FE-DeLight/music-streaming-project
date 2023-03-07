@@ -12,7 +12,8 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       {children}
       <style jsx>{`
         .wrapper {
-          max-width: 800px;
+          width: 100%;
+          max-width: 1600px;
           margin: 0 auto;
         }
       `}</style>
