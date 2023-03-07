@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { routes } from "./route";
 
-export default function Nav(): JSX.Element {
+export default function Player(): JSX.Element {
   const router = useRouter();
   const [like, setLike] = useState(false);
   const [soundRange, setSoundRange] = useState(30);
   const [player, setPlayer] = useState(false);
-  const [tab, setTab] = useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
   const [musicList, setMusicList] = useState(true);
 
   const tabMenu = [{ name: "음악" }, { name: "가사" }];
@@ -19,7 +19,9 @@ export default function Nav(): JSX.Element {
   const openPlaylist = () => {
     setPlayer((prev) => (prev = !prev));
   };
-  const clickTab = () => {};
+  const clickTab = (index) => {
+    setTabIndex(index);
+  };
   const clickMusicList = () => {
     setMusicList((prev) => (prev = !prev));
   };
@@ -63,68 +65,98 @@ export default function Nav(): JSX.Element {
             <div className="tab-head">
               <div className="tab-head__title-area">
                 {tabMenu.map((tab, index) => (
-                  <button key={index}>{tab.name}</button>
+                  <button
+                    className={`${
+                      index === tabIndex
+                        ? "tab-head__title tab-head__title--active"
+                        : "tab-head__title"
+                    }`}
+                    key={index}
+                    onClick={() => {
+                      clickTab(index);
+                    }}
+                  >
+                    {tab.name}
+                  </button>
                 ))}
               </div>
               <button className="edit-btn">편집</button>
             </div>
-            <div className="tab-body tab-body--list">
-              <div className="tab-body__top">
-                <div className="tab-body__top-left">
-                  <div className="tab__search">
-                    <input
-                      type="text"
-                      placeholder="재생목록에서 검색해주세요"
-                    />
+
+            {tabIndex === 0 && (
+              <div className="tab-body tab-body--list">
+                <div className="tab-body__top">
+                  <div className="tab-body__top-left">
+                    <div className="tab__search">
+                      <input
+                        type="text"
+                        placeholder="재생목록에서 검색해주세요"
+                      />
+                    </div>
+                  </div>
+                  <div className="tab-body__top-right">
+                    <button className="list-btn">내 리스트 가져오기</button>
+                    <button className="spread-btn">그룹 접기</button>
                   </div>
                 </div>
-                <div className="tab-body__top-right">
-                  <button className="list-btn">내 리스트 가져오기</button>
-                  <button className="spread-btn">그룹 접기</button>
-                </div>
-              </div>
-              <div className="tab-body__list-area">
-                <div
-                  className={`music-list ${!musicList && "music-list--fold"}`}
-                >
-                  <div className="music-list_top">
-                    <div className="music-list_top-left">
-                      <div className="music-list__list-title">
-                        플레이리스트 이름
+                <div className="tab-body__list-area">
+                  <div
+                    className={`music-list ${!musicList && "music-list--fold"}`}
+                  >
+                    <div className="music-list_top">
+                      <div className="music-list_top-left">
+                        <div className="music-list__list-title">
+                          플레이리스트 이름
+                        </div>
+                      </div>
+                      <div className="music-list_top-right">
+                        <button className="music-list__play-btn">
+                          <span className="blind">재생</span>
+                        </button>
+                        <button
+                          className="music-list__list-fold-btn"
+                          onClick={clickMusicList}
+                        >
+                          <span className="blind">접기</span>
+                        </button>
                       </div>
                     </div>
-                    <div className="music-list_top-right">
-                      <button className="music-list__play-btn">
-                        <span className="blind">재생</span>
-                      </button>
-                      <button
-                        className="music-list__list-fold-btn"
-                        onClick={clickMusicList}
-                      >
-                        <span className="blind">접기</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="music-list__content">
-                    <div className="music-list__music">
-                      <button className="music-list__music-btn">
-                        <div className="music-list__thumb">
-                          {/* <img src="" alt="" /> */}
-                        </div>
-                        <div className="music-list__info">
-                          <div className="music-list__title">제목</div>
-                          <div className="music-list__singer">가수</div>
-                        </div>
-                      </button>
-                      <button className="music-list__show-more-btn">
-                        <span className="blind">더보기</span>
-                      </button>
+                    <div className="music-list__content">
+                      <div className="music-list__music">
+                        <button className="music-list__music-btn">
+                          <div className="music-list__thumb">
+                            {/* <img src="" alt="" /> */}
+                          </div>
+                          <div className="music-list__info">
+                            <div className="music-list__title">제목</div>
+                            <div className="music-list__singer">가수</div>
+                          </div>
+                        </button>
+                        <button className="music-list__show-more-btn">
+                          <span className="blind">더보기</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="tab-body tab-body--lyrics">노래가사</div>
+            )}
+
+            {tabIndex === 1 && (
+              <div className="tab-body tab-body--lyrics">
+                Isn't she lovely <br />
+                Isn't she wonderfull <br />
+                Isn't she precious <br />
+                Less than one minute old <br />I never thought through love we'd
+                be <br />
+                Making one as lovely as she <br />
+                But isn't she lovely made from love <br />
+                Isn't she pretty
+                <br />
+                Truly the angel's best <br />
+                Boy, I'm so happy
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -312,8 +344,9 @@ export default function Nav(): JSX.Element {
           display: flex;
         }
         .tab-head__title {
-          margin-right: 10px;
+          margin-right: 15px;
           padding: 10px 0;
+          border-bottom: 3px solid transparent;
           font-size: 16px;
           color: hsla(0, 0%, 100%, 0.3);
         }
@@ -343,7 +376,7 @@ export default function Nav(): JSX.Element {
           width: 100%;
           border: 0;
           outline: 0;
-          font-size: 11px;
+          font-size: 12px;
           line-height: 1;
           color: #bbb;
           background: transparent;
@@ -457,9 +490,11 @@ export default function Nav(): JSX.Element {
 
         .tab-body--lyrics {
           width: 100%;
-          padding: 10px 20px 10px 15px;
+          margin-top: 10px;
+          padding: 10px 20px 20px 15px;
           border-radius: 5px;
-          font-size: 14px;
+          font-size: 16px;
+          line-height: 1.8;
           background: hsla(0, 0%, 100%, 0.1);
         }
 
@@ -498,12 +533,16 @@ export default function Nav(): JSX.Element {
         .bar__right-area {
           display: flex;
           align-items: center;
+          flex: 0 0 auto;
         }
-        .bar__left-area {
-          width: 45%;
+        .bar__center-area {
+          flex-grow: 1;
+          justify-content: center;
+          padding-left: 50px;
         }
         .bar__right-area {
           margin-left: auto;
+          padding-left: 30px;
         }
         .thumb {
           width: 40px;
