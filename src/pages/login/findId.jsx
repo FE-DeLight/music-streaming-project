@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Modal from '../../components/modal'
 
 export default function findId() {
+    const [showModal, setShowModal] = useState(false);
     return (
         <div>
+            <div>
+                <button onClick={() => setShowModal(true)}>Open Modal</button>
+                <Modal
+                    onClose={() => setShowModal(false)}
+                    show={showModal}
+                >
+                    아이디는 test1 입니다.
+                </Modal>
+            </div>
             <div className="wrapper">
                 <form>
                     <label>아이디 찾기</label>
