@@ -1,12 +1,21 @@
 import React from "react";
+import Link from "next/link";
 
 export default function login() {
     return (
         <div>
             <div className="wrapper">
                 <form>
-                    <input className="idpw" name="id" placeholder="아이디(이메일)"/>
-                    <input className="idpw" name="password" placeholder="비밀번호"/>
+                    <input className="idpw" name="id" placeholder="아이디(이메일)"
+                           type="text"
+                           id="roll"
+                           name="roll"
+                           required
+                           minlength="10"
+                           maxlength="20"/>
+                    <input className="idpw" name="password" placeholder="비밀번호"
+                            type="password"
+                    />
                     <label>
                         <input
                             type="checkbox"
@@ -16,10 +25,21 @@ export default function login() {
                     </label>
                     <button className="submit-button" type="submit">로그인</button>
                 </form>
+                <div className="sub-container">
+                    <ul>
+                        <li>
+                            <Link href="/login/findId">아이디 찾기</Link>
+                        </li>
+                        <li>비밀번호 찾기</li>
+                    </ul>
+                    <div>
+                        <Link href="/login/signup">회원가입</Link>
+                    </div>
+                </div>
             </div>
             <style jsx>{`
                 .wrapper {
-                  border: 1px solid red;
+                  border: 1px solid #d9d9d9;
                   width: 682px;
                   padding: 50px 120px;
                 }
@@ -50,6 +70,23 @@ export default function login() {
                   border: none;
                   color: #fff;
                   font-weight: 600;
+                }
+                .sub-container {
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 20px;
+                }
+                ul {
+                  display: flex;
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                }
+                li:first-child::after {
+                    color: #c4c4c4;
+                    content: "|";
+                    font-size: 1px;
+                    padding: 0 10px;
                 }
             `}
             </style>
