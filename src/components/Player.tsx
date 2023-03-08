@@ -1,25 +1,94 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ReactPlayer from "react-player";
 import { routes } from "./route";
+import { padStart } from "lodash";
 
 export default function Player(): JSX.Element {
   const router = useRouter();
+
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+
+  const [played, setPlayed] = useState(0);
+  const [seeking, setSeeking] = useState(false);
+  const [duration, setDuration] = useState(0);
   const [like, setLike] = useState(false);
-  const [soundRange, setSoundRange] = useState(30);
+  const [play, setPlay] = useState(false);
+  const [repeatPlay, setRepeatPlay] = useState(false);
+  const [randomPlay, setRandomPlay] = useState(false);
+  const [playedSecond, setPlayedSecond] = useState('00:00');
+  const [mute, setMute] = useState(false);
+  const [volume, setVolume] = useState(50);
   const [player, setPlayer] = useState(false);
   const [tabIndex, setTabIndex] = useState(0);
   const [musicList, setMusicList] = useState(true);
+  const music = useRef(null);
 
   const tabMenu = [{ name: "음악" }, { name: "가사" }];
 
+  const handleProgress = (state: any) => {
+    // console.log("onProgress", state);
+    let playedSeconds = state.playedSeconds;
+    // console.log(playedSeconds);
+    handlePlayedSeconds(playedSeconds)
+    if (!seeking) {
+      setPlayed((prev) => (prev = state.played))
+    }
+  };
+  const handlePlayedSeconds = (playedSeconds :number) => {
+
+    playedSeconds = Math.floor(playedSeconds);
+    if (playedSeconds < 60) {
+      setPlayedSecond(`00:${String(playedSeconds).padStart(2,'0')}`)
+    } else {
+      let minutes = Math.floor(playedSeconds / 60);
+      let seconds = playedSeconds % 60;
+      
+      setPlayedSecond(`${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`)
+    }
+  }
+  const handleDuration = (state :any) => {
+    console.log('duration',state);    
+  }
+  const handleSeekMouseDown = () => {
+    setSeeking(true);
+  };
+  const handleSeekChange = (e: any) => {
+    setPlayed((prev) => (prev = parseFloat(e.target.value)));
+  };
+  const handleSeekMouseUp = (e: any) => {
+    setSeeking(false);
+    // music.seekTo(parseFloat(e.target.value));
+  };
   const clickLike = () => {
     setLike((prev) => (prev = !prev));
+  };
+  const clickPlay = () => {
+    setPlay((prev) => (prev = !prev));
+  };
+  const clickRepeatPlay = () => {
+    setRepeatPlay((prev) => (prev = !prev));
+  };
+  const clickRandomPlay = () => {
+    setRandomPlay((prev) => (prev = !prev));
+  };
+  const clickMute = () => {
+    setMute((prev) => (prev = !prev));
+  };
+  const handleVolume = (event: any) => {
+    console.log(event.target.value);
+    setVolume((prev) => (prev = Number(event.target.value * 0.01)));
   };
   const openPlaylist = () => {
     setPlayer((prev) => (prev = !prev));
   };
-  const clickTab = (index:number) => {
+  const clickTab = (index: number) => {
     setTabIndex(index);
   };
   const clickMusicList = () => {
@@ -146,8 +215,8 @@ export default function Player(): JSX.Element {
                 Isn&apos;t she lovely <br />
                 Isn&apos;t she wonderful <br />
                 Isn&apos;t she precious <br />
-                Less than one minute old <br />I never thought through love we&apos;d
-                be <br />
+                Less than one minute old <br />I never thought through love
+                we&apos;d be <br />
                 Making one as lovely as she <br />
                 But isn&apos;t she lovely made from love <br />
                 Isn&apos;t she pretty
@@ -161,9 +230,37 @@ export default function Player(): JSX.Element {
       </div>
 
       {/* 플레이어 바 */}
+      {hasWindow && (
+        <ReactPlayer
+          url="https://youtu.be/2PzANq-lUCM?t=1"
+          playing={play}
+          loop={repeatPlay}
+          muted={mute}
+          volume={volume}
+          onProgress={(state) => {handleProgress(state)}}
+          onDuration={(state) => {handleDuration(state)}}
+          controls={true}
+          ref={music}
+          style={{display: 'none'}}
+        />
+      )}
+
       <div className="bar">
         <div className="progress">
-          <div className="progress-bar" />
+        {/* <progress style={{width:'100%'}} max={1} value={played} /> */}
+
+        <input
+        style={{width:'100%'}}
+          type="range"
+          min={0}
+          max={0.999999}
+          step="any"
+          value={played}
+          onMouseDown={() => {handleSeekMouseDown}}
+          onChange={(state) => {handleSeekChange(state)}}
+          onMouseUp={() => {handleSeekMouseUp}}
+        />
+          {/* <div className="progress-bar" style={{width: `${played * 100}%`}} /> */}
         </div>
 
         <div className="controller">
@@ -172,7 +269,7 @@ export default function Player(): JSX.Element {
               <div className="thumb">{/* <img src="" alt="" /> */}</div>
             </Link>
             <div className="music-info">
-              <div className="title">제목</div>
+              <div className="title">제목제목</div>
               <div className="singer">가수</div>
             </div>
             <button
@@ -184,36 +281,54 @@ export default function Player(): JSX.Element {
           </div>
 
           <div className="bar__center-area">
-            <button className="repeat-btn">
+            <button
+              className={
+                repeatPlay ? "repeat-btn repeat-btn--active" : "repeat-btn"
+              }
+              onClick={clickRepeatPlay}
+            >
               <span className="blind">반복재생</span>
             </button>
             <button className="prev-btn">
               <span className="blind">이전곡</span>
             </button>
-            <button className="play-btn">
+            <button
+              className={play ? "play-btn play-btn--active" : "play-btn"}
+              onClick={clickPlay}
+            >
               <span className="blind">재생</span>
             </button>
             <button className="next-btn">
               <span className="blind">다음곡</span>
             </button>
-            <button className="random-btn">
+            <button
+              className={
+                randomPlay ? "random-btn random-btn--active" : "random-btn"
+              }
+              onClick={clickRandomPlay}
+            >
               <span className="blind">랜덤재생</span>
             </button>
             <div className="time">
-              <span className="current-time">00:10</span>
+              <span className="current-time">{playedSecond}</span>
               <span> / </span>
               <span className="total-time">03:50</span>
             </div>
           </div>
 
           <div className="bar__right-area">
-            <button className="mute-btn">
+            <button
+              className={mute ? "mute-btn mute-btn--active" : "mute-btn"}
+              onClick={clickMute}
+            >
               <span className="blind">음소거</span>
             </button>
             <input
               className="sound-range-input"
               type="range"
-              value={soundRange}
+              onChange={() => {
+                handleVolume(event);
+              }}
             />
             <button className="playlist-btn" onClick={openPlaylist}>
               <span className="blind">재생목록</span>
@@ -511,12 +626,12 @@ export default function Player(): JSX.Element {
         }
         .progress {
           width: 100%;
-          height: 2px;
-          background: #333;
+          height: 5px;
+          background: #666;
         }
         .progress-bar {
           width: 30%;
-          height: 2px;
+          height: 5px;
           border-radius: 0 2px 2px 0;
           background: #576aff;
         }
@@ -525,7 +640,7 @@ export default function Player(): JSX.Element {
           align-items: center;
           width: 100%;
           height: 100%;
-          padding: 0 30px;
+          padding: 0 30px 5px;
         }
         .bar__left-area,
         .bar__center-area,
@@ -534,10 +649,11 @@ export default function Player(): JSX.Element {
           align-items: center;
           flex: 0 0 auto;
         }
+        .bar__left-area {
+          width: 40%;
+        }
         .bar__center-area {
-          flex-grow: 1;
           justify-content: center;
-          padding-left: 50px;
         }
         .bar__right-area {
           margin-left: auto;
@@ -609,11 +725,17 @@ export default function Player(): JSX.Element {
         .repeat-btn {
           background-image: url("/icon_repeat_play.svg");
         }
+        .repeat-btn--active {
+          background-image: url("/icon_repeat_play_active.svg");
+        }
         .prev-btn {
           background-image: url("/icon_prev.svg");
         }
         .play-btn {
           background-image: url("/icon_play.svg");
+        }
+        .play-btn--active {
+          background-image: url("/icon_pause.svg");
         }
         .next-btn {
           background-image: url("/icon_next.svg");
@@ -621,10 +743,16 @@ export default function Player(): JSX.Element {
         .random-btn {
           background-image: url("/icon_random_play.svg");
         }
+        .random-btn--active {
+          background-image: url("/icon_random_play_active.svg");
+        }
         .mute-btn {
           width: 35px;
           height: 35px;
           background-image: url("/icon_sound.svg");
+        }
+        .mute-btn--active {
+          background-image: url("/icon_mute.svg");
         }
         .playlist-btn {
           background-image: url("/icon_player.svg");
@@ -639,29 +767,39 @@ export default function Player(): JSX.Element {
         .current-time {
           font-weight: bold;
         }
+        .total-time {
+          color: #999;
+        }
         .sound-range-input {
           appearance: none;
           width: 100px;
           height: 4px;
           border: 0;
           border-radius: 10px;
-          background: #555;
-          background: linear-gradient(
+          background: transparent;
+           {
+            /* background: linear-gradient(
             to right,
             #aaa 0%,
             #aaa 50%,
             #444 50%,
             #444 100%
-          );
+          ); */
+          }
           outline: none;
           transition: background 450ms ease-in;
           cursor: pointer;
+          overflow: hidden;
+        }
+        .sound-range-input::-webkit-slider-runnable-track {
+          background: #666;
         }
         .sound-range-input::-webkit-slider-thumb {
           -webkit-appearance: none;
           width: 4px;
           height: 4px;
-          background: red;
+          background: #fff;
+          box-shadow: -100px 0 0 100px #aaa;
         }
       `}</style>
     </div>
