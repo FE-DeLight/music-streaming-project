@@ -19,7 +19,7 @@ export default function Player(): JSX.Element {
   const openPlaylist = () => {
     setPlayer((prev) => (prev = !prev));
   };
-  const clickTab = (index) => {
+  const clickTab = (index:number) => {
     setTabIndex(index);
   };
   const clickMusicList = () => {
@@ -141,20 +141,19 @@ export default function Player(): JSX.Element {
                 </div>
               </div>
             )}
-
             {tabIndex === 1 && (
               <div className="tab-body tab-body--lyrics">
-                Isn't she lovely <br />
-                Isn't she wonderfull <br />
-                Isn't she precious <br />
-                Less than one minute old <br />I never thought through love we'd
+                Isn&apos;t she lovely <br />
+                Isn&apos;t she wonderful <br />
+                Isn&apos;t she precious <br />
+                Less than one minute old <br />I never thought through love we&apos;d
                 be <br />
                 Making one as lovely as she <br />
-                But isn't she lovely made from love <br />
-                Isn't she pretty
+                But isn&apos;t she lovely made from love <br />
+                Isn&apos;t she pretty
                 <br />
-                Truly the angel's best <br />
-                Boy, I'm so happy
+                Truly the angel&apos;s best <br />
+                Boy, I&apos;m so happy
               </div>
             )}
           </div>
