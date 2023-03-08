@@ -78,7 +78,7 @@ export default function login() {
                 }
                 ul {
                   display: flex;
-                  list-style: none;
+                  //list-style: none;
                   margin: 0;
                   padding: 0;
                 }
