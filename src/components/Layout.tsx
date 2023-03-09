@@ -11,6 +11,9 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       <Nav />
       {children}
       <style jsx>{`
+        body {
+          margin: 0;
+        }
         .wrapper {
           width: 100%;
           max-width: 1600px;
