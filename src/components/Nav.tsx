@@ -25,18 +25,13 @@ export default function Nav(): JSX.Element {
         </h1>
         <ul className="nav">
           <li>
-            <Link href="#" style={{ textDecoration: "none", color: "inherit" }}>
-              둘러보기
+            <Link href="#" legacyBehavior>
+              <a className="header-link">둘러보기</a>
             </Link>
           </li>
           <li>
-            <Link href="#" style={{ textDecoration: "none", color: "inherit" }}>
-              보관함
-            </Link>
-          </li>
-          <li>
-            <Link href="#" style={{ textDecoration: "none", color: "inherit" }}>
-              이용권
+            <Link href="#" legacyBehavior>
+              <a className="header-link">보관함</a>
             </Link>
           </li>
         </ul>
@@ -44,31 +39,18 @@ export default function Nav(): JSX.Element {
           <input type="text" placeholder="검색어를 입력하세요." />
         </div>
       </div>
+
       <div className="header-right">
         <div className="flo-items">
           <ul>
             <li>
-              <Link
-                href="#"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                크리에이터 스튜디오
+              <Link href="#" legacyBehavior>
+                <a className="header-link">로그인</a>
               </Link>
             </li>
             <li>
-              <Link
-                href="#"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                로그인
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                회원가입
+              <Link href="#" legacyBehavior>
+                <a className="header-link">회원가입</a>
               </Link>
             </li>
           </ul>
@@ -79,7 +61,7 @@ export default function Nav(): JSX.Element {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 10px 80px 0;
+          padding: 20px 80px;
         }
         .header-left {
           display: flex;
@@ -89,7 +71,11 @@ export default function Nav(): JSX.Element {
           display: flex;
         }
         header ul > li + li {
-          margin-left: 26px;
+          margin-left: 10px;
+        }
+        .header-link {
+          display: inline-block;
+          padding: 15px;
         }
         .nav {
           margin-left: 40px;
@@ -99,7 +85,6 @@ export default function Nav(): JSX.Element {
         }
         .flo-items {
           font-size: 13px;
-          font-weight: 300;
           color: #8c8c8c;
         }
       `}</style>

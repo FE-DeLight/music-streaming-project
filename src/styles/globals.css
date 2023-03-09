@@ -127,3 +127,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/* add reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}
