@@ -2,24 +2,13 @@ import * as style from "./BrowseList.style";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+type BrowseListProps = {
+  BrowseListData: any;
+};
 
-export const BrowseList = (): JSX.Element => {
-  const [BrowseListData, setBrowseListData]: any = useState();
-  const getData = async () => {
-    const res = await fetch("http://localhost:3000/api/BrowseListData", {
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    setBrowseListData(await res.json());
-  };
-  BrowseListData ? console.log(BrowseListData.data.header) : null;
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+export const BrowseList = ({
+  BrowseListData,
+}: BrowseListProps): JSX.Element => {
   return (
     <div className="browse-list">
       <style.browseHead>
