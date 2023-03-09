@@ -4,6 +4,9 @@ const nextConfig = {
     appDir: false,
     fontLoaders: [{ loader: "@next/font/google" }],
   },
+  images: {
+    domains: ["cdn.music-flo.com"],
+  },
 };
 
 module.exports = nextConfig;
