@@ -6,10 +6,12 @@ export const GridWrap = styled.div`
   font-size: 13px;
   color: rgb(160, 160, 160);
   width: 100%;
-  .browse-list-head-item,
-  .browse-list-body-item {
-    display: flex;
-    align-items: center;
+  .browse-list {
+    &-head-item,
+    &-body-item {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 
