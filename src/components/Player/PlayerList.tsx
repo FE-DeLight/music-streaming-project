@@ -2,12 +2,149 @@ import {useState} from "react";
 import Link from "next/link";
 import PlayerButton from "./PlayerButton";
 import BlindText from "./BlindText";
+import PlayerThumb from "./PlayerThumb"
+import MusicListItem from "./MusicListItem"
 
-export default function Player(props : any): JSX.Element {
+export default function Player(props: any): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
   const [musicList, setMusicList] = useState(true);
 
   const tabMenu = [{name: "음악"}, {name: "가사"}];
+  const musicListData = [
+    {
+      thumb: "/album_thumb_01.jpg",
+      title: "MAGIC!",
+      singer: "Zior Park",
+      lyrics:
+        "I was a machine\n" +
+        "it was my choice\n" +
+        "no love in my pockets\n" +
+        "Stick to the plan for the cash\n" +
+        "I used to be built this way\n" +
+        "Only businessman\n" +
+        "can survive in this damn system\n" +
+        "What the heck\n" +
+        "I didn't care before I met you\n" +
+        "You make a crack in my brain\n" +
+        "You make me feel the earthquake\n" +
+        "You make the movie effects\n" +
+        "Around you Is that a new tech\n" +
+        "My heart is just pumping\n" +
+        "In the mirror there's a puppy\n" +
+        "Did you just cast\n" +
+        "a magic spell on me\n" +
+        "The Bible says\n" +
+        "“the love is the greatest”\n" +
+        "Finally I added the love system\n" +
+        "I feel like you you feel like me\n" +
+        "Maybe we're connected\n" +
+        "by this system\n" +
+        "All the senses that I forgot\n" +
+        "I just turned on thru my whole body\n" +
+        "Are you a sorceress\n" +
+        "are you an angel\n" +
+        "Now I'm confused\n" +
+        "but don't speak out\n" +
+        "Your magic makes me forget\n" +
+        "what I'm going through\n" +
+        "It doesn't matter\n" +
+        "I'm happy though im lost\n" +
+        "I'm not curious about\n" +
+        "the reason of this feeling\n" +
+        "I do not get it quite\n" +
+        "with my knowledge\n" +
+        "but don't tell me\n" +
+        "How beautiful\n" +
+        "all the rocks are like magic\n" +
+        "How wonderful\n" +
+        "all the creatures are like magic\n" +
+        "I didn't realize\n" +
+        "that I'm living in this blessing\n" +
+        "But you opened my mind\n" +
+        "I can feel your magic\n" +
+        "How beautiful\n" +
+        "all the rocks are like magic\n" +
+        "How wonderful\n" +
+        "all the creatures are like magic\n" +
+        "I didn't realize\n" +
+        "that I'm living in this blessing\n" +
+        "But you opened my mind\n" +
+        "I can feel your magic\n" +
+        "I didn't see the future\n" +
+        "but now I can imagine it\n" +
+        "I didn't feel the love\n" +
+        "but now I do it's magic!\n" +
+        "Where are you going'\n" +
+        "Stay here with me all night\n" +
+        "You need to teach me more about\n" +
+        "your magical world\n" +
+        "How can I ignore it\n" +
+        "I can't remove it from my head\n" +
+        "since I've experienced you\n" +
+        "24/7 all day\n" +
+        "high enough from your atmosphere\n" +
+        "It's supernatural\n" +
+        "I think there's no expression to\n" +
+        "explain your magic\n" +
+        "I'm just enjoying your spell\n" +
+        "Your magic makes me forget\n" +
+        "what I'm going through\n" +
+        "It doesn't matter\n" +
+        "I'm happy though im lost\n" +
+        "I'm not curious about\n" +
+        "the reason of this feeling\n" +
+        "I do not get it quite\n" +
+        "with my knowledge\n" +
+        "but don't tell me\n" +
+        "How beautiful\n" +
+        "all the rocks are like magic\n" +
+        "How wonderful\n" +
+        "all the creatures are like magic\n" +
+        "I didn't realize\n" +
+        "that I'm living in this blessing\n" +
+        "But you opened my mind\n" +
+        "I can feel your magic\n" +
+        "How beautiful\n" +
+        "all the rocks are like magic\n" +
+        "How wonderful\n" +
+        "all the creatures are like magic\n" +
+        "I didn't realize\n" +
+        "that I'm living in this blessing\n" +
+        "But you opened my mind\n" +
+        "I can feel your magic\n" +
+        "I didn't see the future\n" +
+        "but now I can imagine it\n" +
+        "I didn't feel the love\n" +
+        "but now I do it's magic!\n" +
+        "Your love is magic!\n" +
+        "Your love is amazing!\n" +
+        "Your love is magic!\n" +
+        "Your love is amazing!\n" +
+        "Your love is magic!\n" +
+        "Your love is amazing!\n" +
+        "Your love is magic!\n" +
+        "Your love is amazing!\n" +
+        "You turned on my vision\n" +
+        "Now look\n" +
+        "we're under the rainbow sky\n" +
+        "You just turned off my fan\n" +
+        "Finally I know what is the love\n" +
+        "How beautiful\n" +
+        "all the rocks are like magic"
+    },
+    {
+      thumb: "/album_thumb_02.jpg",
+      title: "Freshman",
+      singer: "페퍼톤스 (PEPPERTONES)",
+    },
+    {
+      thumb: "/album_thumb_03.jpg",
+      title: "Hype Boy",
+      singer: "NewJeans",
+    },
+  ];
+
+  console.log(typeof musicListData[0].lyrics)
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -26,9 +163,7 @@ export default function Player(props : any): JSX.Element {
           <Link href="/" style={{textDecoration: "none", display: "block"}}>
             <span className="list__left-singer">가수</span>
           </Link>
-          <div className="list__left-thumb">
-            {/* <img src="" alt="" /> */}
-          </div>
+          <PlayerThumb size={360} image={"/album_thumb_01.jpg"} radius={10} />
           <div className="list__left-btn-area">
             <PlayerButton size={40} image={"/icon_store.svg"}>
               <BlindText text={"담기"} />
@@ -101,72 +236,27 @@ export default function Player(props : any): JSX.Element {
                       <PlayerButton size={30} image={"/icon_play_list.svg"}>
                         <BlindText text={"재생"} />
                       </PlayerButton>
-                      <PlayerButton size={30} image={"/icon_fold.svg"} onClick={clickMusicList} style={{transform: musicList && 'rotate(180deg)'}}>
+                      <PlayerButton size={30} image={"/icon_fold.svg"} onClick={clickMusicList} style={{transform: musicList && "rotate(180deg)"}}>
                         <BlindText text={"접기"} />
                       </PlayerButton>
                     </div>
                   </div>
                   <ul className="music-list__content">
-                    <li className="music-list__music">
-                      <button className="music-list__music-btn">
-                        <div className="music-list__thumb">
-                          {/* <img src="" alt="" /> */}
-                        </div>
-                        <div className="music-list__info">
-                          <div className="music-list__title">제목</div>
-                          <div className="music-list__singer">가수</div>
-                        </div>
-                      </button>
-                      <PlayerButton size={30} image={"/icon_show_more.svg"}>
-                        <BlindText text={"더보기"} />
-                      </PlayerButton>
-                    </li>
-                    <li className="music-list__music">
-                      <button className="music-list__music-btn">
-                        <div className="music-list__thumb">
-                          {/* <img src="" alt="" /> */}
-                        </div>
-                        <div className="music-list__info">
-                          <div className="music-list__title">제목</div>
-                          <div className="music-list__singer">가수</div>
-                        </div>
-                      </button>
-                      <PlayerButton size={30} image={"/icon_show_more.svg"}>
-                        <BlindText text={"더보기"} />
-                      </PlayerButton>
-                    </li>
-                    <li className="music-list__music">
-                      <button className="music-list__music-btn">
-                        <div className="music-list__thumb">
-                          {/* <img src="" alt="" /> */}
-                        </div>
-                        <div className="music-list__info">
-                          <div className="music-list__title">제목</div>
-                          <div className="music-list__singer">가수</div>
-                        </div>
-                      </button>
-                      <PlayerButton size={30} image={"/icon_show_more.svg"}>
-                        <BlindText text={"더보기"} />
-                      </PlayerButton>
-                    </li>
+                    {musicListData.map((music, index) => {
+                      return (
+                        <MusicListItem key={index} thumb={music.thumb} title={music.title} singer={music.singer} thumbSize={45} thumbRadius={4} />
+                      )
+                    })}
                   </ul>
                 </div>
               </div>
             </div>
           )}
           {tabIndex === 1 && (
-            <div className="tab-body tab-body--lyrics">
-              Isn&apos;t she lovely <br />
-              Isn&apos;t she wonderful <br />
-              Isn&apos;t she precious <br />
-              Less than one minute old <br />I never thought through love
-              we&apos;d be <br />
-              Making one as lovely as she <br />
-              But isn&apos;t she lovely made from love <br />
-              Isn&apos;t she pretty
-              <br />
-              Truly the angel&apos;s best <br />
-              Boy, I&apos;m so happy
+            <div className="tab-body tab-body__lyrics">
+              <div className="tab-body__lyrics-text">
+                {musicListData[0].lyrics}
+              </div>
             </div>
           )}
         </div>
@@ -390,19 +480,6 @@ export default function Player(props : any): JSX.Element {
           background-repeat: no-repeat;
         }
 
-        .music-list__play-btn {
-          background-image: url("/icon_play_list.svg");
-        }
-
-        .music-list__list-fold-btn {
-          transform: rotate(180deg);
-          background-image: url("/icon_fold.svg");
-        }
-
-        .music-list__show-more-btn {
-          background-image: url("/icon_show_more.svg");
-        }
-
         .music-list__content {
           padding: 10px 20px 20px 15px;
         }
@@ -456,14 +533,36 @@ export default function Player(props : any): JSX.Element {
           font-size: 11px;
         }
 
-        .tab-body--lyrics {
+        .tab-body__lyrics {
           width: 100%;
+          height: 70vh;
           margin-top: 10px;
-          padding: 10px 20px 20px 15px;
+          padding: 20px 10px 20px 20px;
           border-radius: 5px;
           font-size: 16px;
           line-height: 1.8;
           background: hsla(0, 0%, 100%, 0.1);
+          overflow: hidden;
+        }
+
+        .tab-body__lyrics-text {
+          width: 100%;
+          height: 100%;
+          padding-right: 30px;
+          overflow-y: auto;
+        }
+
+        .tab-body__lyrics-text::-webkit-scrollbar {
+          width: 5px;
+        }
+
+        .tab-body__lyrics-text::-webkit-scrollbar-track {
+          //background: #989898
+        }
+
+        .tab-body__lyrics-text::-webkit-scrollbar-thumb {
+          border-radius: 3px;
+          background: #555;
         }
 
         {
