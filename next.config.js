@@ -4,6 +4,9 @@ const nextConfig = {
     appDir: false,
     fontLoaders: [{ loader: "@next/font/google" }],
   },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 module.exports = nextConfig;

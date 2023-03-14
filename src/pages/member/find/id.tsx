@@ -1,31 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+// import Modal from '../../components/modal'
 
-export default function signup() {
+export default function findId(): JSX.Element {
+    // const [showModal, setShowModal] = useState(false);
     return (
         <div>
+            <div>
+                <button onClick={() => setShowModal(true)}>Open Modal</button>
+                {/*<Modal*/}
+                {/*    onClose={() => setShowModal(false)}*/}
+                {/*    show={showModal}*/}
+                {/*>*/}
+                {/*    아이디는 test1 입니다.*/}
+                {/*</Modal>*/}
+            </div>
             <div className="wrapper">
                 <form>
-                    <label>회원 가입</label>
-                    <input className="idpw" name="id" placeholder="아이디(이메일)"
-                           type="text"
-                           id="roll"
-                           name="roll"
-                           required
-                           minLength="10"
-                           maxLength="20"/>
-                    <input className="idpw" name="password" placeholder="비밀번호"
-                           type="password"
-                           required
-                    />
-                    <input className="idpw" name="password" placeholder="비밀번호 확인"
-                           type="password"
-                           required
-                    />
+                    <label>아이디 찾기</label>
+                    <input className="idpw" name="id" placeholder="이름"
+                           type="text"/>
                     <input className="idpw" name="phone" placeholder="휴대폰 번호 (-제외)"
                            type="number"
-                           required
                     />
-                    <button className="submit-button" type="submit">회원가입</button>
+                    <button className="submit-button" type="submit">다음</button>
                 </form>
             </div>
             <style jsx>{`
@@ -37,7 +34,6 @@ export default function signup() {
                     margin: 0;
                     font-weight: 600;
                 }
-
                 .wrapper {
                   border: 1px solid #d9d9d9;
                   width: 682px;
