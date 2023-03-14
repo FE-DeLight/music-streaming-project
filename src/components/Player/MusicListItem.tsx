@@ -20,13 +20,13 @@ const MusicListItem = styled.li<{}>`
     text-align: left;
   }
   .title {
-    margin-bottom: 3px;
-    font-size: 14px;
-    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 500;
     color: #fff;
   }
   .singer {
-    font-size: 11px;
+    font-size: 12px;
   }
 `
 export default function Item(props: any): JSX.Element {
