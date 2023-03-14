@@ -3,6 +3,7 @@ import Link from "next/link";
 import ReactPlayer from "react-player";
 import PlayerButton from "./PlayerButton";
 import BlindText from "./BlindText";
+import PlayerThumb from "@/components/Player/PlayerThumb";
 
 export default function Player(props: any): JSX.Element {
 
@@ -133,7 +134,7 @@ export default function Player(props: any): JSX.Element {
         <div className="controller">
           <div className="bar__left-area">
             <Link href="/">
-              <div className="thumb">{/* <img src="" alt="" /> */}</div>
+              <PlayerThumb size={44} image={"/album_thumb_01.jpg"} radius={4} />
             </Link>
             <div className="music-info">
               <div className="title">제목제목</div>
@@ -204,6 +205,7 @@ export default function Player(props: any): JSX.Element {
         .progress {
           position: relative;
           width: 100%;
+          height: 5px;
         }
 
         .progress-bar {
@@ -231,7 +233,7 @@ export default function Player(props: any): JSX.Element {
           justify-content: space-between;
           width: 100%;
           height: 100%;
-          padding: 0 20px;
+          padding: 0 20px 5px;
         }
 
         .bar__left-area,
@@ -242,9 +244,14 @@ export default function Player(props: any): JSX.Element {
           flex: 0 0 auto;
         }
 
+        .bar__left-area {
+          flex: 1 0 auto;
+          max-width: 15%;
+        }
+
         .bar__center-area {
           justify-content: center;
-          padding: 0 50px 0 150px;
+          padding: 0 50px;
         }
 
         .bar__right-area {
