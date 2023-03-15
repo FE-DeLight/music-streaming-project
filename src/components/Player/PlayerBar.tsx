@@ -5,7 +5,18 @@ import PlayerButton from "./PlayerButton";
 import BlindText from "./BlindText";
 import PlayerThumb from "@/components/Player/PlayerThumb";
 
-export default function Player(props: any): JSX.Element {
+interface PlayerBarProps {
+  player: boolean;
+  openPlaylist: () => void;
+  currentPlayMusic: {
+    thumb: string;
+    title: string;
+    singer: string;
+    lyrics: string;
+  };
+}
+
+export default function Player({player, openPlaylist, currentPlayMusic}: PlayerBarProps): JSX.Element {
 
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
@@ -134,11 +145,11 @@ export default function Player(props: any): JSX.Element {
         <div className="controller">
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={"/album_thumb_01.jpg"} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic.thumb} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">제목제목</div>
-              <div className="singer">가수</div>
+              <div className="title">{currentPlayMusic.title}</div>
+              <div className="singer">{currentPlayMusic.singer}</div>
             </div>
             <PlayerButton size={44} image={like ? "/icon_like_on.svg" : "/icon_like_off.svg"} onClick={clickLike}>
               <BlindText text={"좋아요"} />
@@ -180,7 +191,7 @@ export default function Player(props: any): JSX.Element {
                 handleVolume(event);
               }}
             />
-            <PlayerButton size={44} image={props.player ? "/icon_player_active.svg" : "/icon_player.svg"} onClick={props.openPlaylist}>
+            <PlayerButton size={44} image={player ? "/icon_player_active.svg" : "/icon_player.svg"} onClick={openPlaylist}>
               <BlindText text={"재생목록"} />
             </PlayerButton>
           </div>
@@ -278,11 +289,12 @@ export default function Player(props: any): JSX.Element {
         .title {
           font-size: 14px;
           font-weight: bold;
-          margin-bottom: 3px;
+          margin-bottom: 6px;
         }
 
         .singer {
-          font-size: 11px;
+          font-size: 12px;
+          color: #888;
         }
 
         .bar__center-area,
