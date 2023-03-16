@@ -138,7 +138,7 @@ export default function Player({
         />
       )}
 
-      <div className="bar" onClick={openPlaylist}>
+      <div className="bar">
         <div className="progress">
           <input
             className="progress-bar"
@@ -164,7 +164,7 @@ export default function Player({
           />
         </div>
 
-        <div className="controller">
+        <div className="controller" onClick={openPlaylist}>
           <div className="bar__left-area">
             <Link href="/">
               <PlayerThumb
