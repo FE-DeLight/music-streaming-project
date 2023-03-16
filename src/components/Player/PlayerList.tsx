@@ -14,7 +14,12 @@ interface PlayerListProps {
     singer: string;
     lyrics: string;
   };
-  musicListData: object[];
+  musicListData: {
+    thumb: string;
+    title: string;
+    singer: string;
+    lyrics?: string;
+  }[];
 }
 
 export default function Player({
@@ -25,6 +30,8 @@ export default function Player({
 }: PlayerListProps): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
   const [musicList, setMusicList] = useState(true);
+  const OriginMusicList = [...musicListData];
+  const [copyMusicList, setCopyMusicList] = useState([...musicListData]);
 
   const tabMenu = [{ name: "음악" }, { name: "가사" }];
 
@@ -34,6 +41,20 @@ export default function Player({
   const clickMusicList = () => {
     setMusicList(!musicList);
   };
+  const handleSearchMusic = (event: any) => {
+    console.log(event.target.value);
+    let searchValue = event.target.value;
+    setCopyMusicList(
+      OriginMusicList.filter((music) => {
+        const isMatchTitle = music.title.toLowerCase().includes(searchValue.toLowerCase());
+        const isMatchSinger = music.singer.toLowerCase().includes(searchValue.toLowerCase());
+        console.log(isMatchTitle, isMatchSinger);
+        
+        return isMatchTitle || isMatchSinger;
+      })
+    )
+    
+  };
 
   return (
     <div className={`list ${player && "list--active"}`}>
@@ -41,137 +62,131 @@ export default function Player({
         className="list__background"
         style={{ backgroundImage: `url(${currentPlayMusic.thumb})` }}
       />
-        <div className="list__left-area">
-          <div className="list__left-area-inner">
-            <Link href="/" style={{ textDecoration: "none", display: "block" }}>
-              <span className="list__left-title">{currentPlayMusic.title}</span>
-            </Link>
-            <Link href="/" style={{ textDecoration: "none", display: "block" }}>
-              <span className="list__left-singer">
-                {currentPlayMusic.singer}
-              </span>
-            </Link>
-            <PlayerThumb
-              size={360}
-              image={currentPlayMusic.thumb}
-              radius={10}
-            />
-            <div className="list__left-btn-area">
-              <PlayerButton size={40} image={"/icon_store.svg"}>
-                <BlindText text={"담기"} />
-              </PlayerButton>
-              <PlayerButton size={40} image={"/icon_show_more.svg"}>
-                <BlindText text={"더보기"} />
-              </PlayerButton>
-            </div>
-          </div>
-        </div>
-
-        <div className="list__right-area">
-          <div className="list__right-btn-area">
-            <PlayerButton size={40} image={"/icon_setting.svg"}>
-              <BlindText text={"설정"} />
+      <div className="list__left-area">
+        <div className="list__left-area-inner">
+          <Link href="/" style={{ textDecoration: "none", display: "block" }}>
+            <span className="list__left-title">{currentPlayMusic.title}</span>
+          </Link>
+          <Link href="/" style={{ textDecoration: "none", display: "block" }}>
+            <span className="list__left-singer">{currentPlayMusic.singer}</span>
+          </Link>
+          <PlayerThumb size={360} image={currentPlayMusic.thumb} radius={10} />
+          <div className="list__left-btn-area">
+            <PlayerButton size={40} image={"/icon_store.svg"}>
+              <BlindText text={"담기"} />
             </PlayerButton>
-            <PlayerButton
-              size={40}
-              image={"/icon_close.svg"}
-              onClick={openPlaylist}
-            >
-              <BlindText text={"닫기"} />
+            <PlayerButton size={40} image={"/icon_show_more.svg"}>
+              <BlindText text={"더보기"} />
             </PlayerButton>
           </div>
-          <div className="tab">
-            <div className="tab-head">
-              <div className="tab-head__title-area">
-                {tabMenu.map((tab, index) => (
-                  <button
-                    className={`${
-                      index === tabIndex
-                        ? "tab-head__title tab-head__title--active"
-                        : "tab-head__title"
-                    }`}
-                    key={index}
-                    onClick={() => {
-                      clickTab(index);
-                    }}
-                  >
-                    {tab.name}
-                  </button>
-                ))}
-              </div>
-              <button className="edit-btn">편집</button>
-            </div>
-
-            {tabIndex === 0 && (
-              <div className="tab-body tab-body--list">
-                <div className="tab-body__top">
-                  <div className="tab-body__top-left">
-                    <div className="tab__search">
-                      <input
-                        type="text"
-                        placeholder="재생목록에서 검색해주세요"
-                        onChange={() => {
-                          handleSearchMusic(event);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="tab-body__top-right">
-                    <button className="list-btn">내 리스트 가져오기</button>
-                    <button className="spread-btn">그룹 접기</button>
-                  </div>
-                </div>
-                <div className="tab-body__list-area">
-                  <div
-                    className={`music-list ${!musicList && "music-list--fold"}`}
-                  >
-                    <div className="music-list_top">
-                      <div className="music-list_top-left">
-                        <div className="music-list__list-title">
-                          플레이리스트 이름
-                        </div>
-                      </div>
-                      <div className="music-list_top-right">
-                        <PlayerButton size={30} image={"/icon_play_list.svg"}>
-                          <BlindText text={"재생"} />
-                        </PlayerButton>
-                        <PlayerButton
-                          size={30}
-                          image={"/icon_fold.svg"}
-                          onClick={clickMusicList}
-                          style={{ transform: musicList && "rotate(180deg)" }}
-                        >
-                          <BlindText text={"접기"} />
-                        </PlayerButton>
-                      </div>
-                    </div>
-                    <ul className="music-list__content">
-                      {musicListData.map((music: any, index: number) => {
-                        return (
-                          <MusicListItem
-                            key={index}
-                            thumb={music.thumb}
-                            title={music.title}
-                            singer={music.singer}
-                            thumbSize={45}
-                            thumbRadius={4}
-                          />
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            )}
-            {tabIndex === 1 && (
-              <div className="tab-body tab-body__lyrics">
-                <div className="tab-body__lyrics-text">
-                  {currentPlayMusic.lyrics}
-                </div>
-              </div>
-            )}
-          </div>
         </div>
+      </div>
+
+      <div className="list__right-area">
+        <div className="list__right-btn-area">
+          <PlayerButton size={40} image={"/icon_setting.svg"}>
+            <BlindText text={"설정"} />
+          </PlayerButton>
+          <PlayerButton
+            size={40}
+            image={"/icon_close.svg"}
+            onClick={openPlaylist}
+          >
+            <BlindText text={"닫기"} />
+          </PlayerButton>
+        </div>
+        <div className="tab">
+          <div className="tab-head">
+            <div className="tab-head__title-area">
+              {tabMenu.map((tab, index) => (
+                <button
+                  className={`${
+                    index === tabIndex
+                      ? "tab-head__title tab-head__title--active"
+                      : "tab-head__title"
+                  }`}
+                  key={index}
+                  onClick={() => {
+                    clickTab(index);
+                  }}
+                >
+                  {tab.name}
+                </button>
+              ))}
+            </div>
+            <button className="edit-btn">편집</button>
+          </div>
+
+          {tabIndex === 0 && (
+            <div className="tab-body tab-body--list">
+              <div className="tab-body__top">
+                <div className="tab-body__top-left">
+                  <div className="tab__search">
+                    <input
+                      type="text"
+                      placeholder="재생목록에서 검색해주세요"
+                      onChange={() => {
+                        handleSearchMusic(event);
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="tab-body__top-right">
+                  <button className="list-btn">내 리스트 가져오기</button>
+                  <button className="spread-btn">그룹 접기</button>
+                </div>
+              </div>
+              <div className="tab-body__list-area">
+                <div
+                  className={`music-list ${!musicList && "music-list--fold"}`}
+                >
+                  <div className="music-list_top">
+                    <div className="music-list_top-left">
+                      <div className="music-list__list-title">
+                        플레이리스트 이름
+                      </div>
+                    </div>
+                    <div className="music-list_top-right">
+                      <PlayerButton size={30} image={"/icon_play_list.svg"}>
+                        <BlindText text={"재생"} />
+                      </PlayerButton>
+                      <PlayerButton
+                        size={30}
+                        image={"/icon_fold.svg"}
+                        onClick={clickMusicList}
+                        style={{ transform: musicList && "rotate(180deg)" }}
+                      >
+                        <BlindText text={"접기"} />
+                      </PlayerButton>
+                    </div>
+                  </div>
+                  <ul className="music-list__content">
+                    {copyMusicList.map((music: any, index: number) => {
+                      return (
+                        <MusicListItem
+                          key={index}
+                          thumb={music.thumb}
+                          title={music.title}
+                          singer={music.singer}
+                          thumbSize={45}
+                          thumbRadius={4}
+                        />
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
+          {tabIndex === 1 && (
+            <div className="tab-body tab-body__lyrics">
+              <div className="tab-body__lyrics-text">
+                {currentPlayMusic.lyrics}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
 
       <style jsx>{`
         .list {
