@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef} from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import ReactPlayer from "react-player";
 import PlayerButton from "./PlayerButton";
@@ -16,8 +16,11 @@ interface PlayerBarProps {
   };
 }
 
-export default function Player({player, openPlaylist, currentPlayMusic}: PlayerBarProps): JSX.Element {
-
+export default function Player({
+  player,
+  openPlaylist,
+  currentPlayMusic,
+}: PlayerBarProps): JSX.Element {
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -40,60 +43,75 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
 
   const handleProgress = (state: any) => {
     let playedSeconds = state.playedSeconds;
-    handlePlayedSeconds(playedSeconds)
+    handlePlayedSeconds(playedSeconds);
     if (!seeking) {
-      setPlayed(state.played)
+      setPlayed(state.played);
     }
   };
-  const handlePlayedSeconds = (playedSeconds: number) => {
 
+  const handlePlayedSeconds = (playedSeconds: number) => {
     playedSeconds = Math.floor(playedSeconds);
     if (playedSeconds < 60) {
-      setPlayedSecond(`00:${String(playedSeconds).padStart(2, "0")}`)
+      setPlayedSecond(`00:${String(playedSeconds).padStart(2, "0")}`);
     } else {
       let minutes = Math.floor(playedSeconds / 60);
       let seconds = playedSeconds % 60;
 
-      setPlayedSecond(`${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`)
+      setPlayedSecond(
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+          2,
+          "0"
+        )}`
+      );
     }
-  }
+  };
+
   const handleDuration = (state: any) => {
     let minutes = Math.floor(state / 60);
     let seconds = state % 60;
-    setDuration(`${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`)
-  }
+    setDuration(
+      `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+    );
+  };
 
   const handleSeekMouseDown = () => {
     setSeeking(true);
   };
 
   const handleSeekChange = (e: any) => {
-    console.log(e.target)
+    console.log(e.target);
     setPlayed(parseFloat(e.target.value));
   };
 
   const handleSeekMouseUp = (e: any) => {
     setSeeking(false);
-    if (musicRef.current) {
-      musicRef.current.seekTo(parseFloat(e.target.value));
-    }
+    musicRef?.current?.seekTo(parseFloat(e.target.value));
   };
-
   const clickLike = () => {
     setLike(!like);
   };
+
+  const clickPrev = () => {
+    setPlayed(0);
+    musicRef?.current?.seekTo(0);
+  };
+
   const clickPlay = () => {
     setPlaying(!playing);
   };
+
   const clickRepeatPlay = () => {
     setRepeatPlay(!repeatPlay);
   };
+
   const clickRandomPlay = () => {
     setRandomPlay(!randomPlay);
   };
+
   const clickMute = () => {
     setMute(!mute);
   };
+
   const handleVolume = (event: any) => {
     setVolume(Number(event.target.value * 0.01));
   };
@@ -109,10 +127,10 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
           muted={mute}
           volume={volume}
           onProgress={(state) => {
-            handleProgress(state)
+            handleProgress(state);
           }}
           onDuration={(state) => {
-            handleDuration(state)
+            handleDuration(state);
           }}
           controls={true}
           ref={musicRef}
@@ -124,20 +142,24 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
         <div className="progress">
           <input
             className="progress-bar"
-            style={{background: `linear-gradient(to right, #576aff ${played * 100}%, #666 ${played * 100}%)`}}
+            style={{
+              background: `linear-gradient(to right, #576aff ${
+                played * 100
+              }%, #666 ${played * 100}%)`,
+            }}
             type="range"
             min={0}
             max={0.999999}
             step="any"
             value={played}
             onMouseDown={() => {
-              handleSeekMouseDown()
+              handleSeekMouseDown();
             }}
             onChange={(state) => {
-              handleSeekChange(state)
+              handleSeekChange(state);
             }}
             onMouseUp={(state) => {
-              handleSeekMouseUp(state)
+              handleSeekMouseUp(state);
             }}
           />
         </div>
@@ -145,31 +167,67 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
         <div className="controller">
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic.thumb} radius={4} />
+              <PlayerThumb
+                size={44}
+                image={currentPlayMusic.thumb}
+                radius={4}
+              />
             </Link>
             <div className="music-info">
               <div className="title">{currentPlayMusic.title}</div>
               <div className="singer">{currentPlayMusic.singer}</div>
             </div>
-            <PlayerButton size={44} image={like ? "/icon_like_on.svg" : "/icon_like_off.svg"} onClick={clickLike}>
+            <PlayerButton
+              size={44}
+              image={like ? "/icon_like_on.svg" : "/icon_like_off.svg"}
+              onClick={clickLike}
+            >
               <BlindText text={"좋아요"} />
             </PlayerButton>
           </div>
 
           <div className="bar__center-area">
-            <PlayerButton size={44} image={repeatPlay ? "/icon_repeat_play_active.svg" : "/icon_repeat_play.svg"} hover={true} onClick={clickRepeatPlay}>
+            <PlayerButton
+              size={44}
+              image={
+                repeatPlay
+                  ? "/icon_repeat_play_active.svg"
+                  : "/icon_repeat_play.svg"
+              }
+              hover={true}
+              onClick={clickRepeatPlay}
+            >
               <BlindText text={"반복재생"} />
             </PlayerButton>
-            <PlayerButton size={44} image={"/icon_prev.svg"} hover={true}>
+            <PlayerButton
+              size={44}
+              image={"/icon_prev.svg"}
+              hover={true}
+              onClick={clickPrev}
+            >
               <BlindText text={"이전곡"} />
             </PlayerButton>
-            <PlayerButton size={44} image={playing ? "/icon_pause.svg" : "/icon_play.svg"} hover={true} onClick={clickPlay}>
+            <PlayerButton
+              size={44}
+              image={playing ? "/icon_pause.svg" : "/icon_play.svg"}
+              hover={true}
+              onClick={clickPlay}
+            >
               <BlindText text={"재생"} />
             </PlayerButton>
             <PlayerButton size={44} image={"/icon_next.svg"} hover={true}>
               <BlindText text={"다음곡"} />
             </PlayerButton>
-            <PlayerButton size={44} image={randomPlay ? "/icon_random_play_active.svg" : "/icon_random_play.svg"} hover={true} onClick={clickRandomPlay}>
+            <PlayerButton
+              size={44}
+              image={
+                randomPlay
+                  ? "/icon_random_play_active.svg"
+                  : "/icon_random_play.svg"
+              }
+              hover={true}
+              onClick={clickRandomPlay}
+            >
               <BlindText text={"랜덤재생"} />
             </PlayerButton>
             <div className="time">
@@ -180,18 +238,30 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
           </div>
 
           <div className="bar__right-area">
-            <PlayerButton size={35} image={mute ? "/icon_mute.svg" : "/icon_sound.svg"} onClick={clickMute}>
+            <PlayerButton
+              size={35}
+              image={mute ? "/icon_mute.svg" : "/icon_sound.svg"}
+              onClick={clickMute}
+            >
               <BlindText text={"음소거"} />
             </PlayerButton>
             <input
               className="sound-range-input"
-              style={{background: `linear-gradient(to right, #aaa ${volume * 100}%, #666 ${volume * 100}%)`}}
+              style={{
+                background: `linear-gradient(to right, #aaa ${
+                  volume * 100
+                }%, #666 ${volume * 100}%)`,
+              }}
               type="range"
               onChange={() => {
                 handleVolume(event);
               }}
             />
-            <PlayerButton size={44} image={player ? "/icon_player_active.svg" : "/icon_player.svg"} onClick={openPlaylist}>
+            <PlayerButton
+              size={44}
+              image={player ? "/icon_player_active.svg" : "/icon_player.svg"}
+              onClick={openPlaylist}
+            >
               <BlindText text={"재생목록"} />
             </PlayerButton>
           </div>
@@ -199,9 +269,8 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
       </div>
 
       <style jsx>{`
-
-        {
-        /* 플레이어 바 */
+         {
+          /* 플레이어 바 */
         }
         .bar {
           position: fixed;
@@ -230,6 +299,12 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
           margin: 0;
           border: 0;
           outline: none;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .progress-bar:hover {
+          height: 8px;
         }
 
         .progress-bar::-webkit-slider-thumb {
@@ -371,6 +446,5 @@ export default function Player({player, openPlaylist, currentPlayMusic}: PlayerB
         }
       `}</style>
     </>
-
   );
 }
