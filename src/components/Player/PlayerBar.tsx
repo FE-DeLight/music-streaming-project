@@ -138,7 +138,7 @@ export default function Player({
         />
       )}
 
-      <div className="bar">
+      <div className="bar" onClick={openPlaylist}>
         <div className="progress">
           <input
             className="progress-bar"
