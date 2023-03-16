@@ -1,9 +1,9 @@
-import {useState} from "react";
+import { useState } from "react";
 import Link from "next/link";
 import PlayerButton from "./PlayerButton";
 import BlindText from "./BlindText";
-import PlayerThumb from "./PlayerThumb"
-import MusicListItem from "./MusicListItem"
+import PlayerThumb from "./PlayerThumb";
+import MusicListItem from "./MusicListItem";
 
 interface PlayerListProps {
   player: boolean;
@@ -14,14 +14,26 @@ interface PlayerListProps {
     singer: string;
     lyrics: string;
   };
-  musicListData: object[]
+  musicListData: {
+    thumb: string;
+    title: string;
+    singer: string;
+    lyrics?: string;
+  }[];
 }
 
-export default function Player({player,openPlaylist,currentPlayMusic,musicListData}: PlayerListProps): JSX.Element {
+export default function Player({
+  player,
+  openPlaylist,
+  currentPlayMusic,
+  musicListData,
+}: PlayerListProps): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
   const [musicList, setMusicList] = useState(true);
+  const OriginMusicList = [...musicListData];
+  const [copyMusicList, setCopyMusicList] = useState([...musicListData]);
 
-  const tabMenu = [{name: "음악"}, {name: "가사"}];
+  const tabMenu = [{ name: "음악" }, { name: "가사" }];
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -29,15 +41,33 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
   const clickMusicList = () => {
     setMusicList(!musicList);
   };
+  const handleSearchMusic = (event: any) => {
+    console.log(event.target.value);
+    let searchValue = event.target.value;
+    setCopyMusicList(
+      OriginMusicList.filter((music) => {
+        const isMatchTitle = music.title.toLowerCase().includes(searchValue.toLowerCase());
+        const isMatchSinger = music.singer.toLowerCase().includes(searchValue.toLowerCase());
+        console.log(isMatchTitle, isMatchSinger);
+        
+        return isMatchTitle || isMatchSinger;
+      })
+    )
+    
+  };
 
   return (
     <div className={`list ${player && "list--active"}`}>
+      <div
+        className="list__background"
+        style={{ backgroundImage: `url(${currentPlayMusic.thumb})` }}
+      />
       <div className="list__left-area">
         <div className="list__left-area-inner">
-          <Link href="/" style={{textDecoration: "none", display: "block"}}>
+          <Link href="/" style={{ textDecoration: "none", display: "block" }}>
             <span className="list__left-title">{currentPlayMusic.title}</span>
           </Link>
-          <Link href="/" style={{textDecoration: "none", display: "block"}}>
+          <Link href="/" style={{ textDecoration: "none", display: "block" }}>
             <span className="list__left-singer">{currentPlayMusic.singer}</span>
           </Link>
           <PlayerThumb size={360} image={currentPlayMusic.thumb} radius={10} />
@@ -57,7 +87,11 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
           <PlayerButton size={40} image={"/icon_setting.svg"}>
             <BlindText text={"설정"} />
           </PlayerButton>
-          <PlayerButton size={40} image={"/icon_close.svg"} onClick={openPlaylist}>
+          <PlayerButton
+            size={40}
+            image={"/icon_close.svg"}
+            onClick={openPlaylist}
+          >
             <BlindText text={"닫기"} />
           </PlayerButton>
         </div>
@@ -91,6 +125,9 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
                     <input
                       type="text"
                       placeholder="재생목록에서 검색해주세요"
+                      onChange={() => {
+                        handleSearchMusic(event);
+                      }}
                     />
                   </div>
                 </div>
@@ -113,16 +150,28 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
                       <PlayerButton size={30} image={"/icon_play_list.svg"}>
                         <BlindText text={"재생"} />
                       </PlayerButton>
-                      <PlayerButton size={30} image={"/icon_fold.svg"} onClick={clickMusicList} style={{transform: musicList && "rotate(180deg)"}}>
+                      <PlayerButton
+                        size={30}
+                        image={"/icon_fold.svg"}
+                        onClick={clickMusicList}
+                        style={{ transform: musicList && "rotate(180deg)" }}
+                      >
                         <BlindText text={"접기"} />
                       </PlayerButton>
                     </div>
                   </div>
                   <ul className="music-list__content">
-                    {musicListData.map((music: any, index: number) => {
+                    {copyMusicList.map((music: any, index: number) => {
                       return (
-                        <MusicListItem key={index} thumb={music.thumb} title={music.title} singer={music.singer} thumbSize={45} thumbRadius={4} />
-                      )
+                        <MusicListItem
+                          key={index}
+                          thumb={music.thumb}
+                          title={music.title}
+                          singer={music.singer}
+                          thumbSize={45}
+                          thumbRadius={4}
+                        />
+                      );
                     })}
                   </ul>
                 </div>
@@ -148,7 +197,7 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
           height: 100%;
           display: flex;
           color: #989898;
-          background: rgba(0, 0, 0, 0.9);
+          background: #0f0e0e;
           transform: translateY(100%);
           transition: all 0.5s;
         }
@@ -158,11 +207,27 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
           transition: transform 0.5s;
         }
 
+        .list__background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-positon: 50%;
+          opacity: 0.2;
+          filter: blur(100px);
+          z-index: -1;
+        }
+
         .list__left-area {
           display: flex;
           justify-content: center;
           align-items: center;
           flex: 1 1 0;
+          padding-bottom: 100px;
         }
 
         .list__left-title {
@@ -446,8 +511,8 @@ export default function Player({player,openPlaylist,currentPlayMusic,musicListDa
           background: #555;
         }
 
-        {
-        /* 플레이어 바 */
+         {
+          /* 플레이어 바 */
         }
         .bar {
           position: fixed;
