@@ -164,7 +164,8 @@ export default function Player({
           />
         </div>
 
-        <div className="controller" onClick={openPlaylist}>
+        <div className="controller">
+          <div className="controller__openPlayListBtn" onClick={openPlaylist} />
           <div className="bar__left-area">
             <Link href="/">
               <PlayerThumb
@@ -314,6 +315,7 @@ export default function Player({
         }
 
         .controller {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -322,9 +324,18 @@ export default function Player({
           padding: 0 20px 5px;
         }
 
+        .controller__openPlayListBtn {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
         .bar__left-area,
         .bar__center-area,
         .bar__right-area {
+          position: relative;
           display: flex;
           align-items: center;
           flex: 0 0 auto;
