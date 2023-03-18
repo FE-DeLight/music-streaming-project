@@ -1,0 +1,2522 @@
+{
+  "data": {
+    "playList": {
+      "type": "RANK_CHART",
+      "id": 1,
+      "name": "FLO 차트",
+      "imgList": [
+        {
+          "size": 75,
+          "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/75x75/quality/90"
+        },
+        {
+          "size": 140,
+          "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/140x140/quality/90"
+        },
+        {
+          "size": 200,
+          "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/200x200/quality/90"
+        },
+        {
+          "size": 350,
+          "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/350x350/quality/90"
+        },
+        {
+          "size": 500,
+          "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/500x500/quality/90"
+        },
+        {
+          "size": 1000,
+          "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/1000x1000/quality/90"
+        }
+      ],
+      "totalCount": 100,
+      "createDateTime": "2018-07-23 20:32:30",
+      "updateDateTime": "2023-03-18 18:00:54",
+      "likeYn": null,
+      "trackList": [
+        {
+          "id": 464145445,
+          "name": "Ditto",
+          "url":"https://soundcloud.com/qaqejrlzj5tp/newjeans-ditto-1-hour-loop?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-01-03 10:21:02",
+          "representationArtist": {
+            "id": 405655350,
+            "name": "NewJeans",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405655350,
+              "name": "NewJeans",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 410940180,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "NewJeans 'OMG'",
+            "releaseYmd": "20230102"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2022-12-18 22:38:40",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 456421597,
+          "name": "Hype Boy",
+          "url": "https://soundcloud.com/absollutely/newjeans-hype-boy?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-11-22 17:32:40",
+          "representationArtist": {
+            "id": 405655350,
+            "name": "NewJeans",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405655350,
+              "name": "NewJeans",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 408826847,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "NewJeans 1st EP 'New Jeans'",
+            "releaseYmd": "20220801"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2022-08-25 15:04:21",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 464487240,
+          "name": "OMG",
+          "url": "https://soundcloud.com/moe-p0/newjeans-omg?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-01-03 10:21:29",
+          "representationArtist": {
+            "id": 405655350,
+            "name": "NewJeans",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405655350,
+              "name": "NewJeans",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 410940180,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/180/940/10/04/410940180_63b230db_s.jpg?1672622301730/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "NewJeans 'OMG'",
+            "releaseYmd": "20230102"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2023-01-02 17:05:49",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 458885708,
+          "name": "I Don’t Think That I Like Her",
+          "url": "https://soundcloud.com/oq3j82htuuma/i-dont-think-that-i-like-her?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-17 11:24:24",
+          "representationArtist": {
+            "id": 80221620,
+            "name": "Charlie Puth",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80221620,
+              "name": "Charlie Puth",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 407357371,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/371/357/07/04/407357371_633e6f4d_o.jpg?1665036109523/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/371/357/07/04/407357371_633e6f4d_o.jpg?1665036109523/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/371/357/07/04/407357371_633e6f4d_o.jpg?1665036109523/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/371/357/07/04/407357371_633e6f4d_o.jpg?1665036109523/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/371/357/07/04/407357371_633e6f4d_o.jpg?1665036109523/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/371/357/07/04/407357371_633e6f4d_o.jpg?1665036109523/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "CHARLIE",
+            "releaseYmd": "20221007"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 778,
+          "fileUpdateDateTime": "2022-10-06 23:28:35",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 452706240,
+          "name": "사건의 지평선",
+          "url": "https://soundcloud.com/beerlove6/0tvj9ywhgyl1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-01-07 16:55:12",
+          "representationArtist": {
+            "id": 80010025,
+            "name": "윤하",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80010025,
+              "name": "윤하",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 407911089,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/089/911/07/04/407911089_6243b0f9_s.jpg?1648603387603/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/089/911/07/04/407911089_6243b0f9_s.jpg?1648603387603/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/089/911/07/04/407911089_6243b0f9_s.jpg?1648603387603/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/089/911/07/04/407911089_6243b0f9_s.jpg?1648603387603/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/089/911/07/04/407911089_6243b0f9_s.jpg?1648603387603/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/089/911/07/04/407911089_6243b0f9_s.jpg?1648603387603/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "YOUNHA 6th Album Repackage 'END THEORY : Final Edition'",
+            "releaseYmd": "20220330"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2022-03-30 10:24:18",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 456381579,
+          "name": "Attention",
+          "url":"https://soundcloud.com/charlieputh/attention?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-08-25 15:05:14",
+          "representationArtist": {
+            "id": 405655350,
+            "name": "NewJeans",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405655350,
+              "name": "NewJeans",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 408826847,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/847/826/08/04/408826847_62e7289c_s.jpg?1659316382613/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "NewJeans 1st EP 'New Jeans'",
+            "releaseYmd": "20220801"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2022-08-25 15:04:21",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 457668976,
+          "name": "After LIKE",
+          "url": "https://soundcloud.com/user-159937635/ive-after-like-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-12-14 12:36:11",
+          "representationArtist": {
+            "id": 405070974,
+            "name": "IVE (아이브)",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405070974,
+              "name": "IVE (아이브)",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409131223,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/223/131/09/04/409131223_6302d6a5_s.jpg?1661130406773/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/223/131/09/04/409131223_6302d6a5_s.jpg?1661130406773/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/223/131/09/04/409131223_6302d6a5_s.jpg?1661130406773/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/223/131/09/04/409131223_6302d6a5_s.jpg?1661130406773/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/223/131/09/04/409131223_6302d6a5_s.jpg?1661130406773/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/223/131/09/04/409131223_6302d6a5_s.jpg?1661130406773/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "After LIKE",
+            "releaseYmd": "20220822"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2022-08-22 10:07:57",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 465262593,
+          "name": "Teddy Bear",
+          "url":"https://soundcloud.com/melaniemartinezmusic/melanie-martinez-teddy-bear?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-14 18:24:36",
+          "representationArtist": {
+            "id": 404371989,
+            "name": "STAYC (스테이씨)",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 404371989,
+              "name": "STAYC (스테이씨)",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411199568,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/568/199/11/04/411199568_63eb2aee_s.jpg?1676356349900/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/568/199/11/04/411199568_63eb2aee_s.jpg?1676356349900/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/568/199/11/04/411199568_63eb2aee_s.jpg?1676356349900/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/568/199/11/04/411199568_63eb2aee_s.jpg?1676356349900/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/568/199/11/04/411199568_63eb2aee_s.jpg?1676356349900/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/568/199/11/04/411199568_63eb2aee_s.jpg?1676356349900/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Teddy Bear",
+            "releaseYmd": "20230214"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2023-02-14 12:22:05",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 465516274,
+          "name": "파이팅 해야지 (Feat. 이영지)",
+          "url": "https://soundcloud.com/user-236998373/feat?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-09 10:26:55",
+          "representationArtist": {
+            "id": 20053997,
+            "name": "부석순",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 20053997,
+              "name": "부석순",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411278448,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/448/278/11/04/411278448_63dfbad6_o.jpg?1675606742669/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/448/278/11/04/411278448_63dfbad6_o.jpg?1675606742669/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/448/278/11/04/411278448_63dfbad6_o.jpg?1675606742669/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/448/278/11/04/411278448_63dfbad6_o.jpg?1675606742669/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/448/278/11/04/411278448_63dfbad6_o.jpg?1675606742669/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/448/278/11/04/411278448_63dfbad6_o.jpg?1675606742669/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "부석순 1st Single Album 'SECOND WIND'",
+            "releaseYmd": "20230206"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2023-02-05 23:19:48",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 460245511,
+          "name": "ANTIFRAGILE",
+          "url":"https://soundcloud.com/le-sserafimi/antifragile?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-12-22 09:43:20",
+          "representationArtist": {
+            "id": 405425770,
+            "name": "LE SSERAFIM (르세라핌)",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405425770,
+              "name": "LE SSERAFIM (르세라핌)",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409792327,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/327/792/09/04/409792327_634ca5a0_o.jpg?1665967522011/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/327/792/09/04/409792327_634ca5a0_o.jpg?1665967522011/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/327/792/09/04/409792327_634ca5a0_o.jpg?1665967522011/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/327/792/09/04/409792327_634ca5a0_o.jpg?1665967522011/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/327/792/09/04/409792327_634ca5a0_o.jpg?1665967522011/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/327/792/09/04/409792327_634ca5a0_o.jpg?1665967522011/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "ANTIFRAGILE",
+            "releaseYmd": "20221017"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2022-10-17 09:45:55",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 452943029,
+          "name": "LOVE DIVE",
+          "url":"https://soundcloud.com/charlie-723124640/love-dive?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-12-06 16:06:51",
+          "representationArtist": {
+            "id": 405070974,
+            "name": "IVE (아이브)",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405070974,
+              "name": "IVE (아이브)",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 407967067,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/067/967/07/04/407967067_624b980b_s.jpg?1649121294579/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/067/967/07/04/407967067_624b980b_s.jpg?1649121294579/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/067/967/07/04/407967067_624b980b_s.jpg?1649121294579/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/067/967/07/04/407967067_624b980b_s.jpg?1649121294579/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/067/967/07/04/407967067_624b980b_s.jpg?1649121294579/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/067/967/07/04/407967067_624b980b_s.jpg?1649121294579/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "LOVE DIVE",
+            "releaseYmd": "20220405"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2022-04-05 10:15:47",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 448241048,
+          "name": "사랑은 늘 도망가",
+          "url":"https://soundcloud.com/l2shareost36/lim-young-woong-young-lady-and-gentleman-ost-part-2?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2021-11-05 15:15:31",
+          "representationArtist": {
+            "id": 80265501,
+            "name": "임영웅",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80265501,
+              "name": "임영웅",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 406716973,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/973/716/06/04/406716973_615eb227_s.jpg?1633595946672/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/973/716/06/04/406716973_615eb227_s.jpg?1633595946672/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/973/716/06/04/406716973_615eb227_s.jpg?1633595946672/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/973/716/06/04/406716973_615eb227_s.jpg?1633595946672/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/973/716/06/04/406716973_615eb227_s.jpg?1633595946672/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/973/716/06/04/406716973_615eb227_s.jpg?1633595946672/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "신사와 아가씨 OST Part.2",
+            "releaseYmd": "20211011"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 57,
+          "fileUpdateDateTime": "2021-10-07 17:40:43",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 464248986,
+          "name": "건물 사이에 피어난 장미 (Rose Blossom)",
+          "url":"https://soundcloud.com/616brv7fyftg/h1-key-rose-blossom?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-15 16:39:17",
+          "representationArtist": {
+            "id": 405122811,
+            "name": "H1-KEY (하이키)",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 405122811,
+              "name": "H1-KEY (하이키)",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 410969566,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/566/969/10/04/410969566_63b6b0ff_o.jpg?1672917247890/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/566/969/10/04/410969566_63b6b0ff_o.jpg?1672917247890/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/566/969/10/04/410969566_63b6b0ff_o.jpg?1672917247890/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/566/969/10/04/410969566_63b6b0ff_o.jpg?1672917247890/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/566/969/10/04/410969566_63b6b0ff_o.jpg?1672917247890/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/566/969/10/04/410969566_63b6b0ff_o.jpg?1672917247890/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "H1-KEY 1st Mini Album [Rose Blossom]",
+            "releaseYmd": "20230105"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2023-01-05 20:14:33",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 466205625,
+          "name": "CHRISTIAN",
+          "url":"https://soundcloud.com/emily-hall-300378769/christian-zior-park?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-09 15:40:02",
+          "representationArtist": {
+            "id": 20051264,
+            "name": "Zior Park",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 20051264,
+              "name": "Zior Park",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411516955,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/955/516/11/04/411516955_63ec9c1c_s.jpg?1676450852252/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/955/516/11/04/411516955_63ec9c1c_s.jpg?1676450852252/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/955/516/11/04/411516955_63ec9c1c_s.jpg?1676450852252/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/955/516/11/04/411516955_63ec9c1c_s.jpg?1676450852252/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/955/516/11/04/411516955_63ec9c1c_s.jpg?1676450852252/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/955/516/11/04/411516955_63ec9c1c_s.jpg?1676450852252/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "WHERE DOES SASQUATCH LIVE? PART 1",
+            "releaseYmd": "20230216"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 778,
+          "fileUpdateDateTime": "2023-02-16 08:02:59",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 453344141,
+          "name": "우리들의 블루스",
+          "url": "https://soundcloud.com/l2shareost42/with-you-jimin-bts-ha-sung-woon-our-blues-ost-part-4?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-27 12:13:13",
+          "representationArtist": {
+            "id": 80265501,
+            "name": "임영웅",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80265501,
+              "name": "임영웅",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 408064827,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/827/064/08/04/408064827_626f999f_s.jpg?1651480994126/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/827/064/08/04/408064827_626f999f_s.jpg?1651480994126/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/827/064/08/04/408064827_626f999f_s.jpg?1651480994126/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/827/064/08/04/408064827_626f999f_s.jpg?1651480994126/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/827/064/08/04/408064827_626f999f_s.jpg?1651480994126/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/827/064/08/04/408064827_626f999f_s.jpg?1651480994126/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "IM HERO",
+            "releaseYmd": "20220502"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 38209,
+          "fileUpdateDateTime": "2022-04-14 19:49:16",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 460142091,
+          "name": "Nxde",
+          "url":"https://soundcloud.com/imvelou/g-idle-nxde?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-10-19 09:33:07",
+          "representationArtist": {
+            "id": 20056456,
+            "name": "(여자)아이들",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 20056456,
+              "name": "(여자)아이들",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409760427,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/427/760/09/04/409760427_63494a85_s.jpg?1665747591220/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/427/760/09/04/409760427_63494a85_s.jpg?1665747591220/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/427/760/09/04/409760427_63494a85_s.jpg?1665747591220/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/427/760/09/04/409760427_63494a85_s.jpg?1665747591220/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/427/760/09/04/409760427_63494a85_s.jpg?1665747591220/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/427/760/09/04/409760427_63494a85_s.jpg?1665747591220/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "I love",
+            "releaseYmd": "20221017"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2022-10-14 20:40:28",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 464780364,
+          "name": "VIBE (feat. Jimin of BTS)",
+          "url": "https://soundcloud.com/user-675036643/taeyang-vibe-feat-jimin-of-bts-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-01-30 15:21:06",
+          "representationArtist": {
+            "id": 80020042,
+            "name": "태양",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80020042,
+              "name": "태양",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411076035,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/035/076/11/04/411076035_63c0a359_s.jpg?1673569115896/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/035/076/11/04/411076035_63c0a359_s.jpg?1673569115896/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/035/076/11/04/411076035_63c0a359_s.jpg?1673569115896/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/035/076/11/04/411076035_63c0a359_s.jpg?1673569115896/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/035/076/11/04/411076035_63c0a359_s.jpg?1673569115896/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/035/076/11/04/411076035_63c0a359_s.jpg?1673569115896/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "VIBE (feat. Jimin of BTS)",
+            "releaseYmd": "20230113"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 1
+          },
+          "agencyId": 38146,
+          "fileUpdateDateTime": "2023-01-13 09:19:10",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 451501206,
+          "name": "사랑인가 봐",
+          "url": "https://soundcloud.com/l2shareost43/melomance-love-maybe-a-business-proposal-ost?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-02-18 16:19:15",
+          "representationArtist": {
+            "id": 80223033,
+            "name": "멜로망스",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80223033,
+              "name": "멜로망스",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 407568135,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/135/568/07/04/407568135_620df68a_s.jpg?1645082253509/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/135/568/07/04/407568135_620df68a_s.jpg?1645082253509/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/135/568/07/04/407568135_620df68a_s.jpg?1645082253509/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/135/568/07/04/407568135_620df68a_s.jpg?1645082253509/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/135/568/07/04/407568135_620df68a_s.jpg?1645082253509/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/135/568/07/04/407568135_620df68a_s.jpg?1645082253509/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "사랑인가 봐 (사내맞선 OST 스페셜 트랙)",
+            "releaseYmd": "20220218"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 1
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2022-02-17 16:18:15",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 458909598,
+          "name": "Monologue",
+          "url": "https://soundcloud.com/beerlove3/monologue?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-10-21 12:05:37",
+          "representationArtist": {
+            "id": 63976,
+            "name": "테이",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 63976,
+              "name": "테이",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409449600,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/600/449/09/04/409449600_63520c73_o.jpg?1666321524812/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/600/449/09/04/409449600_63520c73_o.jpg?1666321524812/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/600/449/09/04/409449600_63520c73_o.jpg?1666321524812/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/600/449/09/04/409449600_63520c73_o.jpg?1666321524812/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/600/449/09/04/409449600_63520c73_o.jpg?1666321524812/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/600/449/09/04/409449600_63520c73_o.jpg?1666321524812/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Monologue",
+            "releaseYmd": "20220918"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": -1
+          },
+          "agencyId": 1124,
+          "fileUpdateDateTime": "2022-09-16 12:02:03",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        }
+      ],
+      "basedOnUpdate": "18시 기준",
+      "description": "최근 24시간 집계, FLO 최고 인기곡 차트!",
+      "tasteMix": null
+    },
+    "popHotTrackPlayList": {
+      "type": "CHART",
+      "id": 20001,
+      "name": "해외 소셜 차트",
+      "imgList": null,
+      "totalCount": 50,
+      "createDateTime": null,
+      "updateDateTime": null,
+      "likeYn": null,
+      "trackList": [
+        {
+          "id": 464779518,
+          "name": "Flowers",
+          "url": "https://soundcloud.com/soundxpost/mcfloac?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-07 19:59:29",
+          "representationArtist": {
+            "id": 80021690,
+            "name": "Miley Cyrus",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80021690,
+              "name": "Miley Cyrus",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411075876,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/876/075/11/04/411075876_63c09725_o.jpg?1673565989681/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/876/075/11/04/411075876_63c09725_o.jpg?1673565989681/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/876/075/11/04/411075876_63c09725_o.jpg?1673565989681/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/876/075/11/04/411075876_63c09725_o.jpg?1673565989681/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/876/075/11/04/411075876_63c09725_o.jpg?1673565989681/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/876/075/11/04/411075876_63c09725_o.jpg?1673565989681/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Flowers",
+            "releaseYmd": "20230113"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2023-01-13 08:26:54",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 464872578,
+          "name": "Boy's a liar Pt. 2",
+          "url": "https://soundcloud.com/harriscole/boys-a-liar-pt-2?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-03 23:10:55",
+          "representationArtist": {
+            "id": 404836625,
+            "name": "PinkPantheress",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 404836625,
+              "name": "PinkPantheress",
+              "type": "ARTIST"
+            },
+            {
+              "id": 404889767,
+              "name": "Ice Spice",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411099087,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/087/099/11/04/411099087_63dd15ef_o.jpg?1675433459165/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/087/099/11/04/411099087_63dd15ef_o.jpg?1675433459165/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/087/099/11/04/411099087_63dd15ef_o.jpg?1675433459165/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/087/099/11/04/411099087_63dd15ef_o.jpg?1675433459165/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/087/099/11/04/411099087_63dd15ef_o.jpg?1675433459165/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/087/099/11/04/411099087_63dd15ef_o.jpg?1675433459165/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Boy's a liar Pt. 2",
+            "releaseYmd": "20230203"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 778,
+          "fileUpdateDateTime": "2023-01-31 14:57:16",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 463087947,
+          "name": "Kill Bill",
+          "url": "https://soundcloud.com/alkatera/kill-bill?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-07 05:18:01",
+          "representationArtist": {
+            "id": 80210863,
+            "name": "SZA",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80210863,
+              "name": "SZA",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 410583949,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/949/583/10/04/410583949_638e8b44_o.jpg?1670286148933/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/949/583/10/04/410583949_638e8b44_o.jpg?1670286148933/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/949/583/10/04/410583949_638e8b44_o.jpg?1670286148933/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/949/583/10/04/410583949_638e8b44_o.jpg?1670286148933/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/949/583/10/04/410583949_638e8b44_o.jpg?1670286148933/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/949/583/10/04/410583949_638e8b44_o.jpg?1670286148933/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "SOS",
+            "releaseYmd": "20221209"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2022-12-12 20:14:32",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 466971877,
+          "name": "Die For You (Remix)",
+          "url": "https://soundcloud.com/frameinx2-0/die-for-you-remix-weekend-ariana-grandesped-up?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-24 14:47:26",
+          "representationArtist": {
+            "id": 80114581,
+            "name": "The Weeknd",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80114581,
+              "name": "The Weeknd",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80117591,
+              "name": "Ariana Grande",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411753096,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/096/753/11/04/411753096_63f84944_o.jpg?1677216069749/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/096/753/11/04/411753096_63f84944_o.jpg?1677216069749/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/096/753/11/04/411753096_63f84944_o.jpg?1677216069749/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/096/753/11/04/411753096_63f84944_o.jpg?1677216069749/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/096/753/11/04/411753096_63f84944_o.jpg?1677216069749/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/096/753/11/04/411753096_63f84944_o.jpg?1677216069749/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Die For You (Remix)",
+            "releaseYmd": "20230224"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2023-02-24 14:22:11",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 465160530,
+          "name": "Last Night (Explicit Ver.)",
+          "url": "https://soundcloud.com/user-448329515/friday-night-funkin-song-funked-up-explicit-ver?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-08 16:10:21",
+          "representationArtist": {
+            "id": 80265770,
+            "name": "Morgan Wallen",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80265770,
+              "name": "Morgan Wallen",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411172254,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/254/172/11/04/411172254_63d8b107_o.jpg?1675145480264/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/254/172/11/04/411172254_63d8b107_o.jpg?1675145480264/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/254/172/11/04/411172254_63d8b107_o.jpg?1675145480264/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/254/172/11/04/411172254_63d8b107_o.jpg?1675145480264/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/254/172/11/04/411172254_63d8b107_o.jpg?1675145480264/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/254/172/11/04/411172254_63d8b107_o.jpg?1675145480264/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "3 Songs At A Time Sampler",
+            "releaseYmd": "20230131"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2023-01-31 15:11:53",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 460298814,
+          "name": "Just Wanna Rock (Explicit Ver.)",
+          "url": "https://soundcloud.com/godssrvnt/lil-uzi-vert-just-wanna-rock-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-15 05:17:18",
+          "representationArtist": {
+            "id": 80212732,
+            "name": "Lil Uzi Vert",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80212732,
+              "name": "Lil Uzi Vert",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409806346,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/346/806/09/04/409806346_634e0d32_o.jpg?1666059570613/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/346/806/09/04/409806346_634e0d32_o.jpg?1666059570613/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/346/806/09/04/409806346_634e0d32_o.jpg?1666059570613/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/346/806/09/04/409806346_634e0d32_o.jpg?1666059570613/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/346/806/09/04/409806346_634e0d32_o.jpg?1666059570613/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/346/806/09/04/409806346_634e0d32_o.jpg?1666059570613/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Just Wanna Rock (Explicit ver.)",
+            "releaseYmd": "20221017"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 778,
+          "fileUpdateDateTime": "2022-10-18 11:20:00",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 457713633,
+          "name": "Calm Down",
+          "url": "https://soundcloud.com/krewella/calm-down?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-06 23:23:48",
+          "representationArtist": {
+            "id": 10963368,
+            "name": "Rema",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 10963368,
+              "name": "Rema",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80054209,
+              "name": "Selena Gomez",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409142431,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/431/142/09/04/409142431_63080f02_o.jpg?1661472515106/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/431/142/09/04/409142431_63080f02_o.jpg?1661472515106/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/431/142/09/04/409142431_63080f02_o.jpg?1661472515106/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/431/142/09/04/409142431_63080f02_o.jpg?1661472515106/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/431/142/09/04/409142431_63080f02_o.jpg?1661472515106/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/431/142/09/04/409142431_63080f02_o.jpg?1661472515106/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Calm Down",
+            "releaseYmd": "20220825"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2022-08-26 09:09:33",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 462428180,
+          "name": "Creepin' (Explicit Ver.)",
+          "url": "https://soundcloud.com/corey_nyell/creepin-metro-boomin-the-weeknd-21-savage-remix-w-conor-maynard-anth?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-14 03:01:28",
+          "representationArtist": {
+            "id": 10481444,
+            "name": "Metro Boomin",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 10481444,
+              "name": "Metro Boomin",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80114581,
+              "name": "The Weeknd",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80262919,
+              "name": "21 Savage",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 410364034,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/034/364/10/04/410364034_63899628_o.jpg?1669961256715/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/034/364/10/04/410364034_63899628_o.jpg?1669961256715/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/034/364/10/04/410364034_63899628_o.jpg?1669961256715/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/034/364/10/04/410364034_63899628_o.jpg?1669961256715/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/034/364/10/04/410364034_63899628_o.jpg?1669961256715/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/034/364/10/04/410364034_63899628_o.jpg?1669961256715/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "HEROES & VILLAINS",
+            "releaseYmd": "20221202"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2022-12-02 15:09:24",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 457770873,
+          "name": "I'm Good (Blue) (Explicit Ver.)",
+          "url": "https://soundcloud.com/dj-trojan/im-good-blue?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-08-31 19:53:39",
+          "representationArtist": {
+            "id": 80009895,
+            "name": "David Guetta",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80009895,
+              "name": "David Guetta",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80160507,
+              "name": "Bebe Rexha",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409157601,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/601/157/09/04/409157601_630f2d88_s.jpg?1661939085241/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/601/157/09/04/409157601_630f2d88_s.jpg?1661939085241/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/601/157/09/04/409157601_630f2d88_s.jpg?1661939085241/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/601/157/09/04/409157601_630f2d88_s.jpg?1661939085241/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/601/157/09/04/409157601_630f2d88_s.jpg?1661939085241/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/601/157/09/04/409157601_630f2d88_s.jpg?1661939085241/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "I'm Good (Blue)",
+            "releaseYmd": "20220826"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 778,
+          "fileUpdateDateTime": "2022-08-31 19:53:39",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 453973807,
+          "name": "Thought You Should Know (Explicit Ver.)",
+          "url":"https://soundcloud.com/joerxno/morgan-wallen-thought-you-should-know-rxno-drill-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-12-18 11:02:37",
+          "representationArtist": {
+            "id": 80265770,
+            "name": "Morgan Wallen",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80265770,
+              "name": "Morgan Wallen",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 408225073,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/073/225/08/04/408225073_6274a2db_o.jpg?1651811035508/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/073/225/08/04/408225073_6274a2db_o.jpg?1651811035508/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/073/225/08/04/408225073_6274a2db_o.jpg?1651811035508/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/073/225/08/04/408225073_6274a2db_o.jpg?1651811035508/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/073/225/08/04/408225073_6274a2db_o.jpg?1651811035508/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/073/225/08/04/408225073_6274a2db_o.jpg?1651811035508/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Thought You Should Know",
+            "releaseYmd": "20220506"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2022-05-06 13:26:09",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 452773421,
+          "name": "As It Was",
+          "url": "https://soundcloud.com/thepaperoutlet/asitwasharrystyles?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-05-19 02:14:29",
+          "representationArtist": {
+            "id": 80203520,
+            "name": "Harry Styles",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80203520,
+              "name": "Harry Styles",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 407930377,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/377/930/07/04/407930377_62462c5f_o.jpg?1648766048312/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/377/930/07/04/407930377_62462c5f_o.jpg?1648766048312/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/377/930/07/04/407930377_62462c5f_o.jpg?1648766048312/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/377/930/07/04/407930377_62462c5f_o.jpg?1648766048312/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/377/930/07/04/407930377_62462c5f_o.jpg?1648766048312/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/377/930/07/04/407930377_62462c5f_o.jpg?1648766048312/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "As It Was",
+            "releaseYmd": "20220331"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2022-05-19 02:14:29",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 458662474,
+          "name": "golden hour",
+          "url":"https://soundcloud.com/user-793543988-785076913/jvke-golden-hour?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-08 16:45:29",
+          "representationArtist": {
+            "id": 403849255,
+            "name": "JVKE",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 403849255,
+              "name": "JVKE",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 409379475,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/475/379/09/04/409379475_631c2711_s.jpg?1662789397872/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/475/379/09/04/409379475_631c2711_s.jpg?1662789397872/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/475/379/09/04/409379475_631c2711_s.jpg?1662789397872/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/475/379/09/04/409379475_631c2711_s.jpg?1662789397872/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/475/379/09/04/409379475_631c2711_s.jpg?1662789397872/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/475/379/09/04/409379475_631c2711_s.jpg?1662789397872/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "golden hour",
+            "releaseYmd": "20220715"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 400004281,
+          "fileUpdateDateTime": "2022-09-10 14:58:14",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 454211382,
+          "name": "You Proof",
+          "url": "https://soundcloud.com/user-501006753/you-proof-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-12-01 10:11:43",
+          "representationArtist": {
+            "id": 80265770,
+            "name": "Morgan Wallen",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80265770,
+              "name": "Morgan Wallen",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 408275383,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/383/275/08/04/408275383_627ddd58_o.jpg?1652415833358/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/383/275/08/04/408275383_627ddd58_o.jpg?1652415833358/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/383/275/08/04/408275383_627ddd58_o.jpg?1652415833358/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/383/275/08/04/408275383_627ddd58_o.jpg?1652415833358/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/383/275/08/04/408275383_627ddd58_o.jpg?1652415833358/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/383/275/08/04/408275383_627ddd58_o.jpg?1652415833358/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "You Proof",
+            "releaseYmd": "20220513"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2022-05-13 13:25:52",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 467428578,
+          "name": "Thinkin’ Bout Me",
+          "url": "https://soundcloud.com/yuzac/morgan-wallen-thinkin-bout-me-yuzac-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-14 18:41:26",
+          "representationArtist": {
+            "id": 80265770,
+            "name": "Morgan Wallen",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80265770,
+              "name": "Morgan Wallen",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411886335,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/335/886/11/04/411886335_640149f1_o.jpg?1677806066486/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/335/886/11/04/411886335_640149f1_o.jpg?1677806066486/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/335/886/11/04/411886335_640149f1_o.jpg?1677806066486/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/335/886/11/04/411886335_640149f1_o.jpg?1677806066486/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/335/886/11/04/411886335_640149f1_o.jpg?1677806066486/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/335/886/11/04/411886335_640149f1_o.jpg?1677806066486/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "One Thing At A Time",
+            "releaseYmd": "20230303"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2023-03-03 10:15:50",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 468127495,
+          "name": "Shorty Party (Explicit Ver.)",
+          "url": "https://soundcloud.com/manny-gaytan-286554488/cartel-de-santa-la-kelly?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-16 04:56:12",
+          "representationArtist": {
+            "id": 10153536,
+            "name": "Cartel De Santa",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 10153536,
+              "name": "Cartel De Santa",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 412050747,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/747/050/12/04/412050747_64122298_s.jpg?1678910109298/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/747/050/12/04/412050747_64122298_s.jpg?1678910109298/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/747/050/12/04/412050747_64122298_s.jpg?1678910109298/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/747/050/12/04/412050747_64122298_s.jpg?1678910109298/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/747/050/12/04/412050747_64122298_s.jpg?1678910109298/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/747/050/12/04/412050747_64122298_s.jpg?1678910109298/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Shorty Party",
+            "releaseYmd": "20230304"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 400004281,
+          "fileUpdateDateTime": "2023-03-16 04:56:12",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 2367901,
+          "name": "Sure Thing",
+          "url": "https://soundcloud.com/paigey-price/miguel-sure-thing?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2022-12-13 18:10:14",
+          "representationArtist": {
+            "id": 80102863,
+            "name": "Miguel",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80102863,
+              "name": "Miguel",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 290358,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/album/214/063/00/04/400063214_5cc70811.jpg?1556547601984/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/album/214/063/00/04/400063214_5cc70811.jpg?1556547601984/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/album/214/063/00/04/400063214_5cc70811.jpg?1556547601984/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/album/214/063/00/04/400063214_5cc70811.jpg?1556547601984/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/album/214/063/00/04/400063214_5cc70811.jpg?1556547601984/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/album/214/063/00/04/400063214_5cc70811.jpg?1556547601984/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "All I Want Is You",
+            "releaseYmd": "20101129"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2021-04-03 10:56:22",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 456584821,
+          "name": "CUFF IT (Explicit Ver.)",
+          "url": "https://soundcloud.com/jaybeatzhvlm/cuff-it-wetter-baby?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-10 09:59:59",
+          "representationArtist": {
+            "id": 3209,
+            "name": "Beyoncé",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 3209,
+              "name": "Beyoncé",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 408871715,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/715/871/08/04/408871715_62e1f017_o.jpg?1658974231980/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/715/871/08/04/408871715_62e1f017_o.jpg?1658974231980/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/715/871/08/04/408871715_62e1f017_o.jpg?1658974231980/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/715/871/08/04/408871715_62e1f017_o.jpg?1658974231980/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/715/871/08/04/408871715_62e1f017_o.jpg?1658974231980/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/715/871/08/04/408871715_62e1f017_o.jpg?1658974231980/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "RENAISSANCE",
+            "releaseYmd": "20220729"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2022-08-03 03:31:15",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 468142756,
+          "name": "River",
+          "url": "https://soundcloud.com/xsoundxxpostx/mcrac?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-14 18:50:38",
+          "representationArtist": {
+            "id": 80021690,
+            "name": "Miley Cyrus",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 80021690,
+              "name": "Miley Cyrus",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 412055591,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/591/055/12/04/412055591_640922c6_o.jpg?1678320326515/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/591/055/12/04/412055591_640922c6_o.jpg?1678320326515/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/591/055/12/04/412055591_640922c6_o.jpg?1678320326515/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/591/055/12/04/412055591_640922c6_o.jpg?1678320326515/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/591/055/12/04/412055591_640922c6_o.jpg?1678320326515/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/591/055/12/04/412055591_640922c6_o.jpg?1678320326515/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Endless Summer Vacation",
+            "releaseYmd": "20230310"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2002,
+          "fileUpdateDateTime": "2023-03-09 09:07:32",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 466713929,
+          "name": "Yerba",
+          "url": "https://soundcloud.com/selectedtunes/marco-nobel-x-jaxon-tyler-your-love-ft-jessica-hammond?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-02-23 11:03:29",
+          "representationArtist": {
+            "id": 404409172,
+            "name": "Marco Nobel",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 404409172,
+              "name": "Marco Nobel",
+              "type": "ARTIST"
+            },
+            {
+              "id": 20047260,
+              "name": "Alek Sandar",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80084473,
+              "name": "Juicy J",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 411675682,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/682/675/11/04/411675682_63f4c8e2_s.jpg?1676986595861/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/682/675/11/04/411675682_63f4c8e2_s.jpg?1676986595861/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/682/675/11/04/411675682_63f4c8e2_s.jpg?1676986595861/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/682/675/11/04/411675682_63f4c8e2_s.jpg?1676986595861/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/682/675/11/04/411675682_63f4c8e2_s.jpg?1676986595861/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/682/675/11/04/411675682_63f4c8e2_s.jpg?1676986595861/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Yerba",
+            "releaseYmd": "20230224"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 37062,
+          "fileUpdateDateTime": "2023-02-21 22:37:24",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        },
+        {
+          "id": 461106230,
+          "name": "Tomorrow 2 (Explicit Ver.)",
+          "url": "https://soundcloud.com/djshaqtown1/glorilla-cardi-b-tomorrow-2-x-girlfriend-mashup-dj-shaqtown?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "updateDateTime": "2023-03-17 17:46:51",
+          "representationArtist": {
+            "id": 404982152,
+            "name": "GloRilla",
+            "type": "ARTIST"
+          },
+          "artistList": [
+            {
+              "id": 404982152,
+              "name": "GloRilla",
+              "type": "ARTIST"
+            },
+            {
+              "id": 80264457,
+              "name": "Cardi B",
+              "type": "ARTIST"
+            }
+          ],
+          "album": {
+            "type": "ALBUM",
+            "id": 410020169,
+            "imgList": [
+              {
+                "size": 75,
+                "url": "https://cdn.music-flo.com/image/v2/album/169/020/10/04/410020169_636da0d3_o.jpg?1668128980131/dims/resize/75x75/quality/90"
+              },
+              {
+                "size": 140,
+                "url": "https://cdn.music-flo.com/image/v2/album/169/020/10/04/410020169_636da0d3_o.jpg?1668128980131/dims/resize/140x140/quality/90"
+              },
+              {
+                "size": 200,
+                "url": "https://cdn.music-flo.com/image/v2/album/169/020/10/04/410020169_636da0d3_o.jpg?1668128980131/dims/resize/200x200/quality/90"
+              },
+              {
+                "size": 350,
+                "url": "https://cdn.music-flo.com/image/v2/album/169/020/10/04/410020169_636da0d3_o.jpg?1668128980131/dims/resize/350x350/quality/90"
+              },
+              {
+                "size": 500,
+                "url": "https://cdn.music-flo.com/image/v2/album/169/020/10/04/410020169_636da0d3_o.jpg?1668128980131/dims/resize/500x500/quality/90"
+              },
+              {
+                "size": 1000,
+                "url": "https://cdn.music-flo.com/image/v2/album/169/020/10/04/410020169_636da0d3_o.jpg?1668128980131/dims/resize/1000x1000/quality/90"
+              }
+            ],
+            "title": "Anyways, Life’s Great…",
+            "releaseYmd": "20221111"
+          },
+          "rank": {
+            "newYn": "N",
+            "rankBadge": 0
+          },
+          "agencyId": 2090,
+          "fileUpdateDateTime": "2022-11-11 10:10:33",
+          "freeYn": "N",
+          "displayYn": "Y",
+          "adultAuthYn": "N",
+          "svcDrmYn": "Y",
+          "svcStreamingYn": "Y",
+          "unReleasedYn": "N"
+        }
+      ],
+      "basedOnUpdate": "03/07 ~ 03/13",
+      "description": "유튜브, 틱톡 등 글로벌 트렌드를 한 눈에!",
+      "tasteMix": null
+    }
+  }
+}
