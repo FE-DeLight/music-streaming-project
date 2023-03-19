@@ -13,6 +13,10 @@
   },
   "rules": {
     // props spreading
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    // a 태그에 href 없을때 나는 에러
+    "jsx-a11y/anchor-is-valid": "off",
+    // map 에서 key 에 index 사용할때 나는 에러
+    "react/no-array-index-key": "off"
   }
 }

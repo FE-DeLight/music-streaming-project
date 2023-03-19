@@ -1,32 +1,41 @@
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import styled from 'styled-components';
 import { routes } from './route';
 
+const NavWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 2.8rem;
+  margin: 0 4rem;
+`;
+
+const NavItem = styled.a<{ active: boolean }>`
+  font-size: 1.6rem;
+
+  ${(props) => props.active && `color: #3f3fff;`}
+`;
+
+const Logo = styled.h1`
+  flex: 0 0 55px;
+  height: 23px;
+  background: url('/logo.svg') no-repeat;
+`;
+
 export default function Nav(): JSX.Element {
-   const router = useRouter();
-   return (
-      <div className="nav__wrapper">
-         {routes.map((route, index) => (
-            <Link href={route.link} key={index} legacyBehavior>
-               <a className={router.pathname === route.link ? 'active nav__item' : 'nav__item'}>{route.title}</a>
-            </Link>
-         ))}
-
-         <style jsx>{`
-            .nav__wrapper {
-               display: flex;
-               gap: 10px;
-               margin-bottom: 3rem;
-            }
-
-            .nav__item {
-               font-size: 2rem;
-            }
-
-            .active {
-               color: orange;
-            }
-         `}</style>
-      </div>
-   );
+  const router = useRouter();
+  return (
+    <>
+      <Logo />
+      <NavWrapper>
+        {routes.map((route, index) => (
+          <Link href={route.link} key={index} legacyBehavior passHref>
+            <NavItem active={router.pathname === route.link}>{route.title}</NavItem>
+          </Link>
+        ))}
+      </NavWrapper>
+    </>
+  );
 }
