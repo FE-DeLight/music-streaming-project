@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "dev-lint": "nodemon --exec \"eslint . && next dev\"",
+    "dev": "nodemon --exec \"eslint . && next dev\"",
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
