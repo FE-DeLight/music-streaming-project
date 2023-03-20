@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PlayerList from './PlayerList';
 import PlayerBar from './PlayerBar';
 
 export default function Index(): JSX.Element {
    const [player, setPlayer] = useState(false);
+   const [PlayerListData, setPlayerListData]: any = useState();
+
+   const getData = async () => {
+      const res = await fetch('http://localhost:3000/api/categoryList');
+      setPlayerListData(await res.json());
+   };
+   useEffect(() => {
+      getData();
+      console.log(PlayerListData);
+      
+   }, []);
+   
 
    const musicListData: {
       thumb: string;
