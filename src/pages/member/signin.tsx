@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {ViewPwd} from "./member.style";
+import { useForm } from "react-hook-form";
 
-export default function signin(): JSX.Element {
-
+export default function signin(
+    {
+        onSubmit = async (data) => {
+            await new Promise((r) => setTimeout(r, 1000));
+            alert(JSON.stringify(data));
+        }
+    }): JSX.Element {
     const toggleShowPswd = ()=> {
         setShowPswd(!showPswd)
             console.log(showPswd)
     }
+
+    const {
+        register,
+        handleSubmit,
+        formState: { isSubmitting, isDirty, errors }
+    } = useForm();
 
     const [showPswd, setShowPswd] = useState<boolean>(false);
     const [password, setPassword] = useState("");
@@ -17,25 +29,43 @@ export default function signin(): JSX.Element {
     return (
         <div>
             <div className="wrapper">
-                <form>
-                    <input className="idpw" name="id" placeholder="아이디(이메일)"
-                       type="text"
-                       id="roll"
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <input className="idpw" name="email" placeholder="아이디(이메일)"
+                       type="email"
+                       id="email"
                        required
-                       value={id}
-                       onChange={handleChangeId}
+                       // value={id}
+                       // onChange={handleChangeId}
+                           aria-invalid={!isDirty ? undefined : errors.email ? "true" : "false"}
+                           {...register("email", {
+                               required: "이메일은 필수 입력입니다.",
+                               pattern: {
+                                   value: /\S+@\S+\.\S+/,
+                                   message: "이메일 형식에 맞지 않습니다."
+                               }
+                           })}
                     />
+                    {errors.email && <small role="alert">{errors.email.message}</small>}
                     <div className="idpw-wrpper">
                         <input className="idpw" name="password" placeholder="비밀번호"
                                type={showPswd ? "text" : "password"}
-                               value={password}
-                               onChange={handleChangePwd}
+                               // value={password}
+                               // onChange={handleChangePwd}
+                               aria-invalid={!isDirty ? undefined : errors.password ? "true" : "false"}
+                               {...register("password", {
+                                   required: "비밀번호는 필수 입력입니다.",
+                                   minLength: {
+                                       value: 8,
+                                       message: "8자리 이상 비밀번호를 사용하세요."
+                                   }
+                               })}
                         />
                             {showPswd ? (
                                 <div className="closeEye" onClick={toggleShowPswd}>오픈</div>
                             ) : (
                                 <div className="openEye" onClick={toggleShowPswd}>클로즈</div>
                             )}
+                        {errors.password && <small role="alert">{errors.password.message}</small>}
                     </div>
                     <label>
                         <input
@@ -44,7 +74,7 @@ export default function signin(): JSX.Element {
                         />
                         <span>아이디 저장</span>
                     </label>
-                    <button className={id && password ? "login" : "submit-button"} type="submit">로그인</button>
+                    <button className={id && password ? "login" : "submit-button"} disabled={isSubmitting} type="submit">로그인</button>
                 </form>
                 <div className="sub-container">
                     <ul>
@@ -63,6 +93,7 @@ export default function signin(): JSX.Element {
                   border: 1px solid #d9d9d9;
                   width: 682px;
                   padding: 50px 120px;
+                  margin: 0 auto;
                 }
                 .idpw-wrpper {
                   width: 100%;
