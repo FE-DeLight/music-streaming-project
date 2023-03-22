@@ -22,8 +22,6 @@ export default function signin(): JSX.Element {
                        type="text"
                        id="roll"
                        required
-                       minlength="10"
-                       maxlength="20"
                        value={id}
                        onChange={handleChangeId}
                     />
