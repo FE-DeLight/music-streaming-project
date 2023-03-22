@@ -2,7 +2,10 @@
 const nextConfig = {
   experimental: {
     appDir: false,
-    fontLoaders: [{ loader: "@next/font/google" }],
+    fontLoaders: [{ loader: '@next/font/google' }],
+  },
+  images: {
+    domains: ['cdn.music-flo.com'],
   },
   compiler: {
     styledComponents: true,

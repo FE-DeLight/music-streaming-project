@@ -1,3 +1,33 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+    // typescript parser
+  },
+  "rules": {
+    // props spreading
+    "react/jsx-props-no-spreading": "off",
+    // a 태그에 href 없을때 나는 에러
+    "jsx-a11y/anchor-is-valid": "off",
+    // map 에서 key 에 index 사용할때 나는 에러
+    "react/no-array-index-key": "off",
+    // import 시 확장자명 생략
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  }
 }

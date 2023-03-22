@@ -1,34 +1,26 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from 'react';
+import postData from '@/service/api';
+import PlayList from '@/components/PlayList';
 
-export default function Home(): JSX.Element {
-  const [bookList, setBooList]: any = useState();
-  const getData = async () => {
-    const res = await fetch("http://localhost:3000/api/book", {
-      headers: {
-        Accept: "application/json",
-      },
-    });
-
-    setBooList(await res.json());
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+export default function Home(props: any): JSX.Element {
+  const {
+    data: { playList, popHotTrackPlayList },
+  } = props;
+  console.log('@@', playList, popHotTrackPlayList);
+  useEffect(() => {}, []);
   return (
     <div>
-      <h1>Home</h1>
-      {!bookList ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {bookList.data.map((book: any) => (
-            <li key={book.id}>
-              <span>{book.title}</span> : <span>{book.price}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      <PlayList title={playList.name} playList={playList} viewLine={2} />
+      <PlayList title={popHotTrackPlayList.name} playList={popHotTrackPlayList} viewLine={2} />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const List = await postData({ url: 'http://localhost:3000/api/categoryList' });
+  return {
+    props: {
+      data: List.data,
+    },
+  };
 }

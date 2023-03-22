@@ -1,10 +1,12 @@
 export const routes = [
   {
-    link: "/",
-    title: "Home",
+    link: '/',
+    title: '둘러보기',
   },
   {
-    link: "/about",
-    title: "About",
+    link: '/browse',
+    title: '보관함',
   },
 ];
+
+export default routes;
