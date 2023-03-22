@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import Nav from './Nav';
 import Player from './Player';
-import Link from 'next/link';
 
 interface LayoutProps {
   children: React.ReactNode;

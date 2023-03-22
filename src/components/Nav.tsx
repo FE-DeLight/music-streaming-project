@@ -22,13 +22,18 @@ const Logo = styled.h1`
   flex: 0 0 55px;
   height: 23px;
   background: url('/logo.svg') no-repeat;
+  cursor: pointer;
 `;
 
 export default function Nav(): JSX.Element {
   const router = useRouter();
   return (
     <>
-      <Logo />
+      <Logo
+        onClick={() => {
+          router.push('/');
+        }}
+      />
       <NavWrapper>
         {routes.map((route, index) => (
           <Link href={route.link} key={index} legacyBehavior passHref>
