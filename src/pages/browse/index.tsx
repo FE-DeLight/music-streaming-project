@@ -5,7 +5,7 @@ export default function Browse() {
   const [BrowseListData, setBrowseListData]: any = useState();
 
   const getData = async () => {
-    const res = await fetch('http://localhost:3000/api/BrowseListData', {
+    const res = await fetch('http://localhost:3000/api/categoryList', {
       headers: {
         Accept: 'application/json',
       },

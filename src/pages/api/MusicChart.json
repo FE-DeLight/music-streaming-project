@@ -34,11 +34,12 @@
       "createDateTime": "2018-07-23 20:32:30",
       "updateDateTime": "2023-03-18 18:00:54",
       "likeYn": null,
+      "trackListHeader": ["순위", "곡/앨범", "아티스트", "듣기", "재생목록", "내 리스트", "더보기"],
       "trackList": [
         {
           "id": 464145445,
           "name": "Ditto",
-          "url":"https://soundcloud.com/qaqejrlzj5tp/newjeans-ditto-1-hour-loop?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/qaqejrlzj5tp/newjeans-ditto-1-hour-loop?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2023-01-03 10:21:02",
           "representationArtist": {
             "id": 405655350,
@@ -348,7 +349,7 @@
         {
           "id": 456381579,
           "name": "Attention",
-          "url":"https://soundcloud.com/charlieputh/attention?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/charlieputh/attention?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2022-08-25 15:05:14",
           "representationArtist": {
             "id": 405655350,
@@ -472,7 +473,7 @@
         {
           "id": 465262593,
           "name": "Teddy Bear",
-          "url":"https://soundcloud.com/melaniemartinezmusic/melanie-martinez-teddy-bear?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/melaniemartinezmusic/melanie-martinez-teddy-bear?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2023-02-14 18:24:36",
           "representationArtist": {
             "id": 404371989,
@@ -596,7 +597,7 @@
         {
           "id": 460245511,
           "name": "ANTIFRAGILE",
-          "url":"https://soundcloud.com/le-sserafimi/antifragile?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/le-sserafimi/antifragile?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2022-12-22 09:43:20",
           "representationArtist": {
             "id": 405425770,
@@ -658,7 +659,7 @@
         {
           "id": 452943029,
           "name": "LOVE DIVE",
-          "url":"https://soundcloud.com/charlie-723124640/love-dive?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/charlie-723124640/love-dive?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2022-12-06 16:06:51",
           "representationArtist": {
             "id": 405070974,
@@ -720,7 +721,7 @@
         {
           "id": 448241048,
           "name": "사랑은 늘 도망가",
-          "url":"https://soundcloud.com/l2shareost36/lim-young-woong-young-lady-and-gentleman-ost-part-2?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/l2shareost36/lim-young-woong-young-lady-and-gentleman-ost-part-2?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2021-11-05 15:15:31",
           "representationArtist": {
             "id": 80265501,
@@ -782,7 +783,7 @@
         {
           "id": 464248986,
           "name": "건물 사이에 피어난 장미 (Rose Blossom)",
-          "url":"https://soundcloud.com/616brv7fyftg/h1-key-rose-blossom?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/616brv7fyftg/h1-key-rose-blossom?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2023-03-15 16:39:17",
           "representationArtist": {
             "id": 405122811,
@@ -844,7 +845,7 @@
         {
           "id": 466205625,
           "name": "CHRISTIAN",
-          "url":"https://soundcloud.com/emily-hall-300378769/christian-zior-park?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/emily-hall-300378769/christian-zior-park?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2023-03-09 15:40:02",
           "representationArtist": {
             "id": 20051264,
@@ -968,7 +969,7 @@
         {
           "id": 460142091,
           "name": "Nxde",
-          "url":"https://soundcloud.com/imvelou/g-idle-nxde?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/imvelou/g-idle-nxde?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2022-10-19 09:33:07",
           "representationArtist": {
             "id": 20056456,
@@ -1819,7 +1820,7 @@
         {
           "id": 453973807,
           "name": "Thought You Should Know (Explicit Ver.)",
-          "url":"https://soundcloud.com/joerxno/morgan-wallen-thought-you-should-know-rxno-drill-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/joerxno/morgan-wallen-thought-you-should-know-rxno-drill-remix?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2022-12-18 11:02:37",
           "representationArtist": {
             "id": 80265770,
@@ -1943,7 +1944,7 @@
         {
           "id": 458662474,
           "name": "golden hour",
-          "url":"https://soundcloud.com/user-793543988-785076913/jvke-golden-hour?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+          "url": "https://soundcloud.com/user-793543988-785076913/jvke-golden-hour?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
           "updateDateTime": "2023-02-08 16:45:29",
           "representationArtist": {
             "id": 403849255,

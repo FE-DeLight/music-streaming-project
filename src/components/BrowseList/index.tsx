@@ -8,6 +8,7 @@ type BrowseListProps = {
 };
 
 function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
+  console.log(BrowseListData);
   return (
     <div className="browse-list">
       <style.browseHead>
@@ -18,7 +19,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                 <input type="checkbox" name="rank" id="all-select" />
               </label>
             </div>
-            {BrowseListData.data.header.map((item: any, index: any) => (
+            {BrowseListData.data.playList.trackListHeader.map((item: any, index: any) => (
               <div className="browse-list-head-item" key={index + 1}>
                 {item}
               </div>
@@ -28,31 +29,31 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
       </style.browseHead>
       {!BrowseListData ? null : (
         <div className="browse-list-body">
-          {BrowseListData.data.list.map((item: any, index: any) => (
+          {BrowseListData.data.playList.trackList.map((item: any, index: any) => (
             <style.GridWrap key={index}>
               <div className="browse-list-body-item">
                 <label htmlFor={`rank=${index}`}>
                   <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
-              <div className="browse-list-body-item">{item.lank}</div>
+              <div className="browse-list-body-item">{index}</div>
               <div className="browse-list-body-item">
                 <style.ThumnailBox>
                   <style.ThumnailImg>
                     <Link href="">
-                      <Image src={item.album.cover} alt="" width={60} height={60} quality={100} />
+                      <Image src={item.album.imgList[5].url} alt="" width={60} height={60} quality={100} />
                     </Link>
                   </style.ThumnailImg>
                   <div className="album-desc">
                     <p>{item.album.title}</p>
                     <p>
-                      {item.album.artist} &lsquo;{item.album.albumTitle}&rsquo;
+                      {item.representationArtist.name} &lsquo;{item.album.title}&rsquo;
                     </p>
                   </div>
                 </style.ThumnailBox>
               </div>
               <div className="browse-list-body-item">
-                <p>{item.album.artist}</p>
+                <p>{item.representationArtist.name}</p>
               </div>
               <div className="browse-list-body-item">
                 <button type="button">
