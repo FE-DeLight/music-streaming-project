@@ -7,7 +7,7 @@ type BrowseListProps = {
   BrowseListData: any;
 };
 
-export const BrowseList = ({ BrowseListData }: BrowseListProps): JSX.Element => {
+function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
   return (
     <div className="browse-list">
       <style.browseHead>
@@ -31,8 +31,8 @@ export const BrowseList = ({ BrowseListData }: BrowseListProps): JSX.Element => 
           {BrowseListData.data.list.map((item: any, index: any) => (
             <style.GridWrap key={index}>
               <div className="browse-list-body-item">
-                <label htmlFor={'rank=' + { index }}>
-                  <input type="checkbox" name="rank" id={'rank-' + { index }} />
+                <label htmlFor={`rank=${index}`}>
+                  <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
               <div className="browse-list-body-item">{item.lank}</div>
@@ -80,4 +80,6 @@ export const BrowseList = ({ BrowseListData }: BrowseListProps): JSX.Element => 
       )}
     </div>
   );
-};
+}
+
+export default BrowseList;
