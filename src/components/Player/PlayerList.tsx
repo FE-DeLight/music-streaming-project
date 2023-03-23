@@ -1,53 +1,49 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import PlayerButton from './PlayerButton';
-import BlindText from './BlindText';
-import PlayerThumb from './PlayerThumb';
-import MusicListItem from './MusicListItem';
+import PlayerButton from '@/components/Player/PlayerButton';
+import BlindText from '@/components/Player/BlindText';
+import PlayerThumb from '@/components/Player/PlayerThumb';
+import PlayList from '@/components/Player/PlayList';
 
 interface PlayerListProps {
   player: boolean;
-  openPlaylist: () => void;
+  openPlaylist: (e: any) => void;
   currentPlayMusic: {
-    thumb: string;
-    title: string;
-    singer: string;
-    lyrics: string;
+    album: { imgList: any },
+    name: string,
+    representationArtist: { name: any},
   };
-  musicListData: {
-    thumb: string;
-    title: string;
-    singer: string;
-    lyrics?: string;
-  }[];
+  playListData: {}[]
 }
+
 
 export default function Player({
   player,
   openPlaylist,
   currentPlayMusic,
-  musicListData,
+  playListData
 }: PlayerListProps): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
-  const [musicList, setMusicList] = useState(true);
-  const OriginMusicList = [...musicListData];
-  const [copyMusicList, setCopyMusicList] = useState([...musicListData]);
+  const [isOpenPlayList, setIsOpenPlayList] = useState(true);
+  const OriginalPlayerList = [...playListData];
+  const [copyPlayerList, setCopyPlayerList] = useState([...playListData]);
+  console.log('aaa', playListData, OriginalPlayerList, copyPlayerList);
+  
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
   const clickTab = (index: number) => {
     setTabIndex(index);
   };
-  const clickMusicList = () => {
-    setMusicList(!musicList);
+  const clickPlayerList = () => {
+    setIsOpenPlayList(!isOpenPlayList);
   };
   const handleSearchMusic = (event: any) => {
-    console.log(event.target.value);
     const searchValue = event.target.value;
-    setCopyMusicList(
-      OriginMusicList.filter((music) => {
-        const isMatchTitle = music.title.toLowerCase().includes(searchValue.toLowerCase());
-        const isMatchSinger = music.singer.toLowerCase().includes(searchValue.toLowerCase());
+    setCopyPlayerList(
+      OriginalPlayerList.filter((music:any) => {
+        const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
+        const isMatchSinger = music.representationArtist.name.toLowerCase().includes(searchValue.toLowerCase());
         console.log(isMatchTitle, isMatchSinger);
 
         return isMatchTitle || isMatchSinger;
@@ -57,16 +53,16 @@ export default function Player({
 
   return (
     <div className={`list ${player && 'list--active'}`}>
-      <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.thumb})` }} />
+      <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.album.imgList[0].url})` }} />
       <div className="list__left-area">
         <div className="list__left-area-inner">
           <Link href="/" style={{ textDecoration: 'none', display: 'block' }}>
-            <span className="list__left-title">{currentPlayMusic.title}</span>
+            <span className="list__left-title">{currentPlayMusic.name}</span>
           </Link>
           <Link href="/" style={{ textDecoration: 'none', display: 'block' }}>
-            <span className="list__left-singer">{currentPlayMusic.singer}</span>
+            <span className="list__left-singer">{currentPlayMusic.representationArtist.name}</span>
           </Link>
-          <PlayerThumb size={360} image={currentPlayMusic.thumb} radius={10} />
+          <PlayerThumb size={360} image={currentPlayMusic.album.imgList[4].url} radius={10} />
           <div className="list__left-btn-area">
             <PlayerButton size={40} image={'/icon_store.svg'}>
               <BlindText text={'담기'} />
@@ -127,46 +123,13 @@ export default function Player({
                 </div>
               </div>
               <div className="tab-body__list-area">
-                <div className={`music-list ${!musicList && 'music-list--fold'}`}>
-                  <div className="music-list_top">
-                    <div className="music-list_top-left">
-                      <div className="music-list__list-title">플레이리스트 이름</div>
-                    </div>
-                    <div className="music-list_top-right">
-                      <PlayerButton size={30} image={'/icon_play_list.svg'}>
-                        <BlindText text={'재생'} />
-                      </PlayerButton>
-                      <PlayerButton
-                        size={30}
-                        image={'/icon_fold.svg'}
-                        onClick={clickMusicList}
-                        style={{ transform: musicList && 'rotate(180deg)' }}
-                      >
-                        <BlindText text={'접기'} />
-                      </PlayerButton>
-                    </div>
-                  </div>
-                  <ul className="music-list__content">
-                    {copyMusicList.map((music: any, index: number) => {
-                      return (
-                        <MusicListItem
-                          key={index}
-                          thumb={music.thumb}
-                          title={music.title}
-                          singer={music.singer}
-                          thumbSize={45}
-                          thumbRadius={4}
-                        />
-                      );
-                    })}
-                  </ul>
-                </div>
+                <PlayList isOpenPlayList={isOpenPlayList} clickPlayerList={clickPlayerList} copyPlayerList={copyPlayerList} />         
               </div>
             </div>
           )}
           {tabIndex === 1 && (
             <div className="tab-body tab-body__lyrics">
-              <div className="tab-body__lyrics-text">{currentPlayMusic.lyrics}</div>
+              <div className="tab-body__lyrics-text">{currentPlayMusic.name}</div>
             </div>
           )}
         </div>

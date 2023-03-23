@@ -10,6 +10,7 @@ const PlayerButton = styled.button<{ size: number; image: string; hover: boolean
 
   :hover {
     transform: ${(props) => props.hover && 'scale(1.1)'};
+  }
 `;
 export default function Button(props: any): JSX.Element {
    return <PlayerButton {...props}></PlayerButton>;
