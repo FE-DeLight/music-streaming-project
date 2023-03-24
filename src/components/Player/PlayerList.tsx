@@ -13,7 +13,8 @@ interface PlayerListProps {
     name: string,
     representationArtist: { name: any},
   };
-  playListData: {}[]
+  playListData: {}[],
+  handleSelectMusic: (index: number) => void
 }
 
 
@@ -21,13 +22,13 @@ export default function Player({
   player,
   openPlaylist,
   currentPlayMusic,
-  playListData
+  playListData,
+  handleSelectMusic
 }: PlayerListProps): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
   const OriginalPlayerList = [...playListData];
   const [copyPlayerList, setCopyPlayerList] = useState([...playListData]);
-  console.log('aaa', playListData, OriginalPlayerList, copyPlayerList);
   
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
@@ -44,7 +45,6 @@ export default function Player({
       OriginalPlayerList.filter((music:any) => {
         const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
         const isMatchSinger = music.representationArtist.name.toLowerCase().includes(searchValue.toLowerCase());
-        console.log(isMatchTitle, isMatchSinger);
 
         return isMatchTitle || isMatchSinger;
       }),
@@ -52,6 +52,7 @@ export default function Player({
   };
 
   return (
+    currentPlayMusic &&
     <div className={`list ${player && 'list--active'}`}>
       <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.album.imgList[0].url})` }} />
       <div className="list__left-area">
@@ -115,6 +116,9 @@ export default function Player({
                         handleSearchMusic(e);
                       }}
                     />
+                    <button className="tab__search-remove-btn">
+                      <BlindText text="지우기" />
+                    </button>
                   </div>
                 </div>
                 <div className="tab-body__top-right">
@@ -123,7 +127,7 @@ export default function Player({
                 </div>
               </div>
               <div className="tab-body__list-area">
-                <PlayList isOpenPlayList={isOpenPlayList} clickPlayerList={clickPlayerList} copyPlayerList={copyPlayerList} />         
+                <PlayList isOpenPlayList={isOpenPlayList} clickPlayerList={clickPlayerList} copyPlayerList={copyPlayerList} handleSelectMusic={handleSelectMusic} />         
               </div>
             </div>
           )}
@@ -259,7 +263,7 @@ export default function Player({
         }
 
         .tab-head__title {
-          margin-right: 15px;
+          margin-right: 20px;
           padding: 10px 0;
           border-bottom: 3px solid transparent;
           font-size: 16px;
@@ -332,100 +336,6 @@ export default function Player({
         .tab-body__list-area {
           height: calc(100vh - 300px);
           overflow-y: auto;
-        }
-
-        .music-list {
-          border-radius: 5px;
-          background: hsla(0, 0%, 100%, 0.1);
-        }
-
-        .music-list--fold .music-list__list-fold-btn {
-          transform: rotate(0);
-        }
-
-        .music-list--fold .music-list__content {
-          display: none;
-        }
-
-        .music-list_top {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 20px 10px 15px;
-        }
-
-        .music-list__list-title {
-          font-size: 14px;
-          font-weight: bold;
-          color: #fff;
-        }
-
-        .music-list_top-right {
-          display: flex;
-          gap: 15px;
-        }
-
-        .music-list__play-btn,
-        .music-list__list-fold-btn,
-        .music-list__show-more-btn {
-          width: 30px;
-          height: 30px;
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-
-        .music-list__content {
-          padding: 10px 20px 20px 15px;
-        }
-
-        .music-list__content--fold {
-          display: none;
-        }
-
-        .music-list__music {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .music-list__music + .music-list__music {
-          margin-top: 20px;
-        }
-
-        .music-list__music-btn {
-          display: flex;
-          align-items: center;
-        }
-
-        .music-list__thumb {
-          width: 45px;
-          height: 45px;
-          margin-right: 16px;
-          border-radius: 4px;
-          background: #ddd;
-        }
-
-        .music-list__thumb img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .music-list__info {
-          width: 340px;
-          text-align: left;
-        }
-
-        .music-list__title {
-          margin-bottom: 3px;
-          font-size: 14px;
-          font-weight: bold;
-          color: #fff;
-        }
-
-        .music-list__singer {
-          font-size: 11px;
         }
 
         .tab-body__lyrics {

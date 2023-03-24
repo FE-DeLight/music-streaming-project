@@ -5,21 +5,27 @@ import PlayerBar from '@/components/Player/PlayerBar';
 export default function Index(): JSX.Element {
   const [isOpenPlayer, setIsOpenPlayer] = useState(false);
   const [playListData, setPlayListData]: any = useState();
+  const [currentPlayMusic, setCurrentPlayMusic] = useState();
 
   const getData = async () => {
     const res = await (await fetch('http://localhost:3000/api/categoryList')).json();
     setPlayListData(await res.data.playList.trackList);
+  };  
+
+  const openPlaylist = (e: any): boolean | void => {
+    e.preventDefault();
+    setIsOpenPlayer(!isOpenPlayer);
   };
+  
+  const handleSelectMusic = (index :number) => {
+    setCurrentPlayMusic(playListData[index]);    
+  }
+
   useEffect(() => {
     getData();
   }, []);
 
-  const currentPlayMusic = playListData && playListData[0];
 
-  const openPlaylist = (e: any): void => {
-    e.preventDefault();
-    setIsOpenPlayer(!isOpenPlayer);
-  };
 
   return (
     <div className="player">
@@ -29,9 +35,10 @@ export default function Index(): JSX.Element {
             player={isOpenPlayer}
             openPlaylist={openPlaylist}
             playListData={playListData}
-            currentPlayMusic={currentPlayMusic}
+            currentPlayMusic={currentPlayMusic || playListData[0]}
+            handleSelectMusic={handleSelectMusic}
           />
-          <PlayerBar player={isOpenPlayer} openPlaylist={openPlaylist} currentPlayMusic={currentPlayMusic} />
+          <PlayerBar player={isOpenPlayer} openPlaylist={openPlaylist} currentPlayMusic={currentPlayMusic || playListData[0]} />
         </>
       )}
     </div>

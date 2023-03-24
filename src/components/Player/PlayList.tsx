@@ -139,7 +139,7 @@ export default function List(props: any): JSX.Element {
                   singer={music.representationArtist.name}
                   thumbSize={45}
                   thumbRadius={4}
-                  onClick={() => {props.onSelectMusic(index)}}
+                  onClick={() => {props.handleSelectMusic(index)}}
                 />
               );
             })
