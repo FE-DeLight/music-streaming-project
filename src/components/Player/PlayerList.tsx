@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
@@ -29,18 +29,23 @@ export default function Player({
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
   const OriginalPlayerList = [...playListData];
   const [copyPlayerList, setCopyPlayerList] = useState([...playListData]);
-  
+  const [searchText, setSearchText] = useState('');
+
+  const searchRef = useRef<any>(null);
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
   const clickTab = (index: number) => {
     setTabIndex(index);
   };
+
   const clickPlayerList = () => {
     setIsOpenPlayList(!isOpenPlayList);
   };
+
   const handleSearchMusic = (event: any) => {
     const searchValue = event.target.value;
+    setSearchText(searchValue);
     setCopyPlayerList(
       OriginalPlayerList.filter((music:any) => {
         const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
@@ -50,6 +55,11 @@ export default function Player({
       }),
     );
   };
+
+  const handleRemoveSearch = () => {
+    setSearchText('');
+    setCopyPlayerList(OriginalPlayerList);
+  }
 
   return (
     currentPlayMusic &&
@@ -108,17 +118,20 @@ export default function Player({
             <div className="tab-body tab-body--list">
               <div className="tab-body__top">
                 <div className="tab-body__top-left">
-                  <div className="tab__search">
+                  <div className="search">
                     <input
                       type="text"
                       placeholder="재생목록에서 검색해주세요"
                       onChange={(e) => {
                         handleSearchMusic(e);
                       }}
+                      value={searchText}
+                      ref={searchRef}
                     />
-                    <button className="tab__search-remove-btn">
+                    {searchRef.current?.value.length > 0 && 
+                    <button className="search__remove-btn" onClick={handleRemoveSearch}>
                       <BlindText text="지우기" />
-                    </button>
+                    </button>}
                   </div>
                 </div>
                 <div className="tab-body__top-right">
@@ -287,7 +300,7 @@ export default function Player({
           padding: 10px 0 20px;
         }
 
-        .tab__search {
+        .search {
           display: flex;
           align-items: center;
           width: 240px;
@@ -296,7 +309,7 @@ export default function Player({
           background: hsla(0, 0%, 100%, 0.05);
         }
 
-        .tab__search input {
+        .search input {
           width: 100%;
           border: 0;
           outline: 0;
@@ -306,16 +319,23 @@ export default function Player({
           background: transparent;
         }
 
-        .tab__search::before,
+        .search::before,
         .list-btn::before {
           content: '';
-          display: inline-block;
+          flex-shrink: 0;
           width: 24px;
           height: 24px;
+          margin-right: 5px;
         }
 
-        .tab__search::before {
+        .search::before {
           background: url('/icon_search.svg') no-repeat center / contain;
+        }
+
+        .search__remove-btn {
+          width: 24px;
+          height: 24px;
+          background: url('/icon_remove.svg') no-repeat center / contain;
         }
 
         .list-btn {
