@@ -9,10 +9,10 @@ interface PlayerBarProps {
   player: boolean;
   openPlaylist: (e: any) => void;
   currentPlayMusic: {
-    url: string,
-    album: { imgList: any },
-    name: string,
-    representationArtist: { name: any},
+    url: string;
+    album: { imgList: any };
+    name: string;
+    representationArtist: { name: any };
   };
 }
 
@@ -110,7 +110,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
       {/* 플레이어 바 */}
       {hasWindow && (
         <ReactPlayer
-          url={currentPlayMusic.url}
+          url={currentPlayMusic?.url}
           playing={playing}
           loop={repeatPlay}
           muted={mute}
@@ -123,7 +123,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
           }}
           controls={true}
           ref={musicRef}
-          style={{display: 'none'}}
+          style={{ display: 'none' }}
         />
       )}
 
@@ -155,15 +155,19 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
           <button className="controller__openPlayListBtn" onClick={openPlaylist} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic.album.imgList[0].url} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">{currentPlayMusic.name}</div>
-              <div className="singer">{currentPlayMusic.representationArtist.name}</div>
+              <div className="title">{currentPlayMusic && currentPlayMusic.name}</div>
+              <div className="singer">
+                {currentPlayMusic ? currentPlayMusic.representationArtist.name : '재생목록이 비어있습니다.'}
+              </div>
             </div>
-            <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
-              <BlindText text={'좋아요'} />
-            </PlayerButton>
+            {currentPlayMusic && (
+              <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
+                <BlindText text={'좋아요'} />
+              </PlayerButton>
+            )}
           </div>
 
           <div className="bar__center-area">
@@ -305,12 +309,12 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
 
         .bar__left-area {
           flex: 1 0 auto;
-          max-width: 15%;
+          max-width: 20%;
         }
 
         .bar__center-area {
           justify-content: center;
-          padding: 0 50px;
+          padding-right: 50px;
         }
 
         .bar__right-area {
