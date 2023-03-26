@@ -45,7 +45,7 @@ export default function signin(
                                    }
                                })}
                         />
-                        {errors.email && <emailErrors role="alert">{errors.email.message}</emailErrors>}
+                        {errors.email && <errorsMessage role="alert">{errors.email.message}</errorsMessage>}
                     </div>
 
                     <div className="idpw-wrpper">
@@ -67,7 +67,7 @@ export default function signin(
                             ) : (
                                 <div className="openEye" onClick={toggleShowPswd}>클로즈</div>
                             )}
-                        {errors.password && <emailErrors role="alert">{errors.password.message}</emailErrors>}
+                        {errors.password && <errorsMessage role="alert">{errors.password.message}</errorsMessage>}
                     </div>
                     <label>
                         <input
@@ -183,7 +183,7 @@ export default function signin(
                   background-size: 100%;
                   background-position: 0 -94%;
                 }
-                emailErrors {
+                errorsMessage {
                   color: #ff4d78;
                   font-weight: 500;
                   font-size: .625rem;
