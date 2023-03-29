@@ -1,72 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import PlayerButton from './PlayerButton';
-import BlindText from './BlindText';
-import PlayerThumb from './PlayerThumb';
-import MusicListItem from './MusicListItem';
+import PlayerButton from '@/components/Player/PlayerButton';
+import BlindText from '@/components/Player/BlindText';
+import PlayerThumb from '@/components/Player/PlayerThumb';
+import PlayList from '@/components/Player/PlayList';
 
 interface PlayerListProps {
   player: boolean;
-  openPlaylist: () => void;
+  openPlaylist: (e: any) => void;
   currentPlayMusic: {
-    thumb: string;
-    title: string;
-    singer: string;
-    lyrics: string;
+    album: { imgList: any },
+    name: string,
+    representationArtist: { name: any},
   };
-  musicListData: {
-    thumb: string;
-    title: string;
-    singer: string;
-    lyrics?: string;
-  }[];
+  playListData: {}[],
+  handleSelectMusic: (index: number) => void
 }
+
 
 export default function Player({
   player,
   openPlaylist,
   currentPlayMusic,
-  musicListData,
+  playListData,
+  handleSelectMusic
 }: PlayerListProps): JSX.Element {
   const [tabIndex, setTabIndex] = useState(0);
-  const [musicList, setMusicList] = useState(true);
-  const OriginMusicList = [...musicListData];
-  const [copyMusicList, setCopyMusicList] = useState([...musicListData]);
+  const [isOpenPlayList, setIsOpenPlayList] = useState(true);
+  const OriginalPlayerList = [...playListData];
+  const [copyPlayerList, setCopyPlayerList] = useState([...playListData]);
+  const [searchText, setSearchText] = useState('');
+
+  const searchRef = useRef<any>(null);
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
   const clickTab = (index: number) => {
     setTabIndex(index);
   };
-  const clickMusicList = () => {
-    setMusicList(!musicList);
+
+  const clickPlayerList = () => {
+    setIsOpenPlayList(!isOpenPlayList);
   };
+
   const handleSearchMusic = (event: any) => {
-    console.log(event.target.value);
     const searchValue = event.target.value;
-    setCopyMusicList(
-      OriginMusicList.filter((music) => {
-        const isMatchTitle = music.title.toLowerCase().includes(searchValue.toLowerCase());
-        const isMatchSinger = music.singer.toLowerCase().includes(searchValue.toLowerCase());
-        console.log(isMatchTitle, isMatchSinger);
+    setSearchText(searchValue);
+    setCopyPlayerList(
+      OriginalPlayerList.filter((music:any) => {
+        const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
+        const isMatchSinger = music.representationArtist.name.toLowerCase().includes(searchValue.toLowerCase());
 
         return isMatchTitle || isMatchSinger;
       }),
     );
   };
 
+  const handleRemoveSearch = () => {
+    setSearchText('');
+    setCopyPlayerList(OriginalPlayerList);
+  }
+
   return (
+    currentPlayMusic &&
     <div className={`list ${player && 'list--active'}`}>
-      <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.thumb})` }} />
+      <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.album.imgList[0].url})` }} />
       <div className="list__left-area">
         <div className="list__left-area-inner">
           <Link href="/" style={{ textDecoration: 'none', display: 'block' }}>
-            <span className="list__left-title">{currentPlayMusic.title}</span>
+            <span className="list__left-title">{currentPlayMusic.name}</span>
           </Link>
           <Link href="/" style={{ textDecoration: 'none', display: 'block' }}>
-            <span className="list__left-singer">{currentPlayMusic.singer}</span>
+            <span className="list__left-singer">{currentPlayMusic.representationArtist.name}</span>
           </Link>
-          <PlayerThumb size={360} image={currentPlayMusic.thumb} radius={10} />
+          <PlayerThumb size={360} image={currentPlayMusic.album.imgList[4].url} radius={10} />
           <div className="list__left-btn-area">
             <PlayerButton size={40} image={'/icon_store.svg'}>
               <BlindText text={'담기'} />
@@ -111,14 +118,20 @@ export default function Player({
             <div className="tab-body tab-body--list">
               <div className="tab-body__top">
                 <div className="tab-body__top-left">
-                  <div className="tab__search">
+                  <div className="search">
                     <input
                       type="text"
                       placeholder="재생목록에서 검색해주세요"
                       onChange={(e) => {
                         handleSearchMusic(e);
                       }}
+                      value={searchText}
+                      ref={searchRef}
                     />
+                    {searchRef.current?.value.length > 0 && 
+                    <button className="search__remove-btn" onClick={handleRemoveSearch}>
+                      <BlindText text="지우기" />
+                    </button>}
                   </div>
                 </div>
                 <div className="tab-body__top-right">
@@ -127,46 +140,13 @@ export default function Player({
                 </div>
               </div>
               <div className="tab-body__list-area">
-                <div className={`music-list ${!musicList && 'music-list--fold'}`}>
-                  <div className="music-list_top">
-                    <div className="music-list_top-left">
-                      <div className="music-list__list-title">플레이리스트 이름</div>
-                    </div>
-                    <div className="music-list_top-right">
-                      <PlayerButton size={30} image={'/icon_play_list.svg'}>
-                        <BlindText text={'재생'} />
-                      </PlayerButton>
-                      <PlayerButton
-                        size={30}
-                        image={'/icon_fold.svg'}
-                        onClick={clickMusicList}
-                        style={{ transform: musicList && 'rotate(180deg)' }}
-                      >
-                        <BlindText text={'접기'} />
-                      </PlayerButton>
-                    </div>
-                  </div>
-                  <ul className="music-list__content">
-                    {copyMusicList.map((music: any, index: number) => {
-                      return (
-                        <MusicListItem
-                          key={index}
-                          thumb={music.thumb}
-                          title={music.title}
-                          singer={music.singer}
-                          thumbSize={45}
-                          thumbRadius={4}
-                        />
-                      );
-                    })}
-                  </ul>
-                </div>
+                <PlayList isOpenPlayList={isOpenPlayList} clickPlayerList={clickPlayerList} copyPlayerList={copyPlayerList} handleSelectMusic={handleSelectMusic} />         
               </div>
             </div>
           )}
           {tabIndex === 1 && (
             <div className="tab-body tab-body__lyrics">
-              <div className="tab-body__lyrics-text">{currentPlayMusic.lyrics}</div>
+              <div className="tab-body__lyrics-text">{currentPlayMusic.name}</div>
             </div>
           )}
         </div>
@@ -296,7 +276,7 @@ export default function Player({
         }
 
         .tab-head__title {
-          margin-right: 15px;
+          margin-right: 20px;
           padding: 10px 0;
           border-bottom: 3px solid transparent;
           font-size: 16px;
@@ -320,7 +300,7 @@ export default function Player({
           padding: 10px 0 20px;
         }
 
-        .tab__search {
+        .search {
           display: flex;
           align-items: center;
           width: 240px;
@@ -329,7 +309,7 @@ export default function Player({
           background: hsla(0, 0%, 100%, 0.05);
         }
 
-        .tab__search input {
+        .search input {
           width: 100%;
           border: 0;
           outline: 0;
@@ -339,16 +319,23 @@ export default function Player({
           background: transparent;
         }
 
-        .tab__search::before,
+        .search::before,
         .list-btn::before {
           content: '';
-          display: inline-block;
+          flex-shrink: 0;
           width: 24px;
           height: 24px;
+          margin-right: 5px;
         }
 
-        .tab__search::before {
+        .search::before {
           background: url('/icon_search.svg') no-repeat center / contain;
+        }
+
+        .search__remove-btn {
+          width: 24px;
+          height: 24px;
+          background: url('/icon_remove.svg') no-repeat center / contain;
         }
 
         .list-btn {
@@ -369,100 +356,6 @@ export default function Player({
         .tab-body__list-area {
           height: calc(100vh - 300px);
           overflow-y: auto;
-        }
-
-        .music-list {
-          border-radius: 5px;
-          background: hsla(0, 0%, 100%, 0.1);
-        }
-
-        .music-list--fold .music-list__list-fold-btn {
-          transform: rotate(0);
-        }
-
-        .music-list--fold .music-list__content {
-          display: none;
-        }
-
-        .music-list_top {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 20px 10px 15px;
-        }
-
-        .music-list__list-title {
-          font-size: 14px;
-          font-weight: bold;
-          color: #fff;
-        }
-
-        .music-list_top-right {
-          display: flex;
-          gap: 15px;
-        }
-
-        .music-list__play-btn,
-        .music-list__list-fold-btn,
-        .music-list__show-more-btn {
-          width: 30px;
-          height: 30px;
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-        }
-
-        .music-list__content {
-          padding: 10px 20px 20px 15px;
-        }
-
-        .music-list__content--fold {
-          display: none;
-        }
-
-        .music-list__music {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        .music-list__music + .music-list__music {
-          margin-top: 20px;
-        }
-
-        .music-list__music-btn {
-          display: flex;
-          align-items: center;
-        }
-
-        .music-list__thumb {
-          width: 45px;
-          height: 45px;
-          margin-right: 16px;
-          border-radius: 4px;
-          background: #ddd;
-        }
-
-        .music-list__thumb img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .music-list__info {
-          width: 340px;
-          text-align: left;
-        }
-
-        .music-list__title {
-          margin-bottom: 3px;
-          font-size: 14px;
-          font-weight: bold;
-          color: #fff;
-        }
-
-        .music-list__singer {
-          font-size: 11px;
         }
 
         .tab-body__lyrics {

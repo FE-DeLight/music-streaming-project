@@ -7,12 +7,12 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 
 interface PlayerBarProps {
   player: boolean;
-  openPlaylist: () => void;
+  openPlaylist: (e: any) => void;
   currentPlayMusic: {
-    thumb: string;
-    title: string;
-    singer: string;
-    lyrics: string;
+    url: string;
+    album: { imgList: any };
+    name: string;
+    representationArtist: { name: any };
   };
 }
 
@@ -51,7 +51,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
       setPlayedSecond(`00:${String(playedSeconds).padStart(2, '0')}`);
     } else {
       let minutes = Math.floor(playedSeconds / 60);
-      let seconds = playedSeconds % 60;
+      let seconds = Math.floor(playedSeconds % 60);
 
       setPlayedSecond(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
     }
@@ -59,7 +59,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
 
   const handleDuration = (state: any) => {
     let minutes = Math.floor(state / 60);
-    let seconds = state % 60;
+    let seconds = Math.floor(state % 60);
     setDuration(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
   };
 
@@ -110,7 +110,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
       {/* 플레이어 바 */}
       {hasWindow && (
         <ReactPlayer
-          url="https://youtu.be/dsgan8jxdV0?t=0"
+          url={currentPlayMusic?.url}
           playing={playing}
           loop={repeatPlay}
           muted={mute}
@@ -123,7 +123,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
           }}
           controls={true}
           ref={musicRef}
-          // style={{display: 'none'}}
+          style={{ display: 'none' }}
         />
       )}
 
@@ -151,19 +151,23 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
           />
         </div>
 
-        <div className="controller" onClick={openPlaylist}>
-          {/*<div className="controller__openPlayListBtn" />*/}
+        <div className="controller">
+          <button className="controller__openPlayListBtn" onClick={openPlaylist} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic.thumb} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">{currentPlayMusic.title}</div>
-              <div className="singer">{currentPlayMusic.singer}</div>
+              <div className="title">{currentPlayMusic && currentPlayMusic.name}</div>
+              <div className="singer">
+                {currentPlayMusic ? currentPlayMusic.representationArtist.name : '재생목록이 비어있습니다.'}
+              </div>
             </div>
-            <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
-              <BlindText text={'좋아요'} />
-            </PlayerButton>
+            {currentPlayMusic && (
+              <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
+                <BlindText text={'좋아요'} />
+              </PlayerButton>
+            )}
           </div>
 
           <div className="bar__center-area">
@@ -305,12 +309,12 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
 
         .bar__left-area {
           flex: 1 0 auto;
-          max-width: 15%;
+          max-width: 20%;
         }
 
         .bar__center-area {
           justify-content: center;
-          padding: 0 50px;
+          padding-right: 50px;
         }
 
         .bar__right-area {
