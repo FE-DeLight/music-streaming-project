@@ -8,7 +8,6 @@ type BrowseListProps = {
 };
 
 function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
-  console.log(BrowseListData);
   return (
     <div className="browse-list">
       <style.browseHead>
@@ -19,7 +18,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                 <input type="checkbox" name="rank" id="all-select" />
               </label>
             </div>
-            {BrowseListData.data.playList.trackListHeader.map((item: any, index: any) => (
+            {BrowseListData.trackListHeader.map((item: any, index: any) => (
               <div className="browse-list-head-item" key={index + 1}>
                 {item}
               </div>
@@ -29,7 +28,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
       </style.browseHead>
       {!BrowseListData ? null : (
         <div className="browse-list-body">
-          {BrowseListData.data.playList.trackList.map((item: any, index: any) => (
+          {BrowseListData.trackList.map((item: any, index: any) => (
             <style.GridWrap key={index}>
               <div className="browse-list-body-item">
                 <label htmlFor={`rank=${index}`}>
