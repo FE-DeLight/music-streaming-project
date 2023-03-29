@@ -17,25 +17,18 @@ export default function signin(
     const {
         register,
         handleSubmit,
-        formState: { isSubmitting, isDirty, errors }
+        formState: { isSubmitting, isDirty, errors,isValid }
     } = useForm();
 
     const [showPswd, setShowPswd] = useState<boolean>(false);
-    const [password, setPassword] = useState("");
-    const [id, setId] = useState("");
-    const handleChangeId = ({ target: { value } }) => setId(value);
-    const handleChangePwd = ({ target: { value } }) => setPassword(value);
     return (
         <div>
             <div className="wrapper">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="id">
                         <input className="idpw" name="email" placeholder="아이디(이메일)"
-                               type="text"
+                               type="email"
                                id="email"
-                               required
-                            // value={id}
-                            // onChange={handleChangeId}
                                aria-invalid={!isDirty ? undefined : errors.email ? "true" : "false"}
                                {...register("email", {
                                    required: "이메일은 필수 입력입니다.",
@@ -51,8 +44,6 @@ export default function signin(
                     <div className="idpw-wrpper">
                         <input className="idpw" name="password" placeholder="비밀번호"
                                type={showPswd ? "text" : "password"}
-                               // value={password}
-                               // onChange={handleChangePwd}
                                aria-invalid={!isDirty ? undefined : errors.password ? "true" : "false"}
                                {...register("password", {
                                    required: "비밀번호는 필수 입력입니다.",
@@ -76,7 +67,7 @@ export default function signin(
                         />
                         <span>아이디 저장</span>
                     </label>
-                    <button className={id && password ? "login" : "submit-button"} disabled={isSubmitting} type="submit">로그인</button>
+                    <button className={isValid ? "login" : "submit-button"} disabled={isSubmitting} type="submit">로그인</button>
                 </form>
                 <div className="sub-container">
                     <ul>
@@ -90,6 +81,7 @@ export default function signin(
                     </div>
                 </div>
             </div>
+
             <style jsx>{`
                 .wrapper {
                   border: 1px solid #d9d9d9;

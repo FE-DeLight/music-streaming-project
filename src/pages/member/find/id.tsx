@@ -38,6 +38,7 @@ export default function findId(): JSX.Element {
                   border: 1px solid #d9d9d9;
                   width: 682px;
                   padding: 50px 120px;
+                  margin: 0 auto;
                 }
                 form {
                 display: flex;
