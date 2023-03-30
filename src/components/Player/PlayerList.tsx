@@ -128,7 +128,7 @@ export default function Player({
                       value={searchText}
                       ref={searchRef}
                     />
-                    {searchRef.current?.value.length > 0 && 
+                    {searchText.length > 0 && 
                     <button className="search__remove-btn" onClick={handleRemoveSearch}>
                       <BlindText text="지우기" />
                     </button>}
