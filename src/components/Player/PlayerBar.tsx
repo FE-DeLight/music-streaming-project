@@ -123,7 +123,9 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
           }}
           controls={true}
           ref={musicRef}
-          style={{ display: 'none' }}
+          width={'1px'}
+          height={'1px'}
+          style={{ position: 'absolute', top: 0, left: 0, overflow: 'hidden' }}
         />
       )}
 
