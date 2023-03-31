@@ -34,7 +34,6 @@
       "createDateTime": "2018-07-23 20:32:30",
       "updateDateTime": "2023-03-18 18:00:54",
       "likeYn": null,
-      "trackListHeader": ["순위", "곡/앨범", "아티스트", "듣기", "재생목록", "내 리스트", "더보기"],
       "trackList": [
         {
           "id": 464145445,
