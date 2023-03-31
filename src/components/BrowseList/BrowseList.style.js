@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const GridWrap = styled.div`
   display: grid;
-  grid-template-columns: 42px 46px 200px 200px 1fr 1fr 1fr 1fr;
+  grid-template-columns: 42px 46px 1fr 1fr 50px 50px 60px 50px;
   font-size: 13px;
   color: rgb(160, 160, 160);
   width: 100%;
