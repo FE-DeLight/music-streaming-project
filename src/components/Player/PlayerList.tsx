@@ -1,13 +1,13 @@
 import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
+import { setOpenPlayer } from '@/store/oepnPlayerSlice'
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
 import PlayList from '@/components/Player/PlayList';
 
 interface PlayerListProps {
-  player: boolean;
-  openPlaylist: (e: any) => void;
   currentPlayMusic: {
     album: { imgList: any },
     name: string,
@@ -17,14 +17,14 @@ interface PlayerListProps {
   handleSelectMusic: (index: number) => void
 }
 
-
 export default function Player({
-  player,
-  openPlaylist,
   currentPlayMusic,
   playListData,
   handleSelectMusic
 }: PlayerListProps): JSX.Element {
+  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
+  const dispatch = useDispatch();
+
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
   const OriginalPlayerList = [...playListData];
@@ -39,7 +39,7 @@ export default function Player({
     setTabIndex(index);
   };
 
-  const clickPlayerList = () => {
+  const clickPlayList = () => {
     setIsOpenPlayList(!isOpenPlayList);
   };
 
@@ -63,7 +63,7 @@ export default function Player({
 
   return (
     currentPlayMusic &&
-    <div className={`list ${player && 'list--active'}`}>
+    <div className={`list ${isOpenPlayer && 'list--active'}`}>
       <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.album.imgList[0].url})` }} />
       <div className="list__left-area">
         <div className="list__left-area-inner">
@@ -87,10 +87,10 @@ export default function Player({
 
       <div className="list__right-area">
         <div className="list__right-btn-area">
-          <PlayerButton size={40} image="/icon_setting.svg">
+          {/* <PlayerButton size={40} image="/icon_setting.svg">
             <BlindText text="설정" />
-          </PlayerButton>
-          <PlayerButton size={40} image="/icon_close.svg" onClick={openPlaylist}>
+          </PlayerButton> */}
+          <PlayerButton size={40} image="/icon_close.svg" onClick={()=>{dispatch(setOpenPlayer())}}>
             <BlindText text="닫기" />
           </PlayerButton>
         </div>
@@ -140,7 +140,7 @@ export default function Player({
                 </div>
               </div>
               <div className="tab-body__list-area">
-                <PlayList isOpenPlayList={isOpenPlayList} clickPlayerList={clickPlayerList} copyPlayerList={copyPlayerList} handleSelectMusic={handleSelectMusic} />         
+                <PlayList isOpenPlayList={isOpenPlayList} clickPlayList={clickPlayList} copyPlayerList={copyPlayerList} handleSelectMusic={handleSelectMusic} />         
               </div>
             </div>
           )}

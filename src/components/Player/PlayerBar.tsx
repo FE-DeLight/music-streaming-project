@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpenPlayer } from '@/store/oepnPlayerSlice'
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
 
 interface PlayerBarProps {
-  player: boolean;
-  openPlaylist: (e: any) => void;
   currentPlayMusic: {
     url: string;
     album: { imgList: any };
@@ -16,7 +16,10 @@ interface PlayerBarProps {
   };
 }
 
-export default function Player({ player, openPlaylist, currentPlayMusic }: PlayerBarProps): JSX.Element {
+export default function Player({ currentPlayMusic }: PlayerBarProps): JSX.Element {
+  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
+  const dispatch = useDispatch();
+
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -152,7 +155,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
         </div>
 
         <div className="controller">
-          <button className="controller__openPlayListBtn" onClick={openPlaylist} />
+          <button className="controller__openPlayListBtn" onClick={()=>{dispatch(setOpenPlayer())}} />
           <div className="bar__left-area">
             <Link href="/">
               <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album.imgList[0].url} radius={4} />
@@ -224,8 +227,8 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
             />
             <PlayerButton
               size={44}
-              image={player ? '/icon_player_active.svg' : '/icon_player.svg'}
-              onClick={openPlaylist}
+              image={isOpenPlayer ? '/icon_player_active.svg' : '/icon_player.svg'}
+              onClick={()=>{dispatch(setOpenPlayer())}}
             >
               <BlindText text={'재생목록'} />
             </PlayerButton>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpenPlayer } from '@/store/oepnPlayerSlice'
 import PlayerList from '@/components/Player/PlayerList';
 import PlayerBar from '@/components/Player/PlayerBar';
 
 export default function Index(): JSX.Element {
-  const [isOpenPlayer, setIsOpenPlayer] = useState(false);
+  const dispatch = useDispatch();
+
   const [playListData, setPlayListData]: any = useState();
   const [currentPlayMusic, setCurrentPlayMusic] = useState();
 
@@ -14,7 +17,7 @@ export default function Index(): JSX.Element {
 
   const openPlaylist = (e: any): boolean | void => {
     e.preventDefault();
-    setIsOpenPlayer(!isOpenPlayer);
+    dispatch(setOpenPlayer())
   };
   
   const handleSelectMusic = (index :number) => {
@@ -25,20 +28,16 @@ export default function Index(): JSX.Element {
     getData();
   }, []);
 
-
-
   return (
     <div className="player">
       {playListData && (
         <>
           <PlayerList
-            player={isOpenPlayer}
-            openPlaylist={openPlaylist}
             playListData={playListData}
             currentPlayMusic={currentPlayMusic || playListData[0]}
             handleSelectMusic={handleSelectMusic}
           />
-          <PlayerBar player={isOpenPlayer} openPlaylist={openPlaylist} currentPlayMusic={currentPlayMusic || playListData[0]} />
+          <PlayerBar currentPlayMusic={currentPlayMusic || playListData[0]} />
         </>
       )}
     </div>
