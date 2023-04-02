@@ -121,7 +121,7 @@ export default function List(props: any): JSX.Element {
             <PlayerButton
               size={30}
               image={'/icon_fold.svg'}
-              onClick={props.clickPlayerList}
+              onClick={props.clickPlayList}
               style={{ transform: props.isOpenPlayList && 'rotate(180deg)' }}
             >
               <BlindText text={'접기'} />
