@@ -1,39 +1,33 @@
-import React, { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { setOpenPlayer } from '@/store/oepnPlayerSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpenPlayer } from '@/store/oepnPlayerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
 import PlayList from '@/components/Player/PlayList';
 
-interface PlayerListProps {
-  currentPlayMusic: {
-    album: { imgList: any },
-    name: string,
-    representationArtist: { name: any},
-  };
-  playListData: {}[],
-  handleSelectMusic: (index: number) => void
-}
-
-export default function Player({
-  currentPlayMusic,
-  playListData,
-  handleSelectMusic
-}: PlayerListProps): JSX.Element {
-  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
+export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
+  const isOpenPlayer = useSelector((state: any) => state.setIsOpenPlayer.value);
+  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
+
+  const [playListData, setPlayListData]: any = useState();
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
-  const OriginalPlayerList = [...playListData];
-  const [copyPlayerList, setCopyPlayerList] = useState([...playListData]);
+  const [OriginalPlayerList, setOriginalPlayerList]: any = useState();
+  const [copyPlayerList, setCopyPlayerList]: any = useState();
   const [searchText, setSearchText] = useState('');
 
   const searchRef = useRef<any>(null);
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
+
+  const getData = async () => {
+    const res = await (await fetch('http://localhost:3000/api/categoryList')).json();
+    setPlayListData(await res.data.playList.trackList);
+  };
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -47,7 +41,7 @@ export default function Player({
     const searchValue = event.target.value;
     setSearchText(searchValue);
     setCopyPlayerList(
-      OriginalPlayerList.filter((music:any) => {
+      OriginalPlayerList?.filter((music: any) => {
         const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
         const isMatchSinger = music.representationArtist.name.toLowerCase().includes(searchValue.toLowerCase());
 
@@ -59,21 +53,32 @@ export default function Player({
   const handleRemoveSearch = () => {
     setSearchText('');
     setCopyPlayerList(OriginalPlayerList);
-  }
+  };
 
-  return (
-    currentPlayMusic &&
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setCopyPlayerList(playListData);
+    setOriginalPlayerList(playListData);
+  }, [playListData]);
+
+  return playListData ? (
     <div className={`list ${isOpenPlayer && 'list--active'}`}>
-      <div className="list__background" style={{ backgroundImage: `url(${currentPlayMusic.album.imgList[0].url})` }} />
+      <div
+        className="list__background"
+        style={{ backgroundImage: `url(${currentPlayMusic.album?.imgList[0].url})` || '' }}
+      />
       <div className="list__left-area">
         <div className="list__left-area-inner">
           <Link href="/" style={{ textDecoration: 'none', display: 'block' }}>
-            <span className="list__left-title">{currentPlayMusic.name}</span>
+            <span className="list__left-title">{currentPlayMusic?.name || '제목'}</span>
           </Link>
           <Link href="/" style={{ textDecoration: 'none', display: 'block' }}>
-            <span className="list__left-singer">{currentPlayMusic.representationArtist.name}</span>
+            <span className="list__left-singer">{currentPlayMusic.representationArtist?.name || '가수'}</span>
           </Link>
-          <PlayerThumb size={360} image={currentPlayMusic.album.imgList[4].url} radius={10} />
+          <PlayerThumb size={360} image={currentPlayMusic.album?.imgList[4].url} radius={10} />
           <div className="list__left-btn-area">
             <PlayerButton size={40} image={'/icon_store.svg'}>
               <BlindText text={'담기'} />
@@ -90,7 +95,13 @@ export default function Player({
           {/* <PlayerButton size={40} image="/icon_setting.svg">
             <BlindText text="설정" />
           </PlayerButton> */}
-          <PlayerButton size={40} image="/icon_close.svg" onClick={()=>{dispatch(setOpenPlayer())}}>
+          <PlayerButton
+            size={40}
+            image="/icon_close.svg"
+            onClick={() => {
+              dispatch(setOpenPlayer());
+            }}
+          >
             <BlindText text="닫기" />
           </PlayerButton>
         </div>
@@ -128,10 +139,11 @@ export default function Player({
                       value={searchText}
                       ref={searchRef}
                     />
-                    {searchText.length > 0 && 
-                    <button className="search__remove-btn" onClick={handleRemoveSearch}>
-                      <BlindText text="지우기" />
-                    </button>}
+                    {searchText.length > 0 && (
+                      <button className="search__remove-btn" onClick={handleRemoveSearch}>
+                        <BlindText text="지우기" />
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div className="tab-body__top-right">
@@ -140,7 +152,13 @@ export default function Player({
                 </div>
               </div>
               <div className="tab-body__list-area">
-                <PlayList isOpenPlayList={isOpenPlayList} clickPlayList={clickPlayList} copyPlayerList={copyPlayerList} handleSelectMusic={handleSelectMusic} />         
+                {copyPlayerList && (
+                  <PlayList
+                    isOpenPlayList={isOpenPlayList}
+                    clickPlayList={clickPlayList}
+                    copyPlayerList={copyPlayerList}
+                  />
+                )}
               </div>
             </div>
           )}
@@ -610,5 +628,7 @@ export default function Player({
         }
       `}</style>
     </div>
+  ) : (
+    <></>
   );
 }

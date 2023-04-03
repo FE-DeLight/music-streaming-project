@@ -7,17 +7,10 @@ import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
 
-interface PlayerBarProps {
-  currentPlayMusic: {
-    url: string;
-    album: { imgList: any };
-    name: string;
-    representationArtist: { name: any };
-  };
-}
 
-export default function Player({ currentPlayMusic }: PlayerBarProps): JSX.Element {
+export default function Player(): JSX.Element {
   const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
+  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
   const dispatch = useDispatch();
 
   const [hasWindow, setHasWindow] = useState(false);
@@ -113,7 +106,7 @@ export default function Player({ currentPlayMusic }: PlayerBarProps): JSX.Elemen
       {/* 플레이어 바 */}
       {hasWindow && (
         <ReactPlayer
-          url={currentPlayMusic?.url}
+          url={currentPlayMusic.url}
           playing={playing}
           loop={repeatPlay}
           muted={mute}
@@ -158,12 +151,12 @@ export default function Player({ currentPlayMusic }: PlayerBarProps): JSX.Elemen
           <button className="controller__openPlayListBtn" onClick={()=>{dispatch(setOpenPlayer())}} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album.imgList[0].url} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album?.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">{currentPlayMusic && currentPlayMusic.name}</div>
+              <div className="title">{currentPlayMusic && currentPlayMusic?.name}</div>
               <div className="singer">
-                {currentPlayMusic ? currentPlayMusic.representationArtist.name : '재생목록이 비어있습니다.'}
+                {currentPlayMusic.album ? currentPlayMusic.representationArtist?.name : '재생목록이 비어있습니다.'}
               </div>
             </div>
             {currentPlayMusic && (

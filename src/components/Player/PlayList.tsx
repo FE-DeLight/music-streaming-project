@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -106,6 +108,12 @@ const PlayList = styled.div<{}>`
   }
 `;
 export default function List(props: any): JSX.Element {
+  
+  const dispatch = useDispatch();
+
+  const setCurrentMusic = (index:number) => {
+    dispatch(setCurrentPlayMusic(props.copyPlayerList[index]))
+  }
 
   return (
     <PlayList {...props}>
@@ -139,7 +147,7 @@ export default function List(props: any): JSX.Element {
                   singer={music.representationArtist.name}
                   thumbSize={45}
                   thumbRadius={4}
-                  onClick={() => {props.handleSelectMusic(index)}}
+                  onClick={() => {setCurrentMusic(index)}}
                 />
               );
             })
