@@ -33,6 +33,10 @@ export default function Player(): JSX.Element {
 
   const musicRef = useRef<ReactPlayer>(null);
 
+  const handleOpenPlayer = () => {
+    dispatch(setOpenPlayer());
+  };
+
   const handleProgress = (state: any) => {
     let playedSeconds = state.playedSeconds;
     handlePlayedSeconds(playedSeconds);
@@ -148,7 +152,7 @@ export default function Player(): JSX.Element {
         </div>
 
         <div className="controller">
-          <button className="controller__openPlayListBtn" onClick={()=>{dispatch(setOpenPlayer())}} />
+          <button className="controller__openPlayListBtn" onClick={()=>{handleOpenPlayer()}} />
           <div className="bar__left-area">
             <Link href="/">
               <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album?.imgList[0].url} radius={4} />
@@ -221,7 +225,7 @@ export default function Player(): JSX.Element {
             <PlayerButton
               size={44}
               image={isOpenPlayer ? '/icon_player_active.svg' : '/icon_player.svg'}
-              onClick={()=>{dispatch(setOpenPlayer())}}
+              onClick={()=>{handleOpenPlayer()}}
             >
               <BlindText text={'재생목록'} />
             </PlayerButton>

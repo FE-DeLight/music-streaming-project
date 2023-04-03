@@ -37,6 +37,10 @@ export default function Player(): JSX.Element {
     setIsOpenPlayList(!isOpenPlayList);
   };
 
+  const handleOpenPlayer = () => {
+    dispatch(setOpenPlayer());
+  };
+
   const handleSearchMusic = (event: any) => {
     const searchValue = event.target.value;
     setSearchText(searchValue);
@@ -99,7 +103,7 @@ export default function Player(): JSX.Element {
             size={40}
             image="/icon_close.svg"
             onClick={() => {
-              dispatch(setOpenPlayer());
+              handleOpenPlayer();
             }}
           >
             <BlindText text="닫기" />
