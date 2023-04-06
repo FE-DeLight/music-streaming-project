@@ -155,12 +155,12 @@ export default function Player(): JSX.Element {
           <button className="controller__openPlayListBtn" onClick={()=>{handleOpenPlayer()}} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album?.imgList[0].url} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic.album?.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">{currentPlayMusic && currentPlayMusic?.name}</div>
+              <div className="title">{currentPlayMusic?.name}</div>
               <div className="singer">
-                {currentPlayMusic.album ? currentPlayMusic.representationArtist?.name : '재생목록이 비어있습니다.'}
+                {currentPlayMusic.representationArtist?.name || '재생목록이 비어있습니다.'}
               </div>
             </div>
             {currentPlayMusic && (
