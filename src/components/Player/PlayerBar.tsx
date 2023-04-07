@@ -1,22 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpenPlayer } from '@/store/oepnPlayerSlice'
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
 
-interface PlayerBarProps {
-  player: boolean;
-  openPlaylist: (e: any) => void;
-  currentPlayMusic: {
-    url: string;
-    album: { imgList: any };
-    name: string;
-    representationArtist: { name: any };
-  };
-}
 
-export default function Player({ player, openPlaylist, currentPlayMusic }: PlayerBarProps): JSX.Element {
+export default function Player(): JSX.Element {
+  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
+  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
+  const dispatch = useDispatch();
+
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -36,6 +32,10 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
   const [volume, setVolume] = useState(0.5);
 
   const musicRef = useRef<ReactPlayer>(null);
+
+  const handleOpenPlayer = () => {
+    dispatch(setOpenPlayer());
+  };
 
   const handleProgress = (state: any) => {
     let playedSeconds = state.playedSeconds;
@@ -110,7 +110,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
       {/* 플레이어 바 */}
       {hasWindow && (
         <ReactPlayer
-          url={currentPlayMusic?.url}
+          url={currentPlayMusic.url}
           playing={playing}
           loop={repeatPlay}
           muted={mute}
@@ -123,7 +123,7 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
           }}
           controls={true}
           ref={musicRef}
-          style={{ display: 'none' }}
+          style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}
         />
       )}
 
@@ -152,15 +152,15 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
         </div>
 
         <div className="controller">
-          <button className="controller__openPlayListBtn" onClick={openPlaylist} />
+          <button className="controller__openPlayListBtn" onClick={()=>{handleOpenPlayer()}} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album.imgList[0].url} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album?.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">{currentPlayMusic && currentPlayMusic.name}</div>
+              <div className="title">{currentPlayMusic && currentPlayMusic?.name}</div>
               <div className="singer">
-                {currentPlayMusic ? currentPlayMusic.representationArtist.name : '재생목록이 비어있습니다.'}
+                {currentPlayMusic.album ? currentPlayMusic.representationArtist?.name : '재생목록이 비어있습니다.'}
               </div>
             </div>
             {currentPlayMusic && (
@@ -224,8 +224,8 @@ export default function Player({ player, openPlaylist, currentPlayMusic }: Playe
             />
             <PlayerButton
               size={44}
-              image={player ? '/icon_player_active.svg' : '/icon_player.svg'}
-              onClick={openPlaylist}
+              image={isOpenPlayer ? '/icon_player_active.svg' : '/icon_player.svg'}
+              onClick={()=>{handleOpenPlayer()}}
             >
               <BlindText text={'재생목록'} />
             </PlayerButton>
