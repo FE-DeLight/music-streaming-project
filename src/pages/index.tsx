@@ -16,7 +16,9 @@ export default function Home(props: any): JSX.Element {
     <div>
       <PlayList title={playList.name} playList={playList} viewLine={2} />
       <PlayList title={popHotTrackPlayList.name} playList={popHotTrackPlayList} viewLine={2} />
-      <button onClick={login}>login test</button>
+      <button type="button" onClick={login}>
+        login test
+      </button>
     </div>
   );
 }
