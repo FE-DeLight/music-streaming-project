@@ -118,7 +118,7 @@ export default function List(props: any): JSX.Element {
     dispatch(setPlayingMusic(true));
     dispatch(setPlayedMusic(0));
   }
-
+  
   return (
     <PlayList {...props}>
       <div className={`play-list ${!props.isOpenPlayList && 'play-list--fold'}`}>
@@ -146,6 +146,7 @@ export default function List(props: any): JSX.Element {
               return (
                 <MusicListItem
                   key={index}
+                  id={music.id}
                   thumb={music.album.imgList[0].url}
                   title={music.name}
                   singer={music.representationArtist.name}
