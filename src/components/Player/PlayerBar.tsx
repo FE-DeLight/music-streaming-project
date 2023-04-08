@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenPlayer } from '@/store/oepnPlayerSlice'
+import { setPlayMusic } from '@/store/playMusicSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -9,9 +10,11 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 
 
 export default function Player(): JSX.Element {
+  const dispatch = useDispatch();
+
   const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
   const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
-  const dispatch = useDispatch();
+  const playing = useSelector((state: any) => state.setPlayMusic.value);
 
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
@@ -24,7 +27,6 @@ export default function Player(): JSX.Element {
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
   const [like, setLike] = useState(false);
-  const [playing, setPlaying] = useState(false);
   const [repeatPlay, setRepeatPlay] = useState(false);
   const [randomPlay, setRandomPlay] = useState(false);
   const [playedSecond, setPlayedSecond] = useState('00:00');
@@ -86,7 +88,7 @@ export default function Player(): JSX.Element {
   };
 
   const clickPlay = () => {
-    setPlaying(!playing);
+    dispatch(setPlayMusic(!playing));
   };
 
   const clickRepeatPlay = () => {

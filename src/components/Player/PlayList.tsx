@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
+import { setPlayMusic } from '@/store/playMusicSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -112,7 +113,8 @@ export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
 
   const setCurrentMusic = (index:number) => {
-    dispatch(setCurrentPlayMusic(props.copyPlayerList[index]))
+    dispatch(setCurrentPlayMusic(props.copyPlayerList[index]));
+    dispatch(setPlayMusic(true));
   }
 
   return (
