@@ -6,12 +6,19 @@ export default function Home(props: any): JSX.Element {
   const {
     data: { playList, popHotTrackPlayList },
   } = props;
-  console.log('@@', playList, popHotTrackPlayList);
+
   useEffect(() => {}, []);
+
+  const login = async () => {
+    await postData({ url: 'http://localhost:3000/api/login', method: 'POST', data: { id: 'test', password: '1234' } });
+  };
   return (
     <div>
       <PlayList title={playList.name} playList={playList} viewLine={2} />
       <PlayList title={popHotTrackPlayList.name} playList={popHotTrackPlayList} viewLine={2} />
+      <button type="button" onClick={login}>
+        login test
+      </button>
     </div>
   );
 }
