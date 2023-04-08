@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenPlayer } from '@/store/oepnPlayerSlice'
 import { setPlayingMusic } from '@/store/playingMusicSlice';
+import { setPlayedMusic } from '@/store/playedMusicSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -15,6 +16,7 @@ export default function Player(): JSX.Element {
   const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
   const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
   const playing = useSelector((state: any) => state.setPlayingMusic.value);
+  const played = useSelector((state: any) => state.setPlayedMusic.value);  
 
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
@@ -23,7 +25,6 @@ export default function Player(): JSX.Element {
     }
   }, []);
 
-  const [played, setPlayed] = useState(0);
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
   const [like, setLike] = useState(false);
@@ -43,7 +44,7 @@ export default function Player(): JSX.Element {
     let playedSeconds = state.playedSeconds;
     handlePlayedSeconds(playedSeconds);
     if (!seeking) {
-      setPlayed(state.played);
+      dispatch(setPlayedMusic(state.played));
     }
   };
 
@@ -71,7 +72,7 @@ export default function Player(): JSX.Element {
 
   const handleSeekChange = (e: any) => {
     console.log(e.target);
-    setPlayed(parseFloat(e.target.value));
+    dispatch(setPlayedMusic(parseFloat(e.target.value)));
   };
 
   const handleSeekMouseUp = (e: any) => {
@@ -83,7 +84,7 @@ export default function Player(): JSX.Element {
   };
 
   const clickPrev = () => {
-    setPlayed(0);
+    dispatch(setPlayedMusic(0));
     musicRef?.current?.seekTo(0);
   };
 

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
 import { setPlayingMusic } from '@/store/playingMusicSlice';
+import { setPlayedMusic } from '@/store/playedMusicSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -115,6 +116,7 @@ export default function List(props: any): JSX.Element {
   const setCurrentMusic = (index:number) => {
     dispatch(setCurrentPlayMusic(props.copyPlayerList[index]));
     dispatch(setPlayingMusic(true));
+    dispatch(setPlayedMusic(0));
   }
 
   return (
