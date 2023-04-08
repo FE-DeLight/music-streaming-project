@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenPlayer } from '@/store/oepnPlayerSlice'
-import { setPlayMusic } from '@/store/playMusicSlice';
+import { setPlayingMusic } from '@/store/playingMusicSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -14,7 +14,7 @@ export default function Player(): JSX.Element {
 
   const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
   const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
-  const playing = useSelector((state: any) => state.setPlayMusic.value);
+  const playing = useSelector((state: any) => state.setPlayingMusic.value);
 
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function Player(): JSX.Element {
   };
 
   const clickPlay = () => {
-    dispatch(setPlayMusic(!playing));
+    dispatch(setPlayingMusic(!playing));
   };
 
   const clickRepeatPlay = () => {
