@@ -12,6 +12,7 @@ export const GridWrap = styled.div`
     &-body-item {
       display: flex;
       align-items: center;
+      margin-top: 10px;
     }
   }
 `;
@@ -43,4 +44,9 @@ export const ThumnailImg = styled.figure`
   img {
     display: block;
   }
+`;
+
+const basicIconbuttonStyle = 'color: #333;';
+export const iconButton = styled.button`
+  ${basicIconbuttonStyle}
 `;

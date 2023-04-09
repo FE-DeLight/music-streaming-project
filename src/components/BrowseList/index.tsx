@@ -1,6 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaPlay } from 'react-icons/fa';
+import { MdFormatListBulletedAdd } from 'react-icons/md';
+import { FiFolderPlus } from 'react-icons/fi';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import * as style from './BrowseList.style';
 
 type BrowseListProps = {
@@ -55,24 +59,28 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                 <p>{item.representationArtist.name}</p>
               </div>
               <div className="browse-list-body-item">
-                <button type="button">
-                  <span>재생</span>
-                </button>
+                <style.iconButton type="button">
+                  <FaPlay />
+                  <span className="blind">재생</span>
+                </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <button type="button">
-                  <span>재생목록</span>
-                </button>
+                <style.iconButton type="button">
+                  <MdFormatListBulletedAdd />
+                  <span className="blind">재생목록</span>
+                </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <button type="button">
-                  <span>내 리스트</span>
-                </button>
+                <style.iconButton type="button">
+                  <FiFolderPlus />
+                  <span className="blind">내 리스트</span>
+                </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <button type="button">
-                  <span>더보기</span>
-                </button>
+                <style.iconButton type="button">
+                  <BsThreeDotsVertical />
+                  <span className="blind">더보기</span>
+                </style.iconButton>
               </div>
             </style.GridWrap>
           ))}
