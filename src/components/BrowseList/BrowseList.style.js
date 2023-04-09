@@ -47,6 +47,12 @@ export const ThumnailImg = styled.figure`
 `;
 
 const basicIconbuttonStyle = 'color: #333;';
-export const iconButton = styled.button`
+export const iconButton = styled.button.attrs({ type: 'button' })`
   ${basicIconbuttonStyle}
+  font-size: ${(props) => props.fontSize};
+`;
+
+export const iconLink = styled.a.attrs({ href: 'javascript:;' })`
+  ${basicIconbuttonStyle}
+  font-size: ${(props) => props.fontSize};
 `;
