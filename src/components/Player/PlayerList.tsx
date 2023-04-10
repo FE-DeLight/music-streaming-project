@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenPlayer } from '@/store/oepnPlayerSlice';
+import { useGetPlaylistDataQuery } from '@/store/playlistDataSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
@@ -9,7 +10,7 @@ import PlayList from '@/components/Player/PlayList';
 
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
-
+  
   const isOpenPlayer = useSelector((state: any) => state.setIsOpenPlayer.value);
   const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
 
@@ -24,10 +25,12 @@ export default function Player(): JSX.Element {
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
-  const getData = async () => {
-    const res = await (await fetch('http://localhost:3000/api/categoryList')).json();
-    setPlayListData(await res.data.playList.trackList);
-  };
+  
+  const { data, error, isLoading } = useGetPlaylistDataQuery('');
+  
+  useEffect(() => {
+    setPlayListData(data?.data.playList.trackList);
+  },[data])
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -58,10 +61,6 @@ export default function Player(): JSX.Element {
     setSearchText('');
     setCopyPlayerList(OriginalPlayerList);
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   useEffect(() => {
     setCopyPlayerList(playListData);

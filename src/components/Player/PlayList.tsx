@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
+import { setPlayingMusic } from '@/store/playingMusicSlice';
+import { setPlayedMusic } from '@/store/playedMusicSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -112,9 +114,11 @@ export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
 
   const setCurrentMusic = (index:number) => {
-    dispatch(setCurrentPlayMusic(props.copyPlayerList[index]))
+    dispatch(setCurrentPlayMusic(props.copyPlayerList[index]));
+    dispatch(setPlayingMusic(true));
+    dispatch(setPlayedMusic(0));
   }
-
+  
   return (
     <PlayList {...props}>
       <div className={`play-list ${!props.isOpenPlayList && 'play-list--fold'}`}>
@@ -142,6 +146,7 @@ export default function List(props: any): JSX.Element {
               return (
                 <MusicListItem
                   key={index}
+                  id={music.id}
                   thumb={music.album.imgList[0].url}
                   title={music.name}
                   singer={music.representationArtist.name}
