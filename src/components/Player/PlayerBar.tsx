@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPlayer } from '@/store/oepnPlayerSlice'
-import { setPlayingMusic } from '@/store/playingMusicSlice';
-import { setPlayedMusic } from '@/store/playedMusicSlice';
+import { useGetPlaylistDataQuery, setOpenPlayer, setPlayingMusic, setPlayedMusic, setCurrentPlayMusic } from '@/store/playerSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -13,18 +11,13 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
-  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
-  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
-  const playing = useSelector((state: any) => state.setPlayingMusic.value);
-  const played = useSelector((state: any) => state.setPlayedMusic.value);  
+  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.openPlayerSlice.value);
+  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.currentMusicSlice.value);
+  const playing = useSelector((state: any) => state.setPlayingMusic.isPlayingMusicSlice.value);
+  const played = useSelector((state: any) => state.setPlayedMusic.playedMusicSlice.value);
+  const { data, error, isLoading } = useGetPlaylistDataQuery('');  
 
-  const [hasWindow, setHasWindow] = useState(false);
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setHasWindow(true);
-    }
-  }, []);
-
+  const [playListData, setPlayListData]: any = useState();
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
   const [like, setLike] = useState(false);
@@ -32,9 +25,19 @@ export default function Player(): JSX.Element {
   const [randomPlay, setRandomPlay] = useState(false);
   const [playedSecond, setPlayedSecond] = useState('00:00');
   const [mute, setMute] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-
+  const [volume, setVolume] = useState(0.5);  
+  const [hasWindow, setHasWindow] = useState(false);
   const musicRef = useRef<ReactPlayer>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setHasWindow(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    setPlayListData(data?.data.playList.trackList);
+  },[data])
 
   const handleOpenPlayer = () => {
     dispatch(setOpenPlayer());
@@ -71,7 +74,6 @@ export default function Player(): JSX.Element {
   };
 
   const handleSeekChange = (e: any) => {
-    console.log(e.target);
     dispatch(setPlayedMusic(parseFloat(e.target.value)));
   };
 
@@ -107,13 +109,20 @@ export default function Player(): JSX.Element {
   const handleVolume = (event: any) => {
     setVolume(Number(event.target.value * 0.01));
   };
+  
+  // if (Math.round(played*100) === 100) {  
+  //   console.log('end');
+  //   const index = playListData?.indexOf(currentPlayMusic);
+  //   const nextIndex = index + 1
+  //   dispatch(setCurrentPlayMusic(playListData[nextIndex]));
+  // }
 
   return (
     <>
       {/* 플레이어 바 */}
       {hasWindow && (
         <ReactPlayer
-          url={currentPlayMusic.url}
+          url={currentPlayMusic?.url}
           playing={playing}
           loop={repeatPlay}
           muted={mute}
@@ -158,7 +167,7 @@ export default function Player(): JSX.Element {
           <button className="controller__openPlayListBtn" onClick={()=>{handleOpenPlayer()}} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic.album?.imgList[0].url} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic?.album?.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
               <div className="title">{currentPlayMusic?.name}</div>

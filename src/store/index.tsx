@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query'
-import openPlayerReducer from '@/store/oepnPlayerSlice';
-import currentMusicReducer from '@/store/currentMusicSlice';
-import playingMusicReducer from '@/store/playingMusicSlice';
-import playedMusicReducer from '@/store/playedMusicSlice';
-import { playlistApi } from '@/store/playlistDataSlice';
+import openPlayerReducer  from '@/store/playerSlice';
+import currentMusicReducer from '@/store/playerSlice';
+import playingMusicReducer from '@/store/playerSlice';
+import playedMusicReducer from '@/store/playerSlice';
+import playlistDataReducer from '@/store/playerSlice';
+import { playlistApi } from '@/store/playerSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     setCurrentMusic: currentMusicReducer,
     setPlayingMusic: playingMusicReducer,
     setPlayedMusic: playedMusicReducer,
+    setPlaylistData: playlistDataReducer,
     [playlistApi.reducerPath]: playlistApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

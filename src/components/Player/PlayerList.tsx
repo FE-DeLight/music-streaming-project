@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPlayer } from '@/store/oepnPlayerSlice';
-import { useGetPlaylistDataQuery } from '@/store/playlistDataSlice';
+import { setOpenPlayer, setPlaylistData, setCurrentPlayMusic, useGetPlaylistDataQuery } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
@@ -11,10 +10,11 @@ import PlayList from '@/components/Player/PlayList';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
   
-  const isOpenPlayer = useSelector((state: any) => state.setIsOpenPlayer.value);
-  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
+  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.openPlayerSlice.value);
+  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.currentMusicSlice.value);
+  const playlistData = useSelector((state: any) => state.setPlaylistData.playlistDataSlice.value);
+  const { data, error, isLoading } = useGetPlaylistDataQuery('');  
 
-  const [playListData, setPlayListData]: any = useState();
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
   const [OriginalPlayerList, setOriginalPlayerList]: any = useState();
@@ -25,12 +25,14 @@ export default function Player(): JSX.Element {
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
-  
-  const { data, error, isLoading } = useGetPlaylistDataQuery('');
-  
   useEffect(() => {
-    setPlayListData(data?.data.playList.trackList);
+    dispatch(setPlaylistData(data?.data.playList.trackList));    
   },[data])
+
+  useEffect(() => {
+    setCopyPlayerList(playlistData);
+    setOriginalPlayerList(playlistData);
+  }, [playlistData]);
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -62,16 +64,11 @@ export default function Player(): JSX.Element {
     setCopyPlayerList(OriginalPlayerList);
   };
 
-  useEffect(() => {
-    setCopyPlayerList(playListData);
-    setOriginalPlayerList(playListData);
-  }, [playListData]);
-
-  return playListData ? (
+  return playlistData && !isLoading && (
     <div className={`list ${isOpenPlayer && 'list--active'}`}>
       <div
         className="list__background"
-        style={{ backgroundImage: `url(${currentPlayMusic.album?.imgList[0].url})` || '' }}
+        style={{ backgroundImage: `url(${currentPlayMusic?.album?.imgList[0].url})` || '' }}
       />
       <div className="list__left-area">
         <div className="list__left-area-inner">
@@ -631,7 +628,5 @@ export default function Player(): JSX.Element {
         }
       `}</style>
     </div>
-  ) : (
-    <></>
-  );
+  ) 
 }

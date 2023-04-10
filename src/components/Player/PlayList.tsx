@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
-import { setPlayingMusic } from '@/store/playingMusicSlice';
-import { setPlayedMusic } from '@/store/playedMusicSlice';
+import { setCurrentPlayMusic, setPlayingMusic, setPlayedMusic } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
