@@ -5,6 +5,7 @@ import {
   setOpenPlayer,
   setPlayingMusic,
   setPlayedMusic,
+  setCurrentPlayMusic
 } from '@/store/playerSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
@@ -15,6 +16,7 @@ export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
   const isOpenPlayer = useSelector((state:any) => state.setPlayer.isOpenPlayerValue);
+  const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
   const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
   const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
   const played = useSelector((state: any) => state.setPlayer.playedMusicValue);
@@ -25,10 +27,12 @@ export default function Player(): JSX.Element {
   const [repeatPlay, setRepeatPlay] = useState(false);
   const [randomPlay, setRandomPlay] = useState(false);
   const [playedSecond, setPlayedSecond] = useState('00:00');
+  const [rawPlayedSecond, setRawPlayedSecond] = useState(0);
   const [mute, setMute] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [hasWindow, setHasWindow] = useState(false);
   const musicRef = useRef<ReactPlayer>(null);
+  const currentIndex = playlistData.indexOf(currentPlayMusic);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -36,46 +40,23 @@ export default function Player(): JSX.Element {
     }
   }, []);
 
-  useEffect(() => {
-    dispatch(setPlayedMusic(0));
-  }, [currentPlayMusic]);
-
-  // 음악 변경
-  // 데이터 타입
-  const changeSong = (type: 'next' | 'prev') => {
-    if (type === 'next') {
-      // index + 1
-      // dispatch(setCurrentPlayMusic(playListData[nextIndex]));
-    } else if (type === 'prev') {
-      // index - 1
-    }
-  };
-
-  // 곡 정보에 index 담기
-  // next면 +1, prev면 -1
-  // 첫번째 곡인지 마지막 곡인지 체크
-  // 랜덤 값 체크 -> 랜덤 배열
-
-  // store에 있던 데이터를 컴포넌트에서 재할당하지 않기
-  // 무조건 dispatch를 통해서만 수정
-
-  // setCurrentPlayMusic 실행되면서 리렌더링
-
-  // 컴포넌트 안에 함수 아닌 로직이 들어가 있으면 사이드 이펙트 생길 가능성 높음
-  // 함수로 감싸거나 useEffect 안에서 처리해야 함
-  // 동일한 목적을 가진 hook은 커스텀 hook을 사용하기 (공통함수처럼)
-
-  useEffect(() => {}, [playing]);
-
   const handleOpenPlayer = () => {
     dispatch(setOpenPlayer());
   };
 
-  // 파라미터 이름으로 state 쓰는 것 지양
+  // 음악 변경
+  const changeMusic = (type: 'next' | 'prev') => {
+    if (type === 'next') {
+      dispatch(setCurrentPlayMusic(playlistData[currentIndex + 1]));
+    } else if (type === 'prev') {
+      dispatch(setCurrentPlayMusic(playlistData[currentIndex - 1]));
+    }
+  };
+
+  // **파라미터 이름으로 state 쓰는 것 지양
   const handleProgress = (progressData: any) => {
-    console.log('progressData', progressData);
-    let playedSeconds = progressData.playedSeconds;
-    setPlayedSecond(calcDuration(playedSeconds))
+    setRawPlayedSecond(progressData.playedSeconds)
+    setPlayedSecond(calcDuration(progressData.playedSeconds))
     if (!seeking) {
       dispatch(setPlayedMusic(progressData.played));
     }
@@ -120,9 +101,17 @@ export default function Player(): JSX.Element {
   };
 
   const clickPrev = () => {
-    dispatch(setPlayedMusic(0));
-    musicRef?.current?.seekTo(0);
+    if (rawPlayedSecond <= 10) {
+      changeMusic('prev')
+    } else {
+      dispatch(setPlayedMusic(0));
+      musicRef?.current?.seekTo(0);
+    }    
   };
+
+  const clickNext = () => {
+    changeMusic('next')
+  }
 
   const clickPlay = () => {
     dispatch(setPlayingMusic(!playing));
@@ -145,15 +134,22 @@ export default function Player(): JSX.Element {
   };
 
   const handleEnded = () => {
-    console.log('end');    
+    changeMusic('next')
   }
+
+  // store에 있던 데이터를 컴포넌트에서 재할당하지 않기
+  // 무조건 dispatch를 통해서만 수정
+
+  // 컴포넌트 안에 함수 아닌 로직이 들어가 있으면 사이드 이펙트 생길 가능성 높음
+  // 함수로 감싸거나 useEffect 안에서 처리해야 함
+  // 동일한 목적을 가진 hook은 커스텀 hook을 사용하기 (공통함수처럼)
 
   return (
     <>
       {/* 플레이어 바 */}
       {hasWindow && (
         <ReactPlayer
-          url={currentPlayMusic?.url}
+          url={currentPlayMusic.url}
           playing={playing}
           loop={repeatPlay}
           muted={mute}
@@ -237,7 +233,7 @@ export default function Player(): JSX.Element {
             >
               <BlindText text={'재생'} />
             </PlayerButton>
-            <PlayerButton size={44} image={'/icon_next.svg'} hover={true}>
+            <PlayerButton size={44} image={'/icon_next.svg'} hover={true} onClick={clickNext}>
               <BlindText text={'다음곡'} />
             </PlayerButton>
             <PlayerButton

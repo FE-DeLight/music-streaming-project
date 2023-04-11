@@ -22,7 +22,14 @@ const initialState: state = {
 export const fetchPlaylist: any = createAsyncThunk('playerSlice/fetchPlaylist', async () => {
   const response = await fetch('http://localhost:3000/api/categoryList');
   const data = await response.json();
-  return data.data.playList.trackList;
+  let playlist = data.data.playList.trackList;
+  playlist = playlist.map((item: {}, index: number) => {
+    return {
+      ...item,
+      "index" : index
+    }    
+  })
+  return playlist;
 });
 
 const playerSlice = createSlice({
