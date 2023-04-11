@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPlayer, setPlaylistData, setCurrentPlayMusic, useGetPlaylistDataQuery } from '@/store/playerSlice';
+import { setOpenPlayer, fetchPlaylist } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
@@ -13,7 +13,6 @@ export default function Player(): JSX.Element {
   const isOpenPlayer = useSelector((state:any) => state.setPlayer.isOpenPlayerValue);
   const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
   const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
-  const { data, error, isLoading } = useGetPlaylistDataQuery('');  
 
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
@@ -26,8 +25,8 @@ export default function Player(): JSX.Element {
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
   useEffect(() => {
-    dispatch(setPlaylistData(data?.data.playList.trackList));    
-  },[data])
+    dispatch(fetchPlaylist())
+  },[])
 
   useEffect(() => {
     setCopyPlayerList(playlistData);
@@ -64,7 +63,7 @@ export default function Player(): JSX.Element {
     setCopyPlayerList(OriginalPlayerList);
   };
 
-  return playlistData && !isLoading && (
+  return playlistData && (
     <div className={`list ${isOpenPlayer && 'list--active'}`}>
       <div
         className="list__background"

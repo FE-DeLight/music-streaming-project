@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPlayMusic, setPlayingMusic, setPlayedMusic, useGetPlaylistDataQuery } from '@/store/playerSlice';
+import { setCurrentPlayMusic, setPlayingMusic, setPlayedMusic } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -111,21 +111,15 @@ const PlayList = styled.div<{}>`
 export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
   const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
-  const played = useSelector((state: any) => state.setPlayer.playedMusicValue);
   const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
-  const { data } = useGetPlaylistDataQuery('');
-  const [playListData, setPlayListData]: any = useState();
-
-  useEffect(() => {
-    setPlayListData(data?.data.playList.trackList);
-  },[data])
+  const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
 
   useEffect(() => {
     dispatch(setPlayedMusic(0));
   },[currentPlayMusic])
 
   const setCurrentMusic = (index:number) => {
-    const playlistIndex = playListData?.indexOf(currentPlayMusic);
+    const playlistIndex = playlistData?.indexOf(currentPlayMusic);
     if (index === playlistIndex && playing === true) {
       dispatch(setPlayingMusic(false));
     } else if (index === playlistIndex && playing === false) {

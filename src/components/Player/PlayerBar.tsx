@@ -2,11 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  useGetPlaylistDataQuery,
   setOpenPlayer,
   setPlayingMusic,
   setPlayedMusic,
-  setCurrentPlayMusic,
 } from '@/store/playerSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
@@ -20,9 +18,7 @@ export default function Player(): JSX.Element {
   const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
   const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
   const played = useSelector((state: any) => state.setPlayer.playedMusicValue);
-  const { data, error, isLoading } = useGetPlaylistDataQuery('');
 
-  const [playListData, setPlayListData]: any = useState();
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
   const [like, setLike] = useState(false);
@@ -39,10 +35,6 @@ export default function Player(): JSX.Element {
       setHasWindow(true);
     }
   }, []);
-
-  useEffect(() => {
-    setPlayListData(data?.data.playList.trackList);
-  }, [data]);
 
   useEffect(() => {
     dispatch(setPlayedMusic(0));
@@ -122,6 +114,7 @@ export default function Player(): JSX.Element {
     setSeeking(false);
     musicRef?.current?.seekTo(parseFloat(e.target.value));
   };
+
   const clickLike = () => {
     setLike(!like);
   };
@@ -151,6 +144,10 @@ export default function Player(): JSX.Element {
     setVolume(Number(event.target.value * 0.01));
   };
 
+  const handleEnded = () => {
+    console.log('end');    
+  }
+
   return (
     <>
       {/* 플레이어 바 */}
@@ -167,6 +164,7 @@ export default function Player(): JSX.Element {
           onDuration={(state) => {
             handleDuration(state);
           }}
+          onEnded={() => {handleEnded()}}
           controls={true}
           ref={musicRef}
           style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}
