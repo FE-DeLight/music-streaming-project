@@ -96,15 +96,18 @@ export default function Player(): JSX.Element {
   };
 
   const clickPrev = () => {
-    if (rawPlayedSecond <= 10) {
+    if (rawPlayedSecond <= 10 && currentIndex !== 0) {
       changeMusic('prev');
     } else {
       dispatch(setPlayedMusic(0));
       musicRef?.current?.seekTo(0);
     }
   };
-
+  
   const clickNext = () => {
+    if (currentIndex + 1 === playlistData.length) {
+      return false;
+    }
     changeMusic('next');
   };
 
