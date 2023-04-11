@@ -37,8 +37,8 @@ const MusicListItem = styled.li<{}>`
 export default function Item(props: any): JSX.Element {
   return (
     <MusicListItem {...props}>
-      <button className="music-btn">
-        <PlayerThumb size={props.thumbSize} image={props.thumb} radius={props.thumbRadius} />
+      <button className="music-btn" id={props.id}>
+        <PlayerThumb size={props.thumbSize} image={props.thumb} radius={props.thumbRadius} id={props.id} />
         <div className="info">
           <div className="title">{props.title}</div>
           <div className="singer">{props.singer}</div>
