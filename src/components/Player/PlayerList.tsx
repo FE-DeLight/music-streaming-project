@@ -78,14 +78,14 @@ export default function Player(): JSX.Element {
             <span className="list__left-singer">{currentPlayMusic.representationArtist?.name || '가수'}</span>
           </Link>
           <PlayerThumb size={360} image={currentPlayMusic.album?.imgList[4].url} radius={10} />
-          <div className="list__left-btn-area">
+          {/* <div className="list__left-btn-area">
             <PlayerButton size={40} image={'/icon_store.svg'}>
               <BlindText text={'담기'} />
             </PlayerButton>
             <PlayerButton size={40} image={'/icon_show_more.svg'}>
               <BlindText text={'더보기'} />
             </PlayerButton>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -146,8 +146,8 @@ export default function Player(): JSX.Element {
                   </div>
                 </div>
                 <div className="tab-body__top-right">
-                  <button className="list-btn">내 리스트 가져오기</button>
-                  <button className="spread-btn">그룹 접기</button>
+                  {/* <button className="list-btn">내 리스트 가져오기</button> */}
+                  {/* <button className="spread-btn">그룹 접기</button> */}
                 </div>
               </div>
               <div className="tab-body__list-area">

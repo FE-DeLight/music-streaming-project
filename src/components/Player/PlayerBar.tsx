@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  setOpenPlayer,
-  setPlayingMusic,
-  setPlayedMusic,
-  setCurrentPlayMusic
-} from '@/store/playerSlice';
+import { setOpenPlayer, setPlayingMusic, setPlayedMusic, setCurrentPlayMusic } from '@/store/playerSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -15,7 +10,7 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
-  const isOpenPlayer = useSelector((state:any) => state.setPlayer.isOpenPlayerValue);
+  const isOpenPlayer = useSelector((state: any) => state.setPlayer.isOpenPlayerValue);
   const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
   const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
   const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
@@ -55,8 +50,8 @@ export default function Player(): JSX.Element {
 
   // **파라미터 이름으로 state 쓰는 것 지양
   const handleProgress = (progressData: any) => {
-    setRawPlayedSecond(progressData.playedSeconds)
-    setPlayedSecond(calcDuration(progressData.playedSeconds))
+    setRawPlayedSecond(progressData.playedSeconds);
+    setPlayedSecond(calcDuration(progressData.playedSeconds));
     if (!seeking) {
       dispatch(setPlayedMusic(progressData.played));
     }
@@ -64,11 +59,11 @@ export default function Player(): JSX.Element {
 
   const pad = (string: number) => {
     return ('0' + string).slice(-2);
-  }
+  };
 
   const handleDuration = (duration: any) => {
     setDuration(calcDuration(duration));
-    setPlayedSecond(calcDuration(duration * played))
+    setPlayedSecond(calcDuration(duration * played));
   };
 
   const calcDuration = (duration: number) => {
@@ -77,11 +72,11 @@ export default function Player(): JSX.Element {
     const mm = date.getUTCMinutes();
     const ss = pad(date.getUTCSeconds());
     if (hh) {
-      return (`${hh}:${pad(mm)}:${ss}`)
+      return `${hh}:${pad(mm)}:${ss}`;
     } else {
-      return (`${pad(mm)}:${ss}`) 
+      return `${pad(mm)}:${ss}`;
     }
-  }
+  };
 
   const handleSeekMouseDown = () => {
     setSeeking(true);
@@ -102,16 +97,16 @@ export default function Player(): JSX.Element {
 
   const clickPrev = () => {
     if (rawPlayedSecond <= 10) {
-      changeMusic('prev')
+      changeMusic('prev');
     } else {
       dispatch(setPlayedMusic(0));
       musicRef?.current?.seekTo(0);
-    }    
+    }
   };
 
   const clickNext = () => {
-    changeMusic('next')
-  }
+    changeMusic('next');
+  };
 
   const clickPlay = () => {
     dispatch(setPlayingMusic(!playing));
@@ -134,8 +129,8 @@ export default function Player(): JSX.Element {
   };
 
   const handleEnded = () => {
-    changeMusic('next')
-  }
+    changeMusic('next');
+  };
 
   // store에 있던 데이터를 컴포넌트에서 재할당하지 않기
   // 무조건 dispatch를 통해서만 수정
@@ -160,7 +155,9 @@ export default function Player(): JSX.Element {
           onDuration={(state) => {
             handleDuration(state);
           }}
-          onEnded={() => {handleEnded()}}
+          onEnded={() => {
+            handleEnded();
+          }}
           controls={true}
           ref={musicRef}
           style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}
@@ -206,11 +203,9 @@ export default function Player(): JSX.Element {
               <div className="title">{currentPlayMusic?.name}</div>
               <div className="singer">{currentPlayMusic.representationArtist?.name || '재생목록이 비어있습니다.'}</div>
             </div>
-            {currentPlayMusic && (
-              <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
-                <BlindText text={'좋아요'} />
-              </PlayerButton>
-            )}
+            {/* <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
+              <BlindText text={'좋아요'} />
+            </PlayerButton> */}
           </div>
 
           <div className="bar__center-area">
