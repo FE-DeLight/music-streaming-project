@@ -45,6 +45,7 @@ const UserLink = styled.a`
 `;
 
 const ContentArea = styled.section`
+  width: 955px;
   padding: 0 80px 40px;
   margin: 0 auto;
 `;
@@ -57,10 +58,10 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           <Nav />
         </LeftArea>
         <RightArea>
-          <Link href={'/login'} legacyBehavior passHref>
+          <Link href="/login" legacyBehavior passHref>
             <UserLink>로그인</UserLink>
           </Link>
-          <Link href={'/signUp'} legacyBehavior passHref>
+          <Link href="/signUp" legacyBehavior passHref>
             <UserLink>회원가입</UserLink>
           </Link>
         </RightArea>
