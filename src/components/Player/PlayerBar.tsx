@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetPlaylistDataQuery, setOpenPlayer, setPlayingMusic, setPlayedMusic, setCurrentPlayMusic } from '@/store/playerSlice';
+import {
+  useGetPlaylistDataQuery,
+  setOpenPlayer,
+  setPlayingMusic,
+  setPlayedMusic,
+  setCurrentPlayMusic,
+} from '@/store/playerSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -10,11 +16,11 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
-  const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.openPlayerSlice.value);
-  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.currentMusicSlice.value);
-  const playing = useSelector((state: any) => state.setPlayingMusic.isPlayingMusicSlice.value);
-  const played = useSelector((state: any) => state.setPlayedMusic.playedMusicSlice.value);
-  const { data, error, isLoading } = useGetPlaylistDataQuery('');  
+  const isOpenPlayer = useSelector((state:any) => state.setPlayer.isOpenPlayerValue);
+  const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
+  const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
+  const played = useSelector((state: any) => state.setPlayer.playedMusicValue);
+  const { data, error, isLoading } = useGetPlaylistDataQuery('');
 
   const [playListData, setPlayListData]: any = useState();
   const [seeking, setSeeking] = useState(false);
@@ -24,7 +30,7 @@ export default function Player(): JSX.Element {
   const [randomPlay, setRandomPlay] = useState(false);
   const [playedSecond, setPlayedSecond] = useState('00:00');
   const [mute, setMute] = useState(false);
-  const [volume, setVolume] = useState(0.5);  
+  const [volume, setVolume] = useState(0.5);
   const [hasWindow, setHasWindow] = useState(false);
   const musicRef = useRef<ReactPlayer>(null);
 
@@ -36,30 +42,50 @@ export default function Player(): JSX.Element {
 
   useEffect(() => {
     setPlayListData(data?.data.playList.trackList);
-  },[data]);
-  
+  }, [data]);
+
   useEffect(() => {
     dispatch(setPlayedMusic(0));
-  },[currentPlayMusic]);
+  }, [currentPlayMusic]);
 
-  if (Math.round(played*100) === 100) {  
-    console.log('end');
-    const index = playListData?.indexOf(currentPlayMusic);
-    const nextIndex = index + 1;
-    console.log(nextIndex);
-    // dispatch(setCurrentPlayMusic(playListData[nextIndex]));
-  }
+  // 음악 변경
+  // 데이터 타입
+  const changeSong = (type: 'next' | 'prev') => {
+    if (type === 'next') {
+      // index + 1
+      // dispatch(setCurrentPlayMusic(playListData[nextIndex]));
+    } else if (type === 'prev') {
+      // index - 1
+    }
+  };
+
+  // 곡 정보에 index 담기
+  // next면 +1, prev면 -1
+  // 첫번째 곡인지 마지막 곡인지 체크
+  // 랜덤 값 체크 -> 랜덤 배열
+
+  // store에 있던 데이터를 컴포넌트에서 재할당하지 않기
+  // 무조건 dispatch를 통해서만 수정
+
+  // setCurrentPlayMusic 실행되면서 리렌더링
+
+  // 컴포넌트 안에 함수 아닌 로직이 들어가 있으면 사이드 이펙트 생길 가능성 높음
+  // 함수로 감싸거나 useEffect 안에서 처리해야 함
+  // 동일한 목적을 가진 hook은 커스텀 hook을 사용하기 (공통함수처럼)
+
+  useEffect(() => {}, [playing]);
 
   const handleOpenPlayer = () => {
     dispatch(setOpenPlayer());
   };
 
-  const handleProgress = (state: any) => {
-    console.log('state',state);    
-    let playedSeconds = state.playedSeconds;
+  // 파라미터 이름으로 state 쓰는 것 지양
+  const handleProgress = (progressData: any) => {
+    console.log('progressData', progressData);
+    let playedSeconds = progressData.playedSeconds;
     handlePlayedSeconds(playedSeconds);
     if (!seeking) {
-      dispatch(setPlayedMusic(state.played));
+      dispatch(setPlayedMusic(progressData.played));
     }
   };
 
@@ -75,10 +101,23 @@ export default function Player(): JSX.Element {
     }
   };
 
-  const handleDuration = (state: any) => {
-    let minutes = Math.floor(state / 60);
-    let seconds = Math.floor(state % 60);
-    setDuration(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
+  const pad = (string: number) => {
+    return ('0' + string).slice(-2);
+  }
+
+  const handleDuration = (duration: any) => {
+    const date = new Date(duration * 1000);
+    const hh = date.getUTCHours();
+    const mm = date.getUTCMinutes();
+    const ss = pad(date.getUTCSeconds());
+    if (hh) {
+      setDuration(`${hh}:${pad(mm)}:${ss}}`)
+    } else {
+      setDuration(`${mm}:${ss}`) 
+    }
+    // let minutes = Math.floor(duration / 60);
+    // let seconds = Math.floor(duration % 60);
+    // setDuration(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
   };
 
   const handleSeekMouseDown = () => {
@@ -169,16 +208,19 @@ export default function Player(): JSX.Element {
         </div>
 
         <div className="controller">
-          <button className="controller__openPlayListBtn" onClick={()=>{handleOpenPlayer()}} />
+          <button
+            className="controller__openPlayListBtn"
+            onClick={() => {
+              handleOpenPlayer();
+            }}
+          />
           <div className="bar__left-area">
             <Link href="/">
               <PlayerThumb size={44} image={currentPlayMusic?.album?.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
               <div className="title">{currentPlayMusic?.name}</div>
-              <div className="singer">
-                {currentPlayMusic.representationArtist?.name || '재생목록이 비어있습니다.'}
-              </div>
+              <div className="singer">{currentPlayMusic.representationArtist?.name || '재생목록이 비어있습니다.'}</div>
             </div>
             {currentPlayMusic && (
               <PlayerButton size={44} image={like ? '/icon_like_on.svg' : '/icon_like_off.svg'} onClick={clickLike}>
@@ -242,7 +284,9 @@ export default function Player(): JSX.Element {
             <PlayerButton
               size={44}
               image={isOpenPlayer ? '/icon_player_active.svg' : '/icon_player.svg'}
-              onClick={()=>{handleOpenPlayer()}}
+              onClick={() => {
+                handleOpenPlayer();
+              }}
             >
               <BlindText text={'재생목록'} />
             </PlayerButton>

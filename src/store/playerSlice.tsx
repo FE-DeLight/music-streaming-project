@@ -1,22 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { combineReducers } from '@reduxjs/toolkit';
 
 export interface state {
-  isOpenPlayerValue: { value: boolean };
-  playlistDataValue: { value: [] };
-  currentMusicValue: { value: {} };
-  isPlayingMusicValue: { value: boolean };
-  playedMusicValue: { value: number };
+  isOpenPlayerValue: boolean;
+  playlistDataValue: [];
+  currentMusicValue: {};
+  isPlayingValue: boolean;
+  playedMusicValue: number;
 }
 
 const initialState: state = {
-  isOpenPlayerValue: { value: false },
-  playlistDataValue: { value: [] },
-  currentMusicValue: { value: {} },
-  isPlayingMusicValue: { value: false },
-  playedMusicValue: { value: 0 },
+  isOpenPlayerValue: false,
+  playlistDataValue: [],
+  currentMusicValue: {},
+  isPlayingValue: false,
+  playedMusicValue: 0,
 };
 
 // 플레이리스트 데이터 받아오기
@@ -30,72 +29,36 @@ export const playlistApi = createApi({
   }),
 });
 
-// 플레이어 리스트 open 상태 여부
-export const openPlayerSlice = createSlice({
-  name: 'openPlayer',
-  initialState: initialState.isOpenPlayerValue,
+const playerSlice = createSlice({
+  name: 'playerSlice',
+  initialState,
   reducers: {
+    // 플레이어 리스트 open 상태 여부
     setOpenPlayer: (state): any => {
-      state.value = !state.value;
+      console.log(state.isOpenPlayerValue);
+      state.isOpenPlayerValue = !state.isOpenPlayerValue;
     },
-  },
-});
-
-// 플레이리스트 세팅
-export const playlistDataSlice = createSlice({
-  name: 'playlist',
-  initialState: initialState.playlistDataValue,
-  reducers: {
+    // 플레이리스트 세팅
     setPlaylistData: (state, action: PayloadAction<[]>) => {
-      state.value = action.payload;
+      state.playlistDataValue = action.payload;
     },
-  },
-});
-
-// 재생중 음악 세팅
-export const currentMusicSlice = createSlice({
-  name: 'selectMusic',
-  initialState: initialState.currentMusicValue,
-  reducers: {
+    // 재생중 음악 세팅
     setCurrentPlayMusic: (state, action: PayloadAction<{}>) => {
-      state.value = action.payload;
+      state.currentMusicValue = action.payload;
     },
-  },
-});
-
-// 음악 재생중 여부
-export const isPlayingMusicSlice = createSlice({
-  name: 'playingMusic',
-  initialState: initialState.isPlayingMusicValue,
-  reducers: {
+    // 음악 재생중 여부
     setPlayingMusic: (state, action: PayloadAction<boolean>) => {
-      state.value = action.payload;
+      state.isPlayingValue = action.payload;
     },
-  },
-});
-
-// 음악 진행률
-export const playedMusicSlice = createSlice({
-  name: 'playedMusic',
-  initialState: initialState.playedMusicValue,
-  reducers: {
+    // 음악 진행률
     setPlayedMusic: (state, action: PayloadAction<number>) => {
-      state.value = action.payload;
+      state.playedMusicValue = action.payload;
     },
   },
 });
 
-export const { setOpenPlayer } = openPlayerSlice.actions;
-export const { setPlaylistData } = playlistDataSlice.actions;
-export const { setCurrentPlayMusic } = currentMusicSlice.actions;
-export const { setPlayingMusic } = isPlayingMusicSlice.actions;
-export const { setPlayedMusic } = playedMusicSlice.actions;
+export const { setOpenPlayer, setPlaylistData, setCurrentPlayMusic, setPlayingMusic, setPlayedMusic } =
+  playerSlice.actions;
 export const { useGetPlaylistDataQuery } = playlistApi;
 
-export default combineReducers({
-  openPlayerSlice: openPlayerSlice.reducer,
-  playlistDataSlice: playlistDataSlice.reducer,
-  currentMusicSlice: currentMusicSlice.reducer,
-  isPlayingMusicSlice: isPlayingMusicSlice.reducer,
-  playedMusicSlice: playedMusicSlice.reducer,
-});
+export default playerSlice.reducer;

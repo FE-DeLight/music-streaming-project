@@ -110,9 +110,9 @@ const PlayList = styled.div<{}>`
 `;
 export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
-  const playing = useSelector((state: any) => state.setPlayingMusic.isPlayingMusicSlice.value);  
-  const played = useSelector((state: any) => state.setPlayedMusic.playedMusicSlice.value);
-  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.currentMusicSlice.value);
+  const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
+  const played = useSelector((state: any) => state.setPlayer.playedMusicValue);
+  const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
   const { data } = useGetPlaylistDataQuery('');
   const [playListData, setPlayListData]: any = useState();
 
