@@ -83,21 +83,9 @@ export default function Player(): JSX.Element {
   const handleProgress = (progressData: any) => {
     console.log('progressData', progressData);
     let playedSeconds = progressData.playedSeconds;
-    handlePlayedSeconds(playedSeconds);
+    setPlayedSecond(calcDuration(playedSeconds))
     if (!seeking) {
       dispatch(setPlayedMusic(progressData.played));
-    }
-  };
-
-  const handlePlayedSeconds = (playedSeconds: number) => {
-    playedSeconds = Math.floor(playedSeconds);
-    if (playedSeconds < 60) {
-      setPlayedSecond(`00:${String(playedSeconds).padStart(2, '0')}`);
-    } else {
-      let minutes = Math.floor(playedSeconds / 60);
-      let seconds = Math.floor(playedSeconds % 60);
-
-      setPlayedSecond(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
     }
   };
 
@@ -106,19 +94,21 @@ export default function Player(): JSX.Element {
   }
 
   const handleDuration = (duration: any) => {
+    setDuration(calcDuration(duration));
+    setPlayedSecond(calcDuration(duration * played))
+  };
+
+  const calcDuration = (duration: number) => {
     const date = new Date(duration * 1000);
     const hh = date.getUTCHours();
     const mm = date.getUTCMinutes();
     const ss = pad(date.getUTCSeconds());
     if (hh) {
-      setDuration(`${hh}:${pad(mm)}:${ss}}`)
+      return (`${hh}:${pad(mm)}:${ss}`)
     } else {
-      setDuration(`${mm}:${ss}`) 
+      return (`${pad(mm)}:${ss}`) 
     }
-    // let minutes = Math.floor(duration / 60);
-    // let seconds = Math.floor(duration % 60);
-    // setDuration(`${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
-  };
+  }
 
   const handleSeekMouseDown = () => {
     setSeeking(true);
