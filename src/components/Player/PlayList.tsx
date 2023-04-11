@@ -131,6 +131,11 @@ export default function List(props: any): JSX.Element {
       dispatch(setPlayingMusic(true));
     }
   }
+
+  const handleListPlay = () => {
+    dispatch(setCurrentPlayMusic(playlistData[0]));
+    dispatch(setPlayingMusic(true));
+  }
   
   return (
     <PlayList {...props}>
@@ -140,7 +145,7 @@ export default function List(props: any): JSX.Element {
             <div className="list-title">플레이리스트 이름</div>
           </div>
           <div className="top-right">
-            <PlayerButton size={30} image={'/icon_play_list.svg'}>
+            <PlayerButton size={30} image={'/icon_play_list.svg'} onClick={handleListPlay}>
               <BlindText text={'재생'} />
             </PlayerButton>
             <PlayerButton
