@@ -7,7 +7,6 @@ import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
 
-
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
@@ -37,13 +36,26 @@ export default function Player(): JSX.Element {
 
   useEffect(() => {
     setPlayListData(data?.data.playList.trackList);
-  },[data])
+  },[data]);
+  
+  useEffect(() => {
+    dispatch(setPlayedMusic(0));
+  },[currentPlayMusic]);
+
+  if (Math.round(played*100) === 100) {  
+    console.log('end');
+    const index = playListData?.indexOf(currentPlayMusic);
+    const nextIndex = index + 1;
+    console.log(nextIndex);
+    // dispatch(setCurrentPlayMusic(playListData[nextIndex]));
+  }
 
   const handleOpenPlayer = () => {
     dispatch(setOpenPlayer());
   };
 
   const handleProgress = (state: any) => {
+    console.log('state',state);    
     let playedSeconds = state.playedSeconds;
     handlePlayedSeconds(playedSeconds);
     if (!seeking) {
@@ -109,13 +121,6 @@ export default function Player(): JSX.Element {
   const handleVolume = (event: any) => {
     setVolume(Number(event.target.value * 0.01));
   };
-  
-  // if (Math.round(played*100) === 100) {  
-  //   console.log('end');
-  //   const index = playListData?.indexOf(currentPlayMusic);
-  //   const nextIndex = index + 1
-  //   dispatch(setCurrentPlayMusic(playListData[nextIndex]));
-  // }
 
   return (
     <>
