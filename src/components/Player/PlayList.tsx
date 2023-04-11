@@ -127,7 +127,7 @@ export default function List(props: any): JSX.Element {
     } else {
       dispatch(setPlayingMusic(false));
       dispatch(setPlayedMusic(0));
-      dispatch(setCurrentPlayMusic(props.copyPlayerList[index]));
+      dispatch(setCurrentPlayMusic(playlistData[index]));
       dispatch(setPlayingMusic(true));
     }
   }
