@@ -35,7 +35,6 @@ const playerSlice = createSlice({
   reducers: {
     // 플레이어 리스트 open 상태 여부
     setOpenPlayer: (state): any => {
-      console.log(state.isOpenPlayerValue);
       state.isOpenPlayerValue = !state.isOpenPlayerValue;
     },
     // 플레이리스트 세팅
