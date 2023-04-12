@@ -9,6 +9,7 @@ export default function Browse() {
   });
 
   const getData = async () => {
+    // try, catch를 통해 에러 핸들링 해줘야 함.
     const res = await fetch('http://localhost:3000/api/categoryList', {
       headers: {
         Accept: 'application/json',

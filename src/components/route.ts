@@ -1,10 +1,10 @@
 export const routes = [
   {
-    link: '/',
+    link: '/browse',
     title: '둘러보기',
   },
   {
-    link: '/browse',
+    link: '/mylist',
     title: '보관함',
   },
 ];
