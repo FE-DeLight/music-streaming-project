@@ -60,9 +60,7 @@ const playerSlice = createSlice({
   extraReducers: (builder) => {
     // pending(진행중), fulfilled(완료), rejected(실패)
     builder.addCase(fetchPlaylist.fulfilled, (state, action: PayloadAction<[]>) => {
-      state.playlistDataValue = action.payload;
-      console.log('state',state.playlistDataValue);
-      
+      state.playlistDataValue = action.payload;      
     })
   }
 });
