@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPlayMusic, setPlayingMusic, setPlayedMusic, resetCurrentPlayMusic } from '@/store/playerSlice';
+import { setCurrentPlayMusic, setPlayingMusic, setPlayedProgress, resetCurrentPlayMusic } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -116,7 +116,7 @@ export default function List(props: any): JSX.Element {
   const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);  
 
   useEffect(() => {
-    dispatch(setPlayedMusic(0));
+    dispatch(setPlayedProgress(0));
   },[currentPlayMusic])
 
   const setCurrentMusic = (index:number) => {
@@ -128,7 +128,7 @@ export default function List(props: any): JSX.Element {
     } else {
       dispatch(setPlayingMusic(false));
       dispatch(resetCurrentPlayMusic());
-      dispatch(setPlayedMusic(0));
+      dispatch(setPlayedProgress(0));
       dispatch(setCurrentPlayMusic(playlistData[index]));
       dispatch(setPlayingMusic(true));
     }

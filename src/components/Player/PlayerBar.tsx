@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPlayer, setPlayingMusic, setPlayedMusic, setCurrentPlayMusic } from '@/store/playerSlice';
+import { setOpenPlayer, setPlayingMusic, setPlayedProgress, setCurrentPlayMusic } from '@/store/playerSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -14,7 +14,7 @@ export default function Player(): JSX.Element {
   const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
   const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
-  const played = useSelector((state: any) => state.playerStore.playedMusicValue);
+  const playedProgress = useSelector((state: any) => state.playerStore.playedProgressValue);
 
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
@@ -54,7 +54,7 @@ export default function Player(): JSX.Element {
     setRawPlayedSecond(progressData.playedSeconds);
     setPlayedSecond(calcDuration(progressData.playedSeconds));
     if (!seeking) {
-      dispatch(setPlayedMusic(progressData.played));
+      dispatch(setPlayedProgress(progressData.played));
     }
   };
 
@@ -64,7 +64,7 @@ export default function Player(): JSX.Element {
 
   const handleDuration = (duration: any) => {
     setDuration(calcDuration(duration));
-    setPlayedSecond(calcDuration(duration * played));
+    setPlayedSecond(calcDuration(duration * playedProgress));
   };
 
   const calcDuration = (duration: number) => {
@@ -84,7 +84,7 @@ export default function Player(): JSX.Element {
   };
 
   const handleSeekChange = (e: any) => {
-    dispatch(setPlayedMusic(parseFloat(e.target.value)));
+    dispatch(setPlayedProgress(parseFloat(e.target.value)));
   };
 
   const handleSeekMouseUp = (e: any) => {
@@ -100,7 +100,7 @@ export default function Player(): JSX.Element {
     if (rawPlayedSecond <= 10 && currentIndex !== 0) {
       changeMusic('prev');
     } else {
-      dispatch(setPlayedMusic(0));
+      dispatch(setPlayedProgress(0));
       musicRef?.current?.seekTo(0);
     }
   };
@@ -173,13 +173,13 @@ export default function Player(): JSX.Element {
           <input
             className="progress-bar"
             style={{
-              background: `linear-gradient(to right, #576aff ${played * 100}%, #666 ${played * 100}%)`,
+              background: `linear-gradient(to right, #576aff ${playedProgress * 100}%, #666 ${playedProgress * 100}%)`,
             }}
             type="range"
             min={0}
             max={0.999999}
             step="any"
-            value={played}
+            value={playedProgress}
             onMouseDown={() => {
               handleSeekMouseDown();
             }}
