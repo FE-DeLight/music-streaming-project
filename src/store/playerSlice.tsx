@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export interface state {
   isOpenPlayerValue: boolean;
   playlistDataValue: [];
   currentMusicValue: {};
   isPlayingValue: boolean;
-  playedMusicValue: number;
+  playedProgressValue: number;
+  readyPlayerValue: boolean;
 }
 
 const initialState: state = {
@@ -15,7 +15,8 @@ const initialState: state = {
   playlistDataValue: [],
   currentMusicValue: {},
   isPlayingValue: false,
-  playedMusicValue: 0,
+  playedProgressValue: 0,
+  readyPlayerValue: false,
 };
 
 // 플레이리스트 데이터 받아오기
@@ -26,9 +27,9 @@ export const fetchPlaylist: any = createAsyncThunk('playerSlice/fetchPlaylist', 
   playlist = playlist.map((item: {}, index: number) => {
     return {
       ...item,
-      "index" : index
-    }    
-  })
+      index: index,
+    };
+  });
   return playlist;
 });
 
@@ -40,6 +41,10 @@ const playerSlice = createSlice({
     setOpenPlayer: (state): any => {
       state.isOpenPlayerValue = !state.isOpenPlayerValue;
     },
+    // 플레이어 로드 여부
+    setReadyPlayer: (state, action: PayloadAction<boolean>) => {
+      state.readyPlayerValue = action.payload;
+    },
     // 플레이리스트 세팅
     setPlaylistData: (state, action: PayloadAction<[]>) => {
       state.playlistDataValue = action.payload;
@@ -48,24 +53,53 @@ const playerSlice = createSlice({
     setCurrentPlayMusic: (state, action: PayloadAction<{}>) => {
       state.currentMusicValue = action.payload;
     },
+    // 재생중 음악 초기화
+    resetCurrentPlayMusic: (state) => {
+      state.currentMusicValue = {
+        adultAuthYn: null,
+        agencyId: null,
+        album: null,
+        artistList: null,
+        displayYn: null,
+        fileUpdateDateTime: null,
+        freeYn: null,
+        id: null,
+        index: null,
+        name: null,
+        rank: null,
+        representationArtist: null,
+        svcDrmYn: null,
+        svcStreamingYn: null,
+        unReleasedYn: null,
+        updateDateTime: null,
+        url: null,
+      };
+    },
     // 음악 재생중 여부
     setPlayingMusic: (state, action: PayloadAction<boolean>) => {
       state.isPlayingValue = action.payload;
     },
     // 음악 진행률
-    setPlayedMusic: (state, action: PayloadAction<number>) => {
-      state.playedMusicValue = action.payload;
+    setPlayedProgress: (state, action: PayloadAction<number>) => {
+      state.playedProgressValue = action.payload;
     },
   },
   extraReducers: (builder) => {
     // pending(진행중), fulfilled(완료), rejected(실패)
     builder.addCase(fetchPlaylist.fulfilled, (state, action: PayloadAction<[]>) => {
-      state.playlistDataValue = action.payload;      
-    })
-  }
+      state.playlistDataValue = action.payload;
+    });
+  },
 });
 
-export const { setOpenPlayer, setPlaylistData, setCurrentPlayMusic, setPlayingMusic, setPlayedMusic } =
-  playerSlice.actions;
+export const {
+  setOpenPlayer,
+  setReadyPlayer,
+  setPlaylistData,
+  setCurrentPlayMusic,
+  resetCurrentPlayMusic,
+  setPlayingMusic,
+  setPlayedProgress,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;
