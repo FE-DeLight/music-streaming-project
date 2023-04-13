@@ -10,11 +10,11 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
-  const isOpenPlayer = useSelector((state: any) => state.setPlayer.isOpenPlayerValue);
-  const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
-  const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
-  const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
-  const played = useSelector((state: any) => state.setPlayer.playedMusicValue);
+  const isOpenPlayer = useSelector((state: any) => state.playerStore.isOpenPlayerValue);
+  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
+  const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
+  const played = useSelector((state: any) => state.playerStore.playedMusicValue);
 
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
@@ -26,6 +26,7 @@ export default function Player(): JSX.Element {
   const [mute, setMute] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [hasWindow, setHasWindow] = useState(false);
+  const [ready, setReady] = useState(false);
   const musicRef = useRef<ReactPlayer>(null);
   const currentIndex = playlistData.indexOf(currentPlayMusic);
 

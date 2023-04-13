@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentPlayMusic, setPlayingMusic, setPlayedMusic } from '@/store/playerSlice';
+import { setCurrentPlayMusic, setPlayingMusic, setPlayedMusic, resetCurrentPlayMusic } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -110,9 +110,10 @@ const PlayList = styled.div<{}>`
 `;
 export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
-  const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
-  const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
-  const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
+  const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
+  const played = useSelector((state: any) => state.playerStore.playedMusicValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
+  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);  
 
   useEffect(() => {
     dispatch(setPlayedMusic(0));
@@ -126,6 +127,7 @@ export default function List(props: any): JSX.Element {
       dispatch(setPlayingMusic(true));
     } else {
       dispatch(setPlayingMusic(false));
+      dispatch(resetCurrentPlayMusic());
       dispatch(setPlayedMusic(0));
       dispatch(setCurrentPlayMusic(playlistData[index]));
       dispatch(setPlayingMusic(true));
@@ -133,6 +135,8 @@ export default function List(props: any): JSX.Element {
   }
 
   const handleListPlay = () => {
+    // 플레이리스트 변경하는 로직
+    // setCurrentMusic(0);
     dispatch(setCurrentPlayMusic(playlistData[0]));
     dispatch(setPlayingMusic(true));
   }

@@ -10,9 +10,9 @@ import PlayList from '@/components/Player/PlayList';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
   
-  const isOpenPlayer = useSelector((state:any) => state.setPlayer.isOpenPlayerValue);
-  const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
-  const playlistData = useSelector((state: any) => state.setPlayer.playlistDataValue);
+  const isOpenPlayer = useSelector((state:any) => state.playerStore.isOpenPlayerValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
+  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
 
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);

@@ -4,7 +4,7 @@ import playerReducer from '@/store/playerSlice';
 
 const store = configureStore({
   reducer: {
-    setPlayer: playerReducer,
+    playerStore: playerReducer,
   },
 });
 setupListeners(store.dispatch)

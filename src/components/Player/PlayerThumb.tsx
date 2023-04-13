@@ -34,8 +34,8 @@ const PlayerThumb = styled.div<{ size: number; image?: string; radius: string }>
   }
 `;
 export default function Thumb(props: any): JSX.Element {
-  const playing = useSelector((state: any) => state.setPlayer.isPlayingValue);
-  const currentPlayMusic = useSelector((state: any) => state.setPlayer.currentMusicValue);
+  const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
 
   const { image, size } = props;
   return (
