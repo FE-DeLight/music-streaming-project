@@ -119,11 +119,11 @@ export default function List(props: any): JSX.Element {
     dispatch(setPlayedProgress(0));
   },[currentPlayMusic])
 
-  const setCurrentMusic = (index:number) => {
-    const playlistIndex = playlistData?.indexOf(currentPlayMusic);
-    if (index === playlistIndex && playing === true) {
+  const handleCurrentMusic = (index:number) => {
+    const currentMusicIndex = playlistData.findIndex((item:any) => item.index === currentPlayMusic.index);
+    if (index === currentMusicIndex && playing === true) {
       dispatch(setPlayingMusic(false));
-    } else if (index === playlistIndex && playing === false) {
+    } else if (index === currentMusicIndex && playing === false) {
       dispatch(setPlayingMusic(true));
     } else {
       dispatch(setPlayingMusic(false));
@@ -136,7 +136,7 @@ export default function List(props: any): JSX.Element {
 
   const handleListPlay = () => {
     // 플레이리스트 변경하는 로직
-    // setCurrentMusic(0);
+    // handleCurrentMusic(0);
     dispatch(setCurrentPlayMusic(playlistData[0]));
     dispatch(setPlayingMusic(true));
   }
@@ -174,7 +174,7 @@ export default function List(props: any): JSX.Element {
                   singer={music.representationArtist.name}
                   thumbSize={45}
                   thumbRadius={4}
-                  onClick={() => {setCurrentMusic(index)}}
+                  onClick={() => {handleCurrentMusic(index)}}
                 />
               );
             })
