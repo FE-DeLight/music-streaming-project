@@ -6,31 +6,31 @@ export default function Browse() {
   const [BrowseListData, setBrowseListData]: any = useState({
     trackListHeader: [
       {
-        header: 'rank',
+        key: 'rank',
         label: '순위',
       },
       {
-        header: 'album',
+        key: 'album',
         label: '곡/앨범',
       },
       {
-        header: 'artist',
+        key: 'artist',
         label: '아티스트',
       },
       {
-        header: 'listen',
+        key: 'listen',
         label: '듣기',
       },
       {
-        header: 'playList',
+        key: 'playList',
         label: '재생목록',
       },
       {
-        header: 'myList',
+        key: 'myList',
         label: '내 리스트',
       },
       {
-        header: 'more',
+        key: 'more',
         label: '더보기',
       },
     ],
