@@ -47,8 +47,8 @@ export default function Browse() {
 
     const json = await res.json();
     const jsonTrackList = json.data.playList.trackList;
-    jsonTrackList.forEach((el, index) => {
-      const newArray = {
+    jsonTrackList.forEach((el: Object, index: number) => {
+      BrowseListData.trackList.push({
         rank: index + 1,
         album: {
           art: el.album.imgList[4].url,
@@ -59,25 +59,9 @@ export default function Browse() {
         playList: '',
         myList: '',
         more: '',
-      };
-      BrowseListData.trackList.push(newArray);
+      });
     });
 
-    // for (let i = 0; i < jsonTrackList.length; i++) {
-    //   const newArray = {
-    //     rank: i + 1,
-    //     album: {
-    //       art: jsonTrackList[i].album.imgList[4].url,
-    //       title: jsonTrackList[i].album.title,
-    //     },
-    //     artist: jsonTrackList[i].artistList[0].name,
-    //     listen: '',
-    //     playList: '',
-    //     myList: '',
-    //     more: '',
-    //   };
-    //   BrowseListData.trackList.push(newArray);
-    // }
     console.log(BrowseListData);
 
     // api로부터 받아온 데이터에서 trackList만 추출해서 trackList에 저장.
