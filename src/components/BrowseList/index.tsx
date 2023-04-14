@@ -39,7 +39,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                   <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
-              <div className="browse-list-body-item num">{index}</div>
+              <div className="browse-list-body-item num">{item.rank}</div>
               <div className="browse-list-body-item">
                 <style.ThumnailBox>
                   <style.ThumnailImg>
