@@ -39,7 +39,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                   <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
-              <div className="browse-list-body-item">{index}</div>
+              <div className="browse-list-body-item num">{index}</div>
               <div className="browse-list-body-item">
                 <style.ThumnailBox>
                   <style.ThumnailImg>
@@ -48,35 +48,35 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                     </Link>
                   </style.ThumnailImg>
                   <div className="album-desc">
-                    <p>{item.album.title}</p>
-                    <p>
+                    <p className="tit">{item.album.title}</p>
+                    <p className="desc">
                       {item.representationArtist.name} &lsquo;{item.album.title}&rsquo;
                     </p>
                   </div>
                 </style.ThumnailBox>
               </div>
-              <div className="browse-list-body-item">
+              <div className="browse-list-body-item artist-name">
                 <p>{item.representationArtist.name}</p>
               </div>
-              <div className="browse-list-body-item">
+              <div className="browse-list-body-item center">
                 <style.iconButton>
                   <FaPlay />
                   <span className="blind">재생</span>
                 </style.iconButton>
               </div>
-              <div className="browse-list-body-item">
+              <div className="browse-list-body-item center">
                 <style.iconButton fontSize="20px">
                   <MdFormatListBulletedAdd />
                   <span className="blind">재생목록</span>
                 </style.iconButton>
               </div>
-              <div className="browse-list-body-item">
+              <div className="browse-list-body-item center">
                 <style.iconLink fontSize="20px">
                   <FiFolderPlus />
                   <span className="blind">내 리스트</span>
                 </style.iconLink>
               </div>
-              <div className="browse-list-body-item">
+              <div className="browse-list-body-item center">
                 <style.iconButton fontSize="20px">
                   <BsThreeDotsVertical />
                   <span className="blind">더보기</span>
