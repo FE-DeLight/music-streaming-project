@@ -74,7 +74,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                     </Link>
                   </style.ThumnailImg>
                   <div className="album-desc">
-                    <p className="tit">{item.album.title}</p>
+                    <p className="tit">{item.name}</p>
                     <p className="desc">
                       {item.representationArtist.name} &lsquo;{item.album.title}&rsquo;
                     </p>

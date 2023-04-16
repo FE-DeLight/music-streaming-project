@@ -48,7 +48,7 @@ export default function Browse() {
     const json = await res.json();
     const jsonTrackList = json.data.playList.trackList;
     // BrowseListData.trackList.splice(0, jsonTrackList.length); // 데이터 변경 시 기존 데이터 초기화
-    BrowseListData.trackList = jsonTrackList;
+    BrowseListData.trackList = jsonTrackList; // Player 컴포넌트에 맞게 데이터 리팩토링
     // jsonTrackList.forEach((el: Object, index: number) => {
     //   BrowseListData.trackList.push({
     //     rank: index + 1,
