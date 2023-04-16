@@ -59,25 +59,25 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                 <p>{item.representationArtist.name}</p>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton>
+                <style.iconButton type="button">
                   <FaPlay />
                   <span className="blind">재생</span>
                 </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton fontSize="20px">
+                <style.iconButton fontSize="20px" type="button">
                   <MdFormatListBulletedAdd />
                   <span className="blind">재생목록</span>
                 </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconLink fontSize="20px">
+                <style.iconLink fontSize="20px" href="javascript:;">
                   <FiFolderPlus />
                   <span className="blind">내 리스트</span>
                 </style.iconLink>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton fontSize="20px">
+                <style.iconButton fontSize="20px" type="button">
                   <BsThreeDotsVertical />
                   <span className="blind">더보기</span>
                 </style.iconButton>
