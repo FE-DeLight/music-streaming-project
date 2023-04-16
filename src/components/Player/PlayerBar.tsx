@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { setOpenPlayer } from '@/store/oepnPlayerSlice'
+import { setPlayingMusic } from '@/store/playingMusicSlice';
+import { setPlayedMusic } from '@/store/playedMusicSlice';
 import ReactPlayer from 'react-player';
 import PlayerButton from './PlayerButton';
 import BlindText from './BlindText';
@@ -9,9 +11,12 @@ import PlayerThumb from '@/components/Player/PlayerThumb';
 
 
 export default function Player(): JSX.Element {
+  const dispatch = useDispatch();
+
   const isOpenPlayer = useSelector((state:any) => state.setIsOpenPlayer.value)
   const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
-  const dispatch = useDispatch();
+  const playing = useSelector((state: any) => state.setPlayingMusic.value);
+  const played = useSelector((state: any) => state.setPlayedMusic.value);  
 
   const [hasWindow, setHasWindow] = useState(false);
   useEffect(() => {
@@ -20,11 +25,9 @@ export default function Player(): JSX.Element {
     }
   }, []);
 
-  const [played, setPlayed] = useState(0);
   const [seeking, setSeeking] = useState(false);
   const [duration, setDuration] = useState('00:00');
   const [like, setLike] = useState(false);
-  const [playing, setPlaying] = useState(false);
   const [repeatPlay, setRepeatPlay] = useState(false);
   const [randomPlay, setRandomPlay] = useState(false);
   const [playedSecond, setPlayedSecond] = useState('00:00');
@@ -41,7 +44,7 @@ export default function Player(): JSX.Element {
     let playedSeconds = state.playedSeconds;
     handlePlayedSeconds(playedSeconds);
     if (!seeking) {
-      setPlayed(state.played);
+      dispatch(setPlayedMusic(state.played));
     }
   };
 
@@ -69,7 +72,7 @@ export default function Player(): JSX.Element {
 
   const handleSeekChange = (e: any) => {
     console.log(e.target);
-    setPlayed(parseFloat(e.target.value));
+    dispatch(setPlayedMusic(parseFloat(e.target.value)));
   };
 
   const handleSeekMouseUp = (e: any) => {
@@ -81,12 +84,12 @@ export default function Player(): JSX.Element {
   };
 
   const clickPrev = () => {
-    setPlayed(0);
+    dispatch(setPlayedMusic(0));
     musicRef?.current?.seekTo(0);
   };
 
   const clickPlay = () => {
-    setPlaying(!playing);
+    dispatch(setPlayingMusic(!playing));
   };
 
   const clickRepeatPlay = () => {
@@ -155,12 +158,12 @@ export default function Player(): JSX.Element {
           <button className="controller__openPlayListBtn" onClick={()=>{handleOpenPlayer()}} />
           <div className="bar__left-area">
             <Link href="/">
-              <PlayerThumb size={44} image={currentPlayMusic && currentPlayMusic.album?.imgList[0].url} radius={4} />
+              <PlayerThumb size={44} image={currentPlayMusic.album?.imgList[0].url} radius={4} />
             </Link>
             <div className="music-info">
-              <div className="title">{currentPlayMusic && currentPlayMusic?.name}</div>
+              <div className="title">{currentPlayMusic?.name}</div>
               <div className="singer">
-                {currentPlayMusic.album ? currentPlayMusic.representationArtist?.name : '재생목록이 비어있습니다.'}
+                {currentPlayMusic.representationArtist?.name || '재생목록이 비어있습니다.'}
               </div>
             </div>
             {currentPlayMusic && (

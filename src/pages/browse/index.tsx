@@ -4,7 +4,36 @@ import BrowseList from '@/components/BrowseList/index';
 export default function Browse() {
   const [trackList, setTrackList]: any = useState();
   const [BrowseListData, setBrowseListData]: any = useState({
-    trackListHeader: ['순위', '곡/앨범', '아티스트', '듣기', '재생목록', '내 리스트', '더보기'],
+    trackListHeader: [
+      {
+        key: 'rank',
+        label: '순위',
+      },
+      {
+        key: 'album',
+        label: '곡/앨범',
+      },
+      {
+        key: 'artist',
+        label: '아티스트',
+      },
+      {
+        key: 'listen',
+        label: '듣기',
+      },
+      {
+        key: 'playList',
+        label: '재생목록',
+      },
+      {
+        key: 'myList',
+        label: '내 리스트',
+      },
+      {
+        key: 'more',
+        label: '더보기',
+      },
+    ],
     trackList: [],
   });
 
@@ -17,8 +46,27 @@ export default function Browse() {
     });
 
     const json = await res.json();
+    const jsonTrackList = json.data.playList.trackList;
+    BrowseListData.trackList.splice(0, jsonTrackList.length); // 데이터 변경 시 기존 데이터 초기화
+    jsonTrackList.forEach((el: Object, index: number) => {
+      BrowseListData.trackList.push({
+        rank: index + 1,
+        album: {
+          art: el.album.imgList[4].url,
+          title: el.album.title,
+        },
+        artist: el.artistList[0].name,
+        listen: '',
+        playList: '',
+        myList: '',
+        more: '',
+      });
+    });
+
+    console.log(BrowseListData);
+
     // api로부터 받아온 데이터에서 trackList만 추출해서 trackList에 저장.
-    setTrackList(json.data.playList.trackList);
+    setTrackList(BrowseListData.trackList);
   };
 
   useEffect(() => {

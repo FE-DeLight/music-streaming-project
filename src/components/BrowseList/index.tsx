@@ -24,7 +24,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
             </div>
             {BrowseListData.trackListHeader.map((item: any, index: any) => (
               <div className="browse-list-head-item" key={index + 1}>
-                {item}
+                {item.label}
               </div>
             ))}
           </style.GridWrap>
@@ -39,24 +39,24 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                   <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
-              <div className="browse-list-body-item">{index}</div>
+              <div className="browse-list-body-item num">{item.rank}</div>
               <div className="browse-list-body-item">
                 <style.ThumnailBox>
                   <style.ThumnailImg>
                     <Link href="">
-                      <Image src={item.album.imgList[5].url} alt="" width={60} height={60} quality={100} />
+                      <Image src={item.album.art} alt="" width={60} height={60} quality={100} />
                     </Link>
                   </style.ThumnailImg>
                   <div className="album-desc">
-                    <p>{item.album.title}</p>
-                    <p>
-                      {item.representationArtist.name} &lsquo;{item.album.title}&rsquo;
+                    <p className="tit">{item.album.title}</p>
+                    <p className="desc">
+                      {item.artist} &lsquo;{item.album.title}&rsquo;
                     </p>
                   </div>
                 </style.ThumnailBox>
               </div>
-              <div className="browse-list-body-item">
-                <p>{item.representationArtist.name}</p>
+              <div className="browse-list-body-item artist-name">
+                <p>{item.artist}</p>
               </div>
               <div className="browse-list-body-item">
                 <style.iconButton type="button">
