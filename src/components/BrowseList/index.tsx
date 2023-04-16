@@ -1,6 +1,11 @@
-import React from 'react';
+import { React } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
+import { setPlayingMusic } from '@/store/playingMusicSlice';
+import { setPlayedMusic } from '@/store/playedMusicSlice';
+
 import { FaPlay } from 'react-icons/fa';
 import { MdFormatListBulletedAdd } from 'react-icons/md';
 import { FiFolderPlus } from 'react-icons/fi';
@@ -12,6 +17,27 @@ type BrowseListProps = {
 };
 
 function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
+  const dispatch = useDispatch();
+  const setCurrentMusic = (index: number) => {
+    console.log(BrowseListData.trackList[index]);
+    dispatch(setCurrentPlayMusic(BrowseListData.trackList[index]));
+    dispatch(setPlayingMusic(true));
+    dispatch(setPlayedMusic(0));
+  };
+
+  const musicPlay = (data, index) => {
+    console.log('음악 ID :', data.musicId);
+    setCurrentMusic(index);
+  };
+
+  const addPlayList = (data) => {
+    console.log('재생 목록 추가', data);
+  };
+
+  const addMyList = (data) => {
+    console.log('내 목록에 추가', data);
+  };
+
   return (
     <div className="browse-list">
       <style.browseHead>
@@ -39,42 +65,42 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                   <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
-              <div className="browse-list-body-item num">{item.rank}</div>
+              <div className="browse-list-body-item num">{index + 1}</div>
               <div className="browse-list-body-item">
                 <style.ThumnailBox>
                   <style.ThumnailImg>
                     <Link href="">
-                      <Image src={item.album.art} alt="" width={60} height={60} quality={100} />
+                      <Image src={item.album.imgList[0].url} alt="" width={60} height={60} quality={100} />
                     </Link>
                   </style.ThumnailImg>
                   <div className="album-desc">
                     <p className="tit">{item.album.title}</p>
                     <p className="desc">
-                      {item.artist} &lsquo;{item.album.title}&rsquo;
+                      {item.representationArtist.name} &lsquo;{item.album.title}&rsquo;
                     </p>
                   </div>
                 </style.ThumnailBox>
               </div>
               <div className="browse-list-body-item artist-name">
-                <p>{item.artist}</p>
+                <p>{item.representationArtist.name}</p>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton type="button">
+                <style.iconButton type="button" onClick={() => musicPlay(item, index)}>
                   <FaPlay />
                   <span className="blind">재생</span>
                 </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton fontSize="20px" type="button">
+                <style.iconButton fontSize="20px" type="button" onClick={() => addPlayList(item)}>
                   <MdFormatListBulletedAdd />
                   <span className="blind">재생목록</span>
                 </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconLink fontSize="20px" href="javascript:;">
+                <style.iconButton fontSize="20px" onClick={() => addMyList(item)}>
                   <FiFolderPlus />
                   <span className="blind">내 리스트</span>
-                </style.iconLink>
+                </style.iconButton>
               </div>
               <div className="browse-list-body-item">
                 <style.iconButton fontSize="20px" type="button">

@@ -47,21 +47,28 @@ export default function Browse() {
 
     const json = await res.json();
     const jsonTrackList = json.data.playList.trackList;
-    BrowseListData.trackList.splice(0, jsonTrackList.length); // 데이터 변경 시 기존 데이터 초기화
-    jsonTrackList.forEach((el: Object, index: number) => {
-      BrowseListData.trackList.push({
-        rank: index + 1,
-        album: {
-          art: el.album.imgList[4].url,
-          title: el.album.title,
-        },
-        artist: el.artistList[0].name,
-        listen: '',
-        playList: '',
-        myList: '',
-        more: '',
-      });
-    });
+    // BrowseListData.trackList.splice(0, jsonTrackList.length); // 데이터 변경 시 기존 데이터 초기화
+    BrowseListData.trackList = jsonTrackList;
+    // jsonTrackList.forEach((el: Object, index: number) => {
+    //   BrowseListData.trackList.push({
+    //     rank: index + 1,
+    //     musicId: el.id,
+    //     album: {
+    //       imgList: [...el.album.imgList],
+    //       title: el.album.title,
+    //       id: el.album.id,
+    //     },
+    //     representationArtist: {
+    //       id: el.artistList[0].id,
+    //       name: el.artistList[0].name,
+    //       type: 'ARTIST',
+    //     },
+    //     listen: '',
+    //     playList: '',
+    //     myList: '',
+    //     more: '',
+    //   });
+    // });
 
     console.log(BrowseListData);
 
