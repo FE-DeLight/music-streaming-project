@@ -11,7 +11,7 @@ export default function Player(): JSX.Element {
   const dispatch = useDispatch();
 
   const isOpenPlayer = useSelector((state: any) => state.playerStore.isOpenPlayerValue);
-  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
+  const playlistData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
   const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
   const playedProgress = useSelector((state: any) => state.playerStore.playedProgressValue);

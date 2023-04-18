@@ -112,7 +112,6 @@ export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
   const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
-  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
   const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
   const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
  
@@ -138,7 +137,7 @@ export default function List(props: any): JSX.Element {
   const handleListPlay = () => {
     // 플레이리스트 변경하는 로직
     handleCurrentMusic(0);
-    dispatch(setCurrentPlayMusic(playlistData[0]));
+    dispatch(setCurrentPlayMusic(originalPlayerListData[0]));
     dispatch(setPlayingMusic(true));
   }
   

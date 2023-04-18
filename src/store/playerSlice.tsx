@@ -3,7 +3,6 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface state {
   isOpenPlayerValue: boolean;
-  playlistDataValue: [];
   originalplaylistDataValue: any[];
   copyplaylistDataValue: any[];
   currentMusicValue: {};
@@ -14,7 +13,6 @@ export interface state {
 
 const initialState: state = {
   isOpenPlayerValue: false,
-  playlistDataValue: [],
   originalplaylistDataValue: [],
   copyplaylistDataValue: [],
   currentMusicValue: {},
@@ -48,10 +46,6 @@ const playerSlice = createSlice({
     // 플레이어 로드 여부
     setReadyPlayer: (state, action: PayloadAction<boolean>) => {
       state.readyPlayerValue = action.payload;
-    },
-    // 플레이리스트 세팅
-    setPlaylistData: (state, action: PayloadAction<[]>) => {
-      state.playlistDataValue = action.payload;
     },
     // 플레이리스트 원본
     setOriginalPlaylistData: (state, action: PayloadAction<{}>) => {
@@ -99,7 +93,7 @@ const playerSlice = createSlice({
   extraReducers: (builder) => {
     // pending(진행중), fulfilled(완료), rejected(실패)
     builder.addCase(fetchPlaylist.fulfilled, (state, action: PayloadAction<[]>) => {
-      state.playlistDataValue = action.payload;
+      state.originalplaylistDataValue = action.payload;
     });
   },
 });
@@ -107,7 +101,6 @@ const playerSlice = createSlice({
 export const {
   setOpenPlayer,
   setReadyPlayer,
-  setPlaylistData,
   setCurrentPlayMusic,
   resetCurrentPlayMusic,
   setPlayingMusic,

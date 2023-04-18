@@ -12,7 +12,6 @@ export default function Player(): JSX.Element {
   
   const isOpenPlayer = useSelector((state:any) => state.playerStore.isOpenPlayerValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
-  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
   const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
   const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
 
@@ -23,15 +22,6 @@ export default function Player(): JSX.Element {
   const searchRef = useRef<any>(null);
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
-
-  useEffect(() => {
-    // dispatch(fetchPlaylist());
-  }, [])
-
-  useEffect(() => {
-    // dispatch(setOriginalPlaylistData([...playlistData]));
-    // dispatch(setCopyPlaylistData([...playlistData]));
-  }, [playlistData]);  
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -63,7 +53,7 @@ export default function Player(): JSX.Element {
     dispatch(setCopyPlaylistData(originalPlayerListData));
   };
 
-  return playlistData && (
+  return originalPlayerListData && (
     <div className={`list ${isOpenPlayer && 'list--active'}`}>
       <div
         className="list__background"
