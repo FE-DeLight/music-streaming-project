@@ -29,9 +29,9 @@ export default function Player(): JSX.Element {
   }, [])
 
   useEffect(() => {
-    dispatch(setOriginalPlaylistData(playlistData));
-    dispatch(setCopyPlaylistData(playlistData));
-  }, [playlistData]);
+    // dispatch(setOriginalPlaylistData([...playlistData]));
+    // dispatch(setCopyPlaylistData([...playlistData]));
+  }, [playlistData]);  
 
   const clickTab = (index: number) => {
     setTabIndex(index);

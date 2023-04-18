@@ -115,13 +115,13 @@ export default function List(props: any): JSX.Element {
   const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
   const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
   const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
-
+ 
   useEffect(() => {
     dispatch(setPlayedProgress(0));
   },[currentPlayMusic])
 
   const handleCurrentMusic = (index:number) => {
-    const currentMusicIndex = playlistData.findIndex((item:any) => item.index === currentPlayMusic.index);
+    const currentMusicIndex = originalPlayerListData.findIndex((item:any) => item.index === currentPlayMusic.index);
     if (index === currentMusicIndex && playing === true) {
       dispatch(setPlayingMusic(false));
     } else if (index === currentMusicIndex && playing === false) {
@@ -130,7 +130,7 @@ export default function List(props: any): JSX.Element {
       dispatch(setPlayingMusic(false));
       dispatch(resetCurrentPlayMusic());
       dispatch(setPlayedProgress(0));
-      dispatch(setCurrentPlayMusic(playlistData[index]));
+      dispatch(setCurrentPlayMusic(originalPlayerListData[index]));
       dispatch(setPlayingMusic(true));
     }
   }
@@ -170,9 +170,9 @@ export default function List(props: any): JSX.Element {
                 <MusicListItem
                   key={index}
                   id={music.id}
-                  thumb={music.album.imgList[0].url}
+                  thumb={music.album?.imgList[0].url}
                   title={music.name}
-                  singer={music.representationArtist.name}
+                  singer={music.representationArtist?.name}
                   thumbSize={45}
                   thumbRadius={4}
                   onClick={() => {handleCurrentMusic(index)}}
