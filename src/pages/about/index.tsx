@@ -1,4 +1,5 @@
 import React from 'react';
+import postData from '@/service/api';
 
 export default function about({ bookList }: any): JSX.Element {
   return (
@@ -16,12 +17,7 @@ export default function about({ bookList }: any): JSX.Element {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api/book', {
-    headers: {
-      Accept: 'application/json',
-    },
-  });
-  const bookList = await res.json();
+  const bookList = await postData({ url: 'http://localhost:3000/api/book' });
 
   return {
     props: {
