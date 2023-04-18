@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const GridWrap = styled.div`
   display: grid;
-  grid-template-columns: 42px 46px 1fr 1fr 50px 50px 60px 50px;
+  grid-template-columns: 42px 46px minmax(500px, auto) 250px 65px 65px 65px 65px;
   font-size: 13px;
   color: rgb(160, 160, 160);
   width: 100%;
@@ -13,6 +13,37 @@ export const GridWrap = styled.div`
       display: flex;
       align-items: center;
       margin-top: 10px;
+      &.num {
+        font-size: 15px;
+        font-weight: 700;
+        color: #333;
+      }
+      .album-desc {
+        padding: 12px 0;
+        width: 420px;
+      }
+      .tit {
+        padding-bottom: 5px;
+        font-size: 15px;
+        color: #333;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .desc {
+        padding-top: 6px;
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &.artist-name {
+        font-size: 15px;
+        color: #333;
+      }
+      &.center {
+        justify-content: center;
+      }
     }
   }
 `;

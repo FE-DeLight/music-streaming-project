@@ -1,6 +1,11 @@
-import React from 'react';
+import { React } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
+import { setPlayingMusic } from '@/store/playingMusicSlice';
+import { setPlayedMusic } from '@/store/playedMusicSlice';
+
 import { FaPlay } from 'react-icons/fa';
 import { MdFormatListBulletedAdd } from 'react-icons/md';
 import { FiFolderPlus } from 'react-icons/fi';
@@ -12,6 +17,27 @@ type BrowseListProps = {
 };
 
 function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
+  const dispatch = useDispatch();
+  const setCurrentMusic = (index: number) => {
+    console.log(BrowseListData.trackList[index]);
+    dispatch(setCurrentPlayMusic(BrowseListData.trackList[index]));
+    dispatch(setPlayingMusic(true));
+    dispatch(setPlayedMusic(0));
+  };
+
+  const musicPlay = (data, index) => {
+    console.log('음악 ID :', data.musicId);
+    setCurrentMusic(index);
+  };
+
+  const addPlayList = (data) => {
+    console.log('재생 목록 추가', data);
+  };
+
+  const addMyList = (data) => {
+    console.log('내 목록에 추가', data);
+  };
+
   return (
     <div className="browse-list">
       <style.browseHead>
@@ -24,7 +50,7 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
             </div>
             {BrowseListData.trackListHeader.map((item: any, index: any) => (
               <div className="browse-list-head-item" key={index + 1}>
-                {item}
+                {item.label}
               </div>
             ))}
           </style.GridWrap>
@@ -39,45 +65,45 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
                   <input type="checkbox" name="rank" id={`rank-${index}`} />
                 </label>
               </div>
-              <div className="browse-list-body-item">{index}</div>
+              <div className="browse-list-body-item num">{index + 1}</div>
               <div className="browse-list-body-item">
                 <style.ThumnailBox>
                   <style.ThumnailImg>
                     <Link href="">
-                      <Image src={item.album.imgList[5].url} alt="" width={60} height={60} quality={100} />
+                      <Image src={item.album.imgList[0].url} alt="" width={60} height={60} quality={100} />
                     </Link>
                   </style.ThumnailImg>
                   <div className="album-desc">
-                    <p>{item.album.title}</p>
-                    <p>
+                    <p className="tit">{item.name}</p>
+                    <p className="desc">
                       {item.representationArtist.name} &lsquo;{item.album.title}&rsquo;
                     </p>
                   </div>
                 </style.ThumnailBox>
               </div>
-              <div className="browse-list-body-item">
+              <div className="browse-list-body-item artist-name">
                 <p>{item.representationArtist.name}</p>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton>
+                <style.iconButton type="button" onClick={() => musicPlay(item, index)}>
                   <FaPlay />
                   <span className="blind">재생</span>
                 </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton fontSize="20px">
+                <style.iconButton fontSize="20px" type="button" onClick={() => addPlayList(item)}>
                   <MdFormatListBulletedAdd />
                   <span className="blind">재생목록</span>
                 </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconLink fontSize="20px">
+                <style.iconButton fontSize="20px" onClick={() => addMyList(item)}>
                   <FiFolderPlus />
                   <span className="blind">내 리스트</span>
-                </style.iconLink>
+                </style.iconButton>
               </div>
               <div className="browse-list-body-item">
-                <style.iconButton fontSize="20px">
+                <style.iconButton fontSize="20px" type="button">
                   <BsThreeDotsVertical />
                   <span className="blind">더보기</span>
                 </style.iconButton>
