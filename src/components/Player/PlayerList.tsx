@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPlayer, fetchPlaylist } from '@/store/playerSlice';
+import { setOpenPlayer, setOriginalPlaylistData, setCopyPlaylistData, fetchPlaylist } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
@@ -13,11 +13,11 @@ export default function Player(): JSX.Element {
   const isOpenPlayer = useSelector((state:any) => state.playerStore.isOpenPlayerValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
   const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
+  const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
+  const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
 
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
-  const [OriginalPlayerList, setOriginalPlayerList]: any = useState();
-  const [copyPlayerList, setCopyPlayerList]: any = useState();
   const [searchText, setSearchText] = useState('');
 
   const searchRef = useRef<any>(null);
@@ -25,12 +25,12 @@ export default function Player(): JSX.Element {
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
 
   useEffect(() => {
-    dispatch(fetchPlaylist())
-  },[])
+    // dispatch(fetchPlaylist());
+  }, [])
 
   useEffect(() => {
-    setCopyPlayerList(playlistData);
-    setOriginalPlayerList(playlistData);
+    dispatch(setOriginalPlaylistData(playlistData));
+    dispatch(setCopyPlaylistData(playlistData));
   }, [playlistData]);
 
   const clickTab = (index: number) => {
@@ -48,19 +48,19 @@ export default function Player(): JSX.Element {
   const handleSearchMusic = (event: any) => {
     const searchValue = event.target.value;
     setSearchText(searchValue);
-    setCopyPlayerList(
-      OriginalPlayerList?.filter((music: any) => {
+    dispatch(setCopyPlaylistData(
+      originalPlayerListData?.filter((music: any) => {
         const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
         const isMatchSinger = music.representationArtist.name.toLowerCase().includes(searchValue.toLowerCase());
 
         return isMatchTitle || isMatchSinger;
       }),
-    );
+    ))
   };
 
   const handleRemoveSearch = () => {
     setSearchText('');
-    setCopyPlayerList(OriginalPlayerList);
+    dispatch(setCopyPlaylistData(originalPlayerListData));
   };
 
   return playlistData && (
@@ -151,11 +151,11 @@ export default function Player(): JSX.Element {
                 </div>
               </div>
               <div className="tab-body__list-area">
-                {copyPlayerList && (
+                {copyPlayerListData && (
                   <PlayList
                     isOpenPlayList={isOpenPlayList}
                     clickPlayList={clickPlayList}
-                    copyPlayerList={copyPlayerList}
+                    copyPlayerList={copyPlayerListData}
                   />
                 )}
               </div>

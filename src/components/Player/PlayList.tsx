@@ -111,9 +111,10 @@ const PlayList = styled.div<{}>`
 export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
   const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
-  const played = useSelector((state: any) => state.playerStore.playedMusicValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
-  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);  
+  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);
+  const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
+  const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
 
   useEffect(() => {
     dispatch(setPlayedProgress(0));
@@ -136,7 +137,7 @@ export default function List(props: any): JSX.Element {
 
   const handleListPlay = () => {
     // 플레이리스트 변경하는 로직
-    // handleCurrentMusic(0);
+    handleCurrentMusic(0);
     dispatch(setCurrentPlayMusic(playlistData[0]));
     dispatch(setPlayingMusic(true));
   }
@@ -163,8 +164,8 @@ export default function List(props: any): JSX.Element {
           </div>
         </div>
         <ul className="content">
-          {props.copyPlayerList.length > 0 ? (
-            props.copyPlayerList.map((music: any, index: number) => {
+          {copyPlayerListData.length > 0 ? (
+            copyPlayerListData.map((music: any, index: number) => {
               return (
                 <MusicListItem
                   key={index}
@@ -179,7 +180,8 @@ export default function List(props: any): JSX.Element {
               );
             })
           ) : (
-            <div className='none-search-data'>재생목록의 검색결과가 없습니다
+            <div className='none-search-data'>
+              {originalPlayerListData.length > 0 ? '재생목록의 검색결과가 없습니다' : '재생목록이 없습니다' }
             </div>
           )}
         </ul>
