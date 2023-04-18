@@ -4,8 +4,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 export interface state {
   isOpenPlayerValue: boolean;
   playlistDataValue: [];
-  originalplaylistDataValue: [];
-  copyplaylistDataValue: [];
+  originalplaylistDataValue: any[];
+  copyplaylistDataValue: any[];
   currentMusicValue: {};
   isPlayingValue: boolean;
   playedProgressValue: number;
@@ -54,12 +54,12 @@ const playerSlice = createSlice({
       state.playlistDataValue = action.payload;
     },
     // 플레이리스트 원본
-    setOriginalPlaylistData: (state, action: PayloadAction<[]>) => {
-      state.originalplaylistDataValue = action.payload;
+    setOriginalPlaylistData: (state, action: PayloadAction<{}>) => {
+      state.originalplaylistDataValue.push(action.payload)
     },
     // 플레이리스트 복사본
-    setCopyPlaylistData: (state, action: PayloadAction<[]>) => {
-      state.copyplaylistDataValue = action.payload;
+    setCopyPlaylistData: (state, action: PayloadAction<{}>) => {
+      state.copyplaylistDataValue.push(action.payload)
     },
     // 재생중 음악 세팅
     setCurrentPlayMusic: (state, action: PayloadAction<{}>) => {
