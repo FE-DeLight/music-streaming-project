@@ -42,6 +42,8 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
 
   const addPlayList = (data: any) => {
     console.log('재생 목록 추가', data);
+    dispatch(setOriginalPlaylistData(data));
+    dispatch(setCopyPlaylistData(data));
   };
 
   const addMyList = (data: any) => {
