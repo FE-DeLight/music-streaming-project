@@ -34,14 +34,14 @@ const PlayerThumb = styled.div<{ size: number; image?: string; radius: string }>
   }
 `;
 export default function Thumb(props: any): JSX.Element {
-  const playing = useSelector((state: any) => state.setPlayingMusic.value);
-  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
+  const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
 
   const { image, size } = props;
   return (
     <PlayerThumb {...props}>
       {image && <Image src={image} alt="앨범 이미지" width={size} height={size} />}
-      {playing && currentPlayMusic.id === props.id && (
+      {playing && currentPlayMusic?.id === props.id && (
         <div className="current-play">
           <Image src={'/icon_playing.gif'} alt="재생중" width={30} height={30} />
         </div>
