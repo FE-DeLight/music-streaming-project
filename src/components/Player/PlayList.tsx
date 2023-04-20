@@ -1,8 +1,7 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
-import { setPlayingMusic } from '@/store/playingMusicSlice';
-import { setPlayedMusic } from '@/store/playedMusicSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPlayMusic, setPlayingMusic, setPlayedProgress, resetCurrentPlayMusic } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import MusicListItem from '@/components/Player/MusicListItem';
@@ -110,13 +109,36 @@ const PlayList = styled.div<{}>`
   }
 `;
 export default function List(props: any): JSX.Element {
-  
   const dispatch = useDispatch();
+  const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
+  const played = useSelector((state: any) => state.playerStore.playedMusicValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
+  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);  
 
-  const setCurrentMusic = (index:number) => {
-    dispatch(setCurrentPlayMusic(props.copyPlayerList[index]));
+  useEffect(() => {
+    dispatch(setPlayedProgress(0));
+  },[currentPlayMusic])
+
+  const handleCurrentMusic = (index:number) => {
+    const currentMusicIndex = playlistData.findIndex((item:any) => item.index === currentPlayMusic.index);
+    if (index === currentMusicIndex && playing === true) {
+      dispatch(setPlayingMusic(false));
+    } else if (index === currentMusicIndex && playing === false) {
+      dispatch(setPlayingMusic(true));
+    } else {
+      dispatch(setPlayingMusic(false));
+      dispatch(resetCurrentPlayMusic());
+      dispatch(setPlayedProgress(0));
+      dispatch(setCurrentPlayMusic(playlistData[index]));
+      dispatch(setPlayingMusic(true));
+    }
+  }
+
+  const handleListPlay = () => {
+    // 플레이리스트 변경하는 로직
+    // handleCurrentMusic(0);
+    dispatch(setCurrentPlayMusic(playlistData[0]));
     dispatch(setPlayingMusic(true));
-    dispatch(setPlayedMusic(0));
   }
   
   return (
@@ -127,7 +149,7 @@ export default function List(props: any): JSX.Element {
             <div className="list-title">플레이리스트 이름</div>
           </div>
           <div className="top-right">
-            <PlayerButton size={30} image={'/icon_play_list.svg'}>
+            <PlayerButton size={30} image={'/icon_play_list.svg'} onClick={handleListPlay}>
               <BlindText text={'재생'} />
             </PlayerButton>
             <PlayerButton
@@ -152,7 +174,7 @@ export default function List(props: any): JSX.Element {
                   singer={music.representationArtist.name}
                   thumbSize={45}
                   thumbRadius={4}
-                  onClick={() => {setCurrentMusic(index)}}
+                  onClick={() => {handleCurrentMusic(index)}}
                 />
               );
             })

@@ -44,9 +44,9 @@ export default function Item(props: any): JSX.Element {
           <div className="singer">{props.singer}</div>
         </div>
       </button>
-      <PlayerButton size={30} image={'/icon_show_more.svg'}>
+      {/* <PlayerButton size={30} image={'/icon_show_more.svg'}>
         <BlindText text={'더보기'} />
-      </PlayerButton>
+      </PlayerButton> */}
     </MusicListItem>
   );
 }
