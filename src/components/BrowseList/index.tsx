@@ -1,10 +1,14 @@
-import { React } from 'react';
+// import { React } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
-import { setCurrentPlayMusic } from '@/store/currentMusicSlice';
-import { setPlayingMusic } from '@/store/playingMusicSlice';
-import { setPlayedMusic } from '@/store/playedMusicSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCurrentPlayMusic,
+  setPlayingMusic,
+  setPlayedProgress,
+  setOriginalPlaylistData,
+  setCopyPlaylistData,
+} from '@/store/playerSlice';
 
 import { FaPlay } from 'react-icons/fa';
 import { MdFormatListBulletedAdd } from 'react-icons/md';
@@ -22,19 +26,27 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
     console.log(BrowseListData.trackList[index]);
     dispatch(setCurrentPlayMusic(BrowseListData.trackList[index]));
     dispatch(setPlayingMusic(true));
-    dispatch(setPlayedMusic(0));
+    dispatch(setPlayedProgress(0));
+    dispatch(setOriginalPlaylistData(BrowseListData.trackList[index]));
+    dispatch(setCopyPlaylistData(BrowseListData.trackList[index]));
   };
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
 
-  const musicPlay = (data, index) => {
+  console.log(currentPlayMusic);
+  
+
+  const musicPlay = (data: any, index: any) => {
     console.log('음악 ID :', data.musicId);
     setCurrentMusic(index);
   };
 
-  const addPlayList = (data) => {
+  const addPlayList = (data: any) => {
     console.log('재생 목록 추가', data);
+    dispatch(setOriginalPlaylistData(data));
+    dispatch(setCopyPlaylistData(data));
   };
 
-  const addMyList = (data) => {
+  const addMyList = (data: any) => {
     console.log('내 목록에 추가', data);
   };
 

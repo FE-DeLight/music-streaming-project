@@ -111,16 +111,16 @@ const PlayList = styled.div<{}>`
 export default function List(props: any): JSX.Element {
   const dispatch = useDispatch();
   const playing = useSelector((state: any) => state.playerStore.isPlayingValue);
-  const played = useSelector((state: any) => state.playerStore.playedMusicValue);
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
-  const playlistData = useSelector((state: any) => state.playerStore.playlistDataValue);  
-
+  const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
+  const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
+ 
   useEffect(() => {
     dispatch(setPlayedProgress(0));
   },[currentPlayMusic])
 
   const handleCurrentMusic = (index:number) => {
-    const currentMusicIndex = playlistData.findIndex((item:any) => item.index === currentPlayMusic.index);
+    const currentMusicIndex = originalPlayerListData.findIndex((item:any) => item.index === currentPlayMusic.index);
     if (index === currentMusicIndex && playing === true) {
       dispatch(setPlayingMusic(false));
     } else if (index === currentMusicIndex && playing === false) {
@@ -129,15 +129,15 @@ export default function List(props: any): JSX.Element {
       dispatch(setPlayingMusic(false));
       dispatch(resetCurrentPlayMusic());
       dispatch(setPlayedProgress(0));
-      dispatch(setCurrentPlayMusic(playlistData[index]));
+      dispatch(setCurrentPlayMusic(originalPlayerListData[index]));
       dispatch(setPlayingMusic(true));
     }
   }
 
   const handleListPlay = () => {
     // 플레이리스트 변경하는 로직
-    // handleCurrentMusic(0);
-    dispatch(setCurrentPlayMusic(playlistData[0]));
+    handleCurrentMusic(0);
+    dispatch(setCurrentPlayMusic(originalPlayerListData[0]));
     dispatch(setPlayingMusic(true));
   }
   
@@ -163,15 +163,15 @@ export default function List(props: any): JSX.Element {
           </div>
         </div>
         <ul className="content">
-          {props.copyPlayerList.length > 0 ? (
-            props.copyPlayerList.map((music: any, index: number) => {
+          {copyPlayerListData.length > 0 ? (
+            copyPlayerListData.map((music: any, index: number) => {
               return (
                 <MusicListItem
                   key={index}
                   id={music.id}
-                  thumb={music.album.imgList[0].url}
+                  thumb={music.album?.imgList[0].url}
                   title={music.name}
-                  singer={music.representationArtist.name}
+                  singer={music.representationArtist?.name}
                   thumbSize={45}
                   thumbRadius={4}
                   onClick={() => {handleCurrentMusic(index)}}
@@ -179,7 +179,8 @@ export default function List(props: any): JSX.Element {
               );
             })
           ) : (
-            <div className='none-search-data'>재생목록의 검색결과가 없습니다
+            <div className='none-search-data'>
+              {originalPlayerListData.length > 0 ? '재생목록의 검색결과가 없습니다' : '재생목록이 없습니다' }
             </div>
           )}
         </ul>
