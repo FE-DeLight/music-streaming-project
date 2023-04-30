@@ -57,10 +57,10 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           <Nav />
         </LeftArea>
         <RightArea>
-          <Link href={'/login'} legacyBehavior passHref>
+          <Link href="/member/signin" legacyBehavior passHref>
             <UserLink>로그인</UserLink>
           </Link>
-          <Link href={'/signUp'} legacyBehavior passHref>
+          <Link href="/member/signup" legacyBehavior passHref>
             <UserLink>회원가입</UserLink>
           </Link>
         </RightArea>

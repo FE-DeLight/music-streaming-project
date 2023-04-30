@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import postData from '@/service/api';
 import { useForm } from 'react-hook-form';
+import Router from 'next/router';
+import { users } from '../api/users.json';
+
+let loginData: any;
 
 export default function signin({
   onSubmit = async (data: any) => {
+    loginData = data;
     await new Promise((r) => setTimeout(r, 1000));
-    alert(JSON.stringify(data));
+    if (data.email === users[0].id && data.password === users[0].password) {
+      Router.push('/');
+    }
   },
 }): JSX.Element {
   const toggleShowPswd = () => {
     setShowPswd(!showPswd);
-    console.log(showPswd);
   };
+
+  console.log('aa', loginData);
 
   const {
     register,
@@ -24,7 +32,11 @@ export default function signin({
   const [showPswd, setShowPswd] = useState<boolean>(false);
 
   const login = async () => {
-    await postData({ url: 'http://localhost:3000/api/login', method: 'POST', data: { id: getValues("email"), password: getValues("password") } });
+    await postData({
+      url: 'http://localhost:3000/api/login',
+      method: 'POST',
+      data: { id: getValues('email'), password: getValues('password') },
+    });
   };
 
   return (
@@ -35,7 +47,6 @@ export default function signin({
             <input
               className="idpw"
               placeholder="아이디(이메일)"
-              name="email"
               type="email"
               id="email"
               aria-invalid={!isDirty ? undefined : errors.email ? 'true' : 'false'}
@@ -53,7 +64,6 @@ export default function signin({
           <div className="idpw-wrpper">
             <input
               className="idpw"
-              name="password"
               placeholder="비밀번호"
               type={showPswd ? 'text' : 'password'}
               aria-invalid={!isDirty ? undefined : errors.password ? 'true' : 'false'}
