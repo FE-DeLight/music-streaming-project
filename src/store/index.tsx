@@ -1,21 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query'
-import openPlayerReducer from '@/store/oepnPlayerSlice';
-import currentMusicReducer from '@/store/currentMusicSlice';
-import playingMusicReducer from '@/store/playingMusicSlice';
-import playedMusicReducer from '@/store/playedMusicSlice';
-import { playlistApi } from '@/store/playlistDataSlice';
+import playerReducer from '@/store/playerSlice';
 
 const store = configureStore({
   reducer: {
-    setIsOpenPlayer: openPlayerReducer,
-    setCurrentMusic: currentMusicReducer,
-    setPlayingMusic: playingMusicReducer,
-    setPlayedMusic: playedMusicReducer,
-    [playlistApi.reducerPath]: playlistApi.reducer,
+    playerStore: playerReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(playlistApi.middleware),
 });
 setupListeners(store.dispatch)
 

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOpenPlayer } from '@/store/oepnPlayerSlice';
-import { useGetPlaylistDataQuery } from '@/store/playlistDataSlice';
+import { setOpenPlayer, setOriginalPlaylistData, setCopyPlaylistData, fetchPlaylist } from '@/store/playerSlice';
 import PlayerButton from '@/components/Player/PlayerButton';
 import BlindText from '@/components/Player/BlindText';
 import PlayerThumb from '@/components/Player/PlayerThumb';
@@ -11,26 +10,18 @@ import PlayList from '@/components/Player/PlayList';
 export default function Player(): JSX.Element {
   const dispatch = useDispatch();
   
-  const isOpenPlayer = useSelector((state: any) => state.setIsOpenPlayer.value);
-  const currentPlayMusic = useSelector((state: any) => state.setCurrentMusic.value);
+  const isOpenPlayer = useSelector((state:any) => state.playerStore.isOpenPlayerValue);
+  const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
+  const originalPlayerListData = useSelector((state: any) => state.playerStore.originalplaylistDataValue);
+  const copyPlayerListData = useSelector((state: any) => state.playerStore.copyplaylistDataValue);
 
-  const [playListData, setPlayListData]: any = useState();
   const [tabIndex, setTabIndex] = useState(0);
   const [isOpenPlayList, setIsOpenPlayList] = useState(true);
-  const [OriginalPlayerList, setOriginalPlayerList]: any = useState();
-  const [copyPlayerList, setCopyPlayerList]: any = useState();
   const [searchText, setSearchText] = useState('');
 
   const searchRef = useRef<any>(null);
 
   const tabMenu = [{ name: '음악' }, { name: '가사' }];
-
-  
-  const { data, error, isLoading } = useGetPlaylistDataQuery('');
-  
-  useEffect(() => {
-    setPlayListData(data?.data.playList.trackList);
-  },[data])
 
   const clickTab = (index: number) => {
     setTabIndex(index);
@@ -47,31 +38,26 @@ export default function Player(): JSX.Element {
   const handleSearchMusic = (event: any) => {
     const searchValue = event.target.value;
     setSearchText(searchValue);
-    setCopyPlayerList(
-      OriginalPlayerList?.filter((music: any) => {
+    dispatch(setCopyPlaylistData(
+      originalPlayerListData?.filter((music: any) => {
         const isMatchTitle = music.name.toLowerCase().includes(searchValue.toLowerCase());
         const isMatchSinger = music.representationArtist.name.toLowerCase().includes(searchValue.toLowerCase());
 
         return isMatchTitle || isMatchSinger;
       }),
-    );
+    ))
   };
 
   const handleRemoveSearch = () => {
     setSearchText('');
-    setCopyPlayerList(OriginalPlayerList);
+    dispatch(setCopyPlaylistData(originalPlayerListData));
   };
 
-  useEffect(() => {
-    setCopyPlayerList(playListData);
-    setOriginalPlayerList(playListData);
-  }, [playListData]);
-
-  return playListData ? (
+  return originalPlayerListData && (
     <div className={`list ${isOpenPlayer && 'list--active'}`}>
       <div
         className="list__background"
-        style={{ backgroundImage: `url(${currentPlayMusic.album?.imgList[0].url})` || '' }}
+        style={{ backgroundImage: `url(${currentPlayMusic?.album?.imgList[0].url})` || '' }}
       />
       <div className="list__left-area">
         <div className="list__left-area-inner">
@@ -82,14 +68,14 @@ export default function Player(): JSX.Element {
             <span className="list__left-singer">{currentPlayMusic.representationArtist?.name || '가수'}</span>
           </Link>
           <PlayerThumb size={360} image={currentPlayMusic.album?.imgList[4].url} radius={10} />
-          <div className="list__left-btn-area">
+          {/* <div className="list__left-btn-area">
             <PlayerButton size={40} image={'/icon_store.svg'}>
               <BlindText text={'담기'} />
             </PlayerButton>
             <PlayerButton size={40} image={'/icon_show_more.svg'}>
               <BlindText text={'더보기'} />
             </PlayerButton>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -150,16 +136,16 @@ export default function Player(): JSX.Element {
                   </div>
                 </div>
                 <div className="tab-body__top-right">
-                  <button className="list-btn">내 리스트 가져오기</button>
-                  <button className="spread-btn">그룹 접기</button>
+                  {/* <button className="list-btn">내 리스트 가져오기</button> */}
+                  {/* <button className="spread-btn">그룹 접기</button> */}
                 </div>
               </div>
               <div className="tab-body__list-area">
-                {copyPlayerList && (
+                {copyPlayerListData && (
                   <PlayList
                     isOpenPlayList={isOpenPlayList}
                     clickPlayList={clickPlayList}
-                    copyPlayerList={copyPlayerList}
+                    copyPlayerList={copyPlayerListData}
                   />
                 )}
               </div>
@@ -631,7 +617,5 @@ export default function Player(): JSX.Element {
         }
       `}</style>
     </div>
-  ) : (
-    <></>
-  );
+  ) 
 }
