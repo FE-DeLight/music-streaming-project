@@ -1,4 +1,4 @@
-// import { React } from 'react';
+import { React } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +33,6 @@ function BrowseList({ BrowseListData }: BrowseListProps): JSX.Element {
   const currentPlayMusic = useSelector((state: any) => state.playerStore.currentMusicValue);
 
   console.log(currentPlayMusic);
-  
 
   const musicPlay = (data: any, index: any) => {
     console.log('음악 ID :', data.musicId);
