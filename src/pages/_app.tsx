@@ -1,9 +1,10 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import store from '@/store';
 import Layout from '@/components/Layout';
 import '../styles/reset.css';
+import '../styles/swiper.overwrite.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

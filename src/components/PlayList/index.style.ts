@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  position: relative;
   width: 100%;
-  padding: 57px 0;
+  padding-bottom: 57px;
 `;
 
 export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 export const Title = styled.span`
   font-size: 2.2rem;
@@ -20,7 +20,7 @@ export const Title = styled.span`
 export const ListWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 19px;
 `;
 
 export const ListItem = styled.li`

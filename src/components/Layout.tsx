@@ -51,7 +51,7 @@ const ContentArea = styled.section`
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
   return (
-    <Wrapper>
+    <Wrapper className="kdi-app">
       <Header>
         <LeftArea>
           <Nav />
