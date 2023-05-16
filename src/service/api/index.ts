@@ -10,7 +10,7 @@ export default async function postData({ url, method = 'GET', data, params }: Pr
 
   if (params) {
     Object.keys(params).forEach((key: any) => {
-      console.log(key);
+      console.log('key', key);
 
       urlParams.append(key, params[key]);
     });
@@ -26,6 +26,7 @@ export default async function postData({ url, method = 'GET', data, params }: Pr
       'Content-Type': 'application/json',
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
+
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body의 데이터 유형은 반드시 "Content-Type" 헤더와 일치해야 함

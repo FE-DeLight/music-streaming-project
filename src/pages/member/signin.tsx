@@ -5,11 +5,8 @@ import { useForm } from 'react-hook-form';
 import Router from 'next/router';
 import { users } from '../api/users.json';
 
-let loginData: any;
-
 export default function signin({
   onSubmit = async (data: any) => {
-    loginData = data;
     await new Promise((r) => setTimeout(r, 1000));
     if (data.email === users[0].id && data.password === users[0].password) {
       Router.push('/');
@@ -19,8 +16,6 @@ export default function signin({
   const toggleShowPswd = () => {
     setShowPswd(!showPswd);
   };
-
-  console.log('aa', loginData);
 
   const {
     register,
@@ -35,7 +30,12 @@ export default function signin({
     await postData({
       url: 'http://localhost:3000/api/login',
       method: 'POST',
-      data: { id: getValues('email'), password: getValues('password') },
+      data: {
+        id: getValues('email'),
+        password: getValues('password'),
+      },
+    }).then((res) => {
+      localStorage.setItem('login-token', JSON.stringify({ key: res.accessToken }));
     });
   };
 

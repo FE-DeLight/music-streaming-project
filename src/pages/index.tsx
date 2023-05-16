@@ -25,6 +25,20 @@ export default function Home(props: any): JSX.Element {
 
 export async function getStaticProps() {
   const List = await postData({ url: 'http://localhost:3000/api/categoryList' });
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('login-token') || '';
+
+    await postData({
+      url: 'http://localhost:3000/api/login',
+      method: 'GET',
+      data: {
+        headers: {
+          Authorization: token,
+        },
+      },
+    }).then((response) => response.json());
+  }
+
   return {
     props: {
       data: List.data,
